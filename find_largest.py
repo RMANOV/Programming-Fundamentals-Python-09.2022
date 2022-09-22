@@ -2,7 +2,7 @@
 
 f_number = int(input())
 
-if f_number > 10:
+if 99 < f_number > 10:
     pass
 
 

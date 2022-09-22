@@ -6,9 +6,10 @@ for i in range(len(f_number)):
 
 
     last_digit = int(f_number[-i])
-    digit_list = [int(x) for x in f_number]
+    digit_list = [int(i) for i in f_number]
     print(max(digit_list), end="")
     digit_list.remove(max(digit_list))
+    print(max(digit_list), end="")
 
 
 

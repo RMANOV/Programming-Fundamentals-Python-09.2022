@@ -5,13 +5,19 @@ f_number = input()
 for i in range(len(f_number)):
 
 
-    last_digit = int(f_number[-1])
-    print(last_digit, end="")
-    f_number = f_number[:-1]
+    last_digit = int(f_number[-i])
+    digit_list = [int(x) for x in f_number]
+    print(max(digit_list), end="")
+    digit_list.remove(max(digit_list))
+
+
+
+
+  
 
 print()
-
- 
+    # digit_list.append(last_digit)
+    # f_number = f_number[:-1]
     # if last_digit > int(f_number[i+1:i+2]):
     #     print(last_digit)
     # else:

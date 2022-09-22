@@ -7,9 +7,8 @@ for i in range(len(f_number)):
 
     last_digit = int(f_number[-i])
     digit_list = [int(i) for i in f_number]
-    print(max(digit_list), end="")
-    digit_list.remove(max(digit_list))
-    print(max(digit_list), end="")
+    digit_list.sort(reverse=True)
+    print(digit_list[i], end="")
 
 
 

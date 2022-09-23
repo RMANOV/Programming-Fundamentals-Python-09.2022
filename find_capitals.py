@@ -3,15 +3,31 @@
 f_string = input()
 num_list = ()
 print('[', end='')
+count_i = 0
 
 for i in range(len(f_string)):
+
     if f_string[i].isupper():
-        num_list += (i,)
-        if i == len(num_list) - 0:
-            print(i, end=' ')
+
+        count_i += 1
+        
+        if i == len(f_string) - 1:
+            print(i, end='')
         else:
-            print(f'{i},', end=' ')
-print(']', end='')
+            print(i, end=', ')
+print(']')
+
+
+
+
+
+
+#         num_list += (i,)
+#         if i == len(num_list) - 0:
+#             print(i, end=' ')
+#         else:
+#             print(f'{i},', end=' ')
+# print(']', end='')
 
 #how to convert list to string
 #https://www.geeksforgeeks.org/python-convert-list-to-string/

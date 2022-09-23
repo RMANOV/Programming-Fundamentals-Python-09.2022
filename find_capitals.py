@@ -3,19 +3,27 @@
 f_string = input()
 num_list = ()
 print('[', end='')
-count_i = 0
+# count_i = 0
 
 for i in range(len(f_string)):
 
     if f_string[i].isupper():
 
-        count_i += 1
+        # count_i += 1
+        num_list += (i,)
+    if i == len(f_string) - 1:
+        print(*num_list, sep=', ', end='')
+        print(']')
 
-        if i == len(f_string) - 1:
-            print(i, sep=', ', end='')
-        else:
-            print(i, sep=', ', end=', ')
-print(']',sep=',')
+
+
+        
+#     print(f'{i}, ', sep=', ', end='')
+#         # if i == len(f_string) - 1:
+#         #     print(i, sep=', ', end='')
+#         # else:
+#         #     print(i, sep=', ', end=', ')
+# print(']',sep=',')
 
 #how to remove the last comma in the output?
 

@@ -10,12 +10,14 @@ for i in range(len(f_string)):
     if f_string[i].isupper():
 
         count_i += 1
-        
+
         if i == len(f_string) - 1:
-            print(i, end='')
+            print(i, sep=', ', end='')
         else:
-            print(i, end=', ')
-print(']')
+            print(i, sep=', ', end=', ')
+print(']',sep=',')
+
+#how to remove the last comma in the output?
 
 
 

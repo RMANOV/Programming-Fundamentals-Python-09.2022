@@ -1,5 +1,4 @@
 
-
 n = int(input())
 delim = "->"
 text_list = [int(x) for x in str(n)]
@@ -9,25 +8,24 @@ digits_list = []
 
 for i in range(n):
     digits_list.append(i+1)
-    digits_sum = sum(digits_list)
+    # print(digits_list[i:i+1], end=delim)
+    digits_sum =[digits_list[i:i+1][0]]
+    Sum = sum(digits_sum)
 
-    if digits_sum == 5 or digits_sum == 7 or digits_sum == 11:
-
-
-
-        special_num = True
-
-    
+    if Sum == 5 or Sum == 7 or Sum == 11:
+       
+        special_num = True    
         print(f"{i+1}{delim}True")
-        digits_sum = 0
+        # digits_sum.clear()
     else:
         print(f"{i+1}{delim}False",sep="]")
-        digits_sum = 0
+        # digits_sum.clear()
 
 
 
 
-
+    # digits_list.append(i+1)
+    # digits_sum = sum(digits_list)
 
 #     dlist.append(text_list[i])
 #     if i < len(text_list) - 1:

@@ -6,22 +6,23 @@ special_num = False
 digits_sum = 0
 digits_list = []
 
-for i in range(n):
-    digits_list.append(i+1)
-    # print(digits_list[i:i+1], end=delim)
-    digits_sum =[digits_list[i:i+1][0]]
-    Sum = sum(digits_sum)
+for i in range(1,n+1):
+    if i % 5 == 0 or i % 7 == 0 or i % 11 == 0:
+        special_num = True
 
-    if Sum == 5 or Sum == 7 or Sum == 11:
-       
-        special_num = True    
-        print(f"{i+1}{delim}True")
-        # digits_sum.clear()
+        print(f"{i}{delim}True")
     else:
-        print(f"{i+1}{delim}False",sep="]")
-        # digits_sum.clear()
+        special_num = False
+        print(f"{i}{delim}False")
 
 
+   
+
+
+ # digits_list.append(i+1)
+    # # print(digits_list[i:i+1], end=delim)
+    # digits_sum =[digits_list[i:i+1][0]]
+    # Sum = sum(digits_sum)
 
 
     # digits_list.append(i+1)

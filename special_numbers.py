@@ -1,19 +1,46 @@
 
 n = int(input())
-delim = "->"
+delim = " -> "
 text_list = [int(x) for x in str(n)]
 special_num = False
 digits_sum = 0
 digits_list = []
 
-for i in range(1,n+1):
-    if i % 5 == 0 or i % 7 == 0 or i % 11 == 0:
-        special_num = True
 
-        print(f"{i}{delim}True")
+
+
+for i in range(1,n+1):
+
+    for j in range(len(text_list)):
+        digits_sum += text_list[j]
+        digits_list.append(text_list[j])
+
+    if digits_sum == 5 or digits_sum == 7 or digits_sum == 11:
+        special_num = True
     else:
         special_num = False
-        print(f"{i}{delim}False")
+
+    if special_num:
+        print(str(i) + delim + "True")
+    else:
+        print(str(i) + delim + "False")
+
+    text_list = [int(x) for x in str(i+1)]
+    digits_sum = 0
+    digits_list = []
+
+
+
+    
+    # if i = 5 or i = 7 or i = 11:
+    #     special_num = True
+    # # if i % 5 == 0 or i % 7 == 0 or i % 11 == 0:
+    # #               special_num = True True
+
+    #     print(f"{i}{delim}True")
+    # else:
+    #     special_num = False
+    #     print(f"{i}{delim}False")
 
 
    

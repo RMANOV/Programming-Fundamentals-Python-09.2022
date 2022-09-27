@@ -9,13 +9,3 @@ second_number = c
 
 print(f"Before:\na = {second_number}\nb = {first_number}")
 print(f"After:\na = {first_number}\nb = {second_number}")
-
-
-
-
-
-
-
-
-# print(first_number)
-# print(second_number)

@@ -5,7 +5,17 @@ initial_string = input()
 initial_list = []
 initial_list.append((initial_string))
 initial_list.remove(' ' or '\t' or '\n')
-initial_list.index('sheep')
+
+for i in initial_list:
+    if i == ' ' or '\t' or '\n':
+        initial_list.remove(i)
+
+
+    if i == 'wolf' and initial_list.index(i) == len(initial_list):
+        print("Please go away and stop eating my sheep")
+        print("Please go away and stop eating my sheep")
+        print("Please go away and stop eating my sheep")
+        break
 
 
 #how to get the index of the wolf in the list?

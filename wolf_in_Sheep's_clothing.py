@@ -1,15 +1,19 @@
 
 
 
-from os import remove
+
 
 
 initial_string = input()
 initial_list = []
-for i in initial_string:
-    initial_list.append(i)
-    
+initial_list.append(initial_string)
+
+initial_string.strip(char)
+
+
+
 print(initial_list)
+
 
 
 
@@ -21,17 +25,17 @@ print(initial_list)
 
 
 
-for j in range(len(initial_list)):
+# for j in range(len(initial_list)):
     
 
 
-    near = len(initial_list[j]) - len(initial_list)
-    if initial_list[j] == "wolf":
-        print("Please go away and stop eating my sheep")
-        break
-    else:
-        print("Oi! Sheep number {sheep_position}! You are about to be eaten by a wolf!")
-        break
+#     near = len(initial_list[j]) - len(initial_list)
+#     if initial_list[j] == "wolf":
+#         print("Please go away and stop eating my sheep")
+#         break
+#     else:
+#         print("Oi! Sheep number {sheep_position}! You are about to be eaten by a wolf!")
+#         break
 
 
 

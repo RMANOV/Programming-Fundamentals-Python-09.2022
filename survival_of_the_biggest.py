@@ -3,18 +3,16 @@
 initial_string = input().split()
 remove_count = int(input())
 initial_list = []
-initial_list.append(initial_string)
-
-
 
 initial_list =[int(i) for i in initial_string]
-
-
 
 for i in range(remove_count):
     initial_list.remove(min(initial_list))
 
-print(initial_list)
+# for i in initial_list:
+#     print(i, end=", ")
+print(", ".join([str(i) for i in initial_list]))
+
 
 
 

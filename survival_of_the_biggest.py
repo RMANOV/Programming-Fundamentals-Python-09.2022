@@ -4,22 +4,23 @@ initial_string = input().split()
 remove_count = int(input())
 initial_list = []
 initial_list.append(initial_string)
-final_list = []
-lowest_number = 0
 
-for i in initial_string:
-    
-    current_number = int(i)
-    if current_number < lowest_number:
-        lowest_number = current_number
-        final_list.append(lowest_number)
-    else:
-        final_list.append(current_number)
+
+
+initial_list =[int(i) for i in initial_string]
+
+
 
 for i in range(remove_count):
-    final_list.remove(min(final_list))
+    initial_list.remove(min(initial_list))
 
-print(final_list)
+print(initial_list)
+
+
+
+# how to do list comprehension?
+
+
 
 
 

@@ -12,7 +12,7 @@ output_list = []
 
 for digit in number_list:
     if not digit == " ":
-        current_index += number_list[digit]
+        current_index += int(digit)
     else:
         index_list.append(current_index)
         current_index = 0
@@ -25,4 +25,4 @@ for digit in number_list:
 
 
 
-print(number_list)
+print(current_index)

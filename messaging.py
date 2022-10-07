@@ -14,14 +14,10 @@ input_list = [input_string[i] for i in range(len(input_string))]
 output_list = []
 
 for digit in number_list:
-    if digit == " ":
-        current_index = 0
-        continue
-    else:     
-        current_index += int(digit)
-        index_list.append(current_index)
-    
-        
+   while not digit == " " in number_list[digit]:
+       current_index += number_list[digit]
+       index_list.append(current_index)
+
 
 
 

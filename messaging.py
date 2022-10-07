@@ -10,13 +10,12 @@ input_list = [input_string[i] for i in range(len(input_string))]
 
 output_list = []
 
-for i in range(number_list):
-    while number_list[i] != " ":
-        number_list(map(int, number_list[i]))
-        current_index += number_list[i]
-
-
-
+for digit in number_list:
+    if not digit == " ":
+        current_index += number_list[digit]
+    else:
+        index_list.append(current_index)
+        current_index = 0
 
 
 

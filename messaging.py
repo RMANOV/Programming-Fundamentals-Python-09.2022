@@ -13,17 +13,15 @@ input_list = [input_string[i] for i in range(len(input_string))]
 
 output_list = []
 
-number_list = [number_list[i] for i in range(len(number_list))]
 for digit in number_list:
-    while number_list[digit] != " ":
-        current_index = number_list[digit::]
-
-
-
-
-
-
-
+    if digit == " ":
+        current_index = 0
+        continue
+    else:     
+        current_index += int(digit)
+        index_list.append(current_index)
+    
+        
 
 
 

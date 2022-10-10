@@ -12,16 +12,16 @@ def div_operation(a, b):
 
 
 
-
+operation = input()
 first_number = int(input())
 second_number = int(input())
-operation = input()
+
 
 if operation == "+" or operation == "add":
-    print(add_operation(first_number, second_number))
-elif operation == "-" or operation == "substract":
-    print(sub_operation(first_number, second_number))
+    print(int(add_operation(first_number, second_number)))
+elif operation == "-" or operation == "subtract":
+    print(int(sub_operation(first_number, second_number)))
 elif operation == "*" or operation == "multiply":
-    print(mul_operation(first_number, second_number))
+    print(int(mul_operation(first_number, second_number)))
 elif operation == "/" or operation == "divide":
-    print(div_operation(first_number, second_number))
+    print(int(div_operation(first_number, second_number)))

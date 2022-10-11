@@ -20,4 +20,4 @@ def order_totally(a,b):
 order = input()
 count = int(input())
 
-print(order_totally(order,count))
+print(f'{order_totally(order,count):.2f}')

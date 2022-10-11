@@ -1,5 +1,4 @@
 
-
 def rectangle_area(area_weight, area_height):
     return area_weight * area_height
 

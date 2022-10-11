@@ -1,9 +1,3 @@
-
-
-
-
-
-
 def characters_in_range(start, end):
     return [chr(i) for i in range(ord(start) + 1, ord(end))]
 

@@ -23,7 +23,8 @@ if password_validator_len(pass_word) is not None:
     print(password_validator_len(pass_word))
 if password_validator_digit(pass_word) is not None:
     print(password_validator_digit(pass_word))
-elif password_validator_alfa(pass_word) is not None:
+if password_validator_alfa(pass_word) is not None:
     print(password_validator_alfa(pass_word))
-else:
+if password_validator_len(pass_word) is None and password_validator_digit(pass_word) is None and password_validator_alfa(pass_word) is None:
     print("Password is valid")
+    

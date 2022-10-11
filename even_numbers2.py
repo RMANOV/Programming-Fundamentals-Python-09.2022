@@ -1,16 +1,8 @@
 
-
-
-
-
-
 def even_numbers2(list1):
     final_list = [i for i in list1 if i % 2 == 0]
-    final_list.sort()
+    sorted(final_list)
     return final_list
-
-    
-
 
 
 initial_list = input().split()

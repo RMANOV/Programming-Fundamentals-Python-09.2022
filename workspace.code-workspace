@@ -1,5 +1,9 @@
 {
-	"folders": [],
+	"folders": [
+		{
+			"path": "."
+		}
+	],
 	"settings": {
 		"files.autoSave": "afterDelay",
 		"editor.tabCompletion": "on",

@@ -15,7 +15,7 @@ def passord_validator_digit(password):
     # if not any(char.islower() for char in password):
     #     return False
 def passord_validator_special(password):
-    if not any(char.isalnum() for char in password):
+    if not any(char.isalnum() for char in password) or password.isalnum():
         return False
     return True
 

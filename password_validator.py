@@ -5,20 +5,27 @@ def password_validator(password):
     The password must be at least 8 characters long and contain at least
     one uppercase letter, one lowercase letter, and one digit.
     """
-    if len(password) < 8:
+    if len(password) < 6 and len(password) > 10:
+        print("Password must be between 6 and 10 characters long.")
         return False
-    if not any(char.isupper() for char in password):
+    # if not any(char.isupper() for char in password):
+    #     return False
+    # if not any(char.islower() for char in password):
+    #     return False
+    if (char.isdigit()<2 for char in password):
+        print("Password must contain at least two digits.")
         return False
-    if not any(char.islower() for char in password):
+    if (char.isalpha()<2 for char in password):
+        print("Password must contain at least two letters.")
         return False
-    if not any(char.isdigit() for char in password):
-        return False
-    return True
+    # return True
 
 
-    """Validate a password."""
+
+
+
 password = input("Enter a password: ")
-if password_validator(password):
-    print("Valid password")
+if not password_validator(password):
+    password_validator(password)
 else:
-    print("Invalid password")
+    print("Valid password.")

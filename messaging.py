@@ -5,15 +5,15 @@ digit_list = []
 messaging = input()
 
 for i in number_list:
-current_sum = 0
-while i > 0:
-current_sum += i % 10
-i = i // 10
-digit_list.append(current_sum)
+    current_sum = 0
+    while i > 0:
+        current_sum += i % 10
+        i = i // 10
+        digit_list.append(current_sum)
 
 for i in digit_list:
-print(messaging[i], end="")
-messaging = messaging[i + 1:]
+    print(messaging[i], end="")
+    messaging = messaging[i + 1:]
 
 
 

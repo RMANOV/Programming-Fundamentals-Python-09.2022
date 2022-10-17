@@ -4,10 +4,10 @@ while True :
     command = input()
     if command == "End":
         break
-    task_list.append(command)
-    task_list.sort()
-    task_list = [f"{index + 1}.{task}" for index, task in enumerate(task_list)]
-    
-
+    command = command.split("-")
+    prioryty = int(command[1])
+    task = command[0]
+    task_list.append((prioryty, task))
+    task_list = [task_list[i] for i in range(len(task_list)) if i % 2 == 0]
 
 print(task_list)

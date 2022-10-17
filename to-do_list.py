@@ -9,6 +9,7 @@ while True :
     task = command[1]
     task_list.append((priority, task))
     task_list.sort()
-    task_list = [task for priority, task in task_list]
+    # remove the priority from the list with list comprehension
+    task_list = [task for task in task_list if priority.isdigit() == True task_list.remove(priority)]
 
-print(task_list)
+    print(task_list)

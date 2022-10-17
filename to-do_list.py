@@ -4,14 +4,9 @@ while True :
     command = input()
     if command == "End":
         break
-    command = command.split("-")
-    priority = int(command[0])
-    task = command[1]
-    task_list.append((priority, task))
+    task_list.append(command)
     task_list.sort()
-    task_list.reverse()
-    task_list = task_list[:5]
-    
+    task_list = [f"{index + 1}.{task}" for index, task in enumerate(task_list)]
     
 
 

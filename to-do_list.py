@@ -1,4 +1,4 @@
-
+task_list = []
 
 while True :
     command = input()
@@ -7,4 +7,7 @@ while True :
     command = command.split("-")
     priority = int(command[0])
     task = command[1]
-    
+    task_list.append((priority, task))
+    task_list.sort()
+
+print(task_list)

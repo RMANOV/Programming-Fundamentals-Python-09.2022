@@ -9,6 +9,8 @@ while True :
     task = command[1]
     task_list.append((priority, task))
     task_list.sort()
+    task_list.reverse()
+    task_list = task_list[:5]
     
     
 

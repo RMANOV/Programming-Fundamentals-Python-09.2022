@@ -2,11 +2,17 @@
 
 initial_string = input().split()
 palindrome = input()
-initial_list = [initial_list for initial_list in initial_string]
 palindrome_list = []
+for i in initial_string:
 
-initial_list =[palindrome_list[i] for i in initial_list if palindrome_list[i] == palindrome_list[i][::-1]]
-print(palindrome_list.count())
+    if i == palindrome:
+        palindrome_list.append(i)
 
+    if not i == i[::-1]:
+        initial_string.remove(i)
 
-print(initial_list)
+   
+
+print(initial_string)
+palindrome_count = palindrome_list.count(palindrome)
+print(f"Found palindrome {palindrome_count} times")

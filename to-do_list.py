@@ -4,10 +4,9 @@ while True :
     command = input()
     if command == "End":
         break
-    command = command.split("-")
-    prioryty = int(command[1])
-    task = command[0]
-    task_list.append((prioryty, task))
-    task_list = [task_list[i] for i in range(len(task_list)) if i % 2 == 0]
+    task_list.append(command)
+    task_list.sort()
+    task_list = [command for digit in task_list if not digit.isdigit()]
+    
 
 print(task_list)

@@ -3,16 +3,18 @@
 initial_string = input().split()
 palindrome = input()
 palindrome_list = []
-for i in initial_string:
 
-    if i == palindrome:
-        palindrome_list.append(i)
 
-    if not i == i[::-1]:
-        initial_string.remove(i)
+palindrome_list = [x for x in initial_string if x == palindrome]
 
-   
 
-print(initial_string)
+
+    
+filtered_list = [i for i in initial_string if i == i[::-1]]
+    
+
+
+
+print(filtered_list)
 palindrome_count = palindrome_list.count(palindrome)
 print(f"Found palindrome {palindrome_count} times")

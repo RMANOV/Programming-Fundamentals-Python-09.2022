@@ -1,12 +1,10 @@
 task_list = []
+command = input()
 
-while True :
+while command != "End":
+    prioritys, task = command.split("-")
+    task_list.append([int(prioritys), task])
     command = input()
-    if command == "End":
-        break
-    task_list.append(command)
     task_list.sort()
-    task_list = [command for digit in task_list if not digit.isdigit()]
-    
 
-print(task_list)
+print([to_do[1] for to_do in sorted(task_list, key=lambda x: x[0])])

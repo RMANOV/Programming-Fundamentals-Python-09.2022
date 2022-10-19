@@ -1,20 +1,19 @@
 
 
-from logging.config import listen
-
 
 initial_list_unsorted = [int(i) for i in input().split(", ")]
-initial_list_sorted = sorted(initial_list_unsorted)
-list10 = [x for x in initial_list_sorted if x <= 10]
-list20 = [x for x in initial_list_sorted if 10 < x <= 20]
-list30 = [x for x in initial_list_sorted if 20 < x <= 30]
-list40 = [x for x in initial_list_sorted if 30 < x <= 40]
-list50 = [x for x in initial_list_sorted if 40 < x <= 50]
-list60 = [x for x in initial_list_sorted if 50 < x <= 60]
-list70 = [x for x in initial_list_sorted if 60 < x <= 70]
-list80 = [x for x in initial_list_sorted if 70 < x <= 80]
-list90 = [x for x in initial_list_sorted if 80 < x <= 90]
-list100 = [x for x in initial_list_sorted if 90 < x <= 100]
+# initial_list_unsorted = sorted(initial_list_unsorted)
+
+list10 = [x for x in initial_list_unsorted if x <= 10]
+list20 = [x for x in initial_list_unsorted if 10 < x <= 20]
+list30 = [x for x in initial_list_unsorted if 20 < x <= 30]
+list40 = [x for x in initial_list_unsorted if 30 < x <= 40]
+list50 = [x for x in initial_list_unsorted if 40 < x <= 50]
+list60 = [x for x in initial_list_unsorted if 50 < x <= 60]
+list70 = [x for x in initial_list_unsorted if 60 < x <= 70]
+list80 = [x for x in initial_list_unsorted if 70 < x <= 80]
+list90 = [x for x in initial_list_unsorted if 80 < x <= 90]
+list100 = [x for x in initial_list_unsorted if 90 < x <= 100]
 
 
 print(f"Group of 10's: {list10}")

@@ -1,5 +1,8 @@
 
 
+from logging.config import listen
+
+
 initial_list_unsorted = [int(i) for i in input().split(", ")]
 initial_list_sorted = sorted(initial_list_unsorted)
 list10 = [x for x in initial_list_sorted if x <= 10]
@@ -18,8 +21,9 @@ print(f"Group of 10's: {list10}")
 print(f"Group of 20's: {list20}")
 print(f"Group of 30's: {list30}")
 print(f"Group of 40's: {list40}")
-print(f"Group of 50's: {list50}")
 
+if len(list50) > 0:
+    print(f"Group of 50's: {list50}")
 if len(list60) > 0:
     print(f"Group of 60's: {list60}")
 if len(list70) > 0:

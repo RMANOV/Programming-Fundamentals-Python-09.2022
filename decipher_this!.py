@@ -17,8 +17,8 @@ def get_secret_message(secret_message_list):
         numbers = first_number + second_number + third_number
         numbers = int(numbers)
         letter = chr(numbers)
-        secret_message.append(letter)
-        item = item[3:]
+        secret_message.insert(0, letter)
+        # item = item[3:]
     return secret_message
 
 
@@ -37,5 +37,3 @@ def switch_characters(secret_message):
 # print the result
 def print_result(secret_message):
     print("".join(secret_message))
-
-    

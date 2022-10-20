@@ -2,16 +2,40 @@
 
 secret_message_list = input().split()
 
-# switch the second and last characters of each word
-for i in range(len(secret_message_list)):
-    word = secret_message_list[i]
-    secret_message_list[i] = word[0] + word[-1] + word[2:-1] + word[1]
 
-    #replace first number with asci code
-    for j in range(len(secret_message_list[i])):
-        if secret_message_list[i][j].isdigit():
-            secret_message_list[i] = secret_message_list[i][:j] + chr(int(secret_message_list[i][j]) + 33) + secret_message_list[i][j + 1:]
-            break
+# Get item by item from the list
+# check first, second and third number of the item, store them in a list, concatenate them and convert to int
+#convert int to letter whit chr()
+#insert the letter in a first list
+#remove the first three numbers from the item
+def get_secret_message(secret_message_list):
+    secret_message = []
+    for item in secret_message_list:
+        first_number = item[0]
+        second_number = item[1]
+        third_number = item[2]
+        numbers = first_number + second_number + third_number
+        numbers = int(numbers)
+        letter = chr(numbers)
+        secret_message.append(letter)
+        item = item[3:]
+    return secret_message
+
+
+
+
+
+# switch the second and last characters of each word
+# get the item of above list and switch the second and last characters
+def switch_characters(secret_message):
+    for item in secret_message:
+        item[0],item[-1]=item[-1],item[0]
+    return secret_message
+
+
 
 # print the result
-print(" ".join(secret_message_list))
+def print_result(secret_message):
+    print("".join(secret_message))
+
+    

@@ -16,33 +16,16 @@ for item in secret_message_list:
             digit_counter += 1
         else:
             letter.append(symbol)
-    if digit_counter == 3:
-        number = int("".join(number))
-        number = chr(number)
-        letter.insert(0, number)
-        letter = "".join(letter)
-        secret_message_list[secret_message_list.index(item)] = letter
-        letter = []
-        number = []
-        digit_counter = 0
-    elif digit_counter == 2:
-        number = int("".join(number))
-        number = chr(number)
-        letter.insert(0, number)
-        letter = "".join(letter)
-        secret_message_list[secret_message_list.index(item)] = letter
-        letter = []
-        number = []
-        digit_counter = 0
-    elif digit_counter == 1:
-        number = int("".join(number))
-        number = chr(number)
-        letter.insert(0, number)
-        letter = "".join(letter)
-        secret_message_list[secret_message_list.index(item)] = letter
-        letter = []
-        number = []
-        digit_counter = 0
+
+    number = int("".join(number))
+    number = chr(number)
+    letter.insert(0, number)
+    letter = "".join(letter)
+    secret_message_list[secret_message_list.index(item)] = letter
+    letter = []
+    number = []
+    digit_counter = 0
+ 
 
 # swap the second and the last letter of each item
 for item in secret_message_list:
@@ -50,6 +33,7 @@ for item in secret_message_list:
     item[1], item[-1] = item[-1], item[1]  # swap the second and the last letter
     item = "".join(item)  # convert list to string
     secret_message_list[secret_message_list.index(item)] = item  # replace the item in the list
+ 
 
 print(*secret_message_list)
 

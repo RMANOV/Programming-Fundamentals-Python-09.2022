@@ -8,10 +8,10 @@ secret_message_list = input().split()
 # remove the first three numbers from the item
 
 secret_message = [x for x in secret_message_list]
+item_list =[x for x in secret_message_list]
 number = []
 letter = []
-for item in secret_message:
-    item_list =[x for x in item]
+for item in item_list:     
     number= [int(x) for x in item_list[:3] if x.isdigit()] # get first three numbers
     letter.append(chr(number[0])) # convert to letter
     item_list = [x for x in item_list if not x.isdigit()] # remove first three numbers

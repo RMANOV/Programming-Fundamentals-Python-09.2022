@@ -1,5 +1,3 @@
-
-
 secret_message_list = input().split()
 
 
@@ -9,7 +7,7 @@ secret_message_list = input().split()
 #insert the letter in a first list
 #remove the first three numbers from the item
 def get_secret_message(secret_message_list):
-    secret_message = []
+    secret_message = [x for x in secret_message_list]
     for item in secret_message_list:
         first_number = item[0]
         second_number = item[1]
@@ -19,13 +17,10 @@ def get_secret_message(secret_message_list):
         letter = chr(numbers)
         secret_message.insert(0, letter)
         # item = item[3:]
+        print(secret_message)
     return secret_message
 
-
-
-
-
-# switch the second and last characters of each word
+# switch the second and last characters of each wordv
 # get the item of above list and switch the second and last characters
 def switch_characters(secret_message):
     for item in secret_message:
@@ -33,7 +28,6 @@ def switch_characters(secret_message):
     return secret_message
 
 
-
 # print the result
 def print_result(secret_message):
-    print("".join(secret_message))
+    print("".join(switch_characters(get_secret_message(secret_message_list))))

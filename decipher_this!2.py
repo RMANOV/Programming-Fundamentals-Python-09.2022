@@ -6,20 +6,26 @@ secret_message_list = input().split()
 # convert int to letter whit chr()
 # insert the letter in a first list
 # remove the first three numbers from the item
-
-secret_message = [x for x in secret_message_list]
-item_list =[x for x in secret_message_list]
 number = []
 letter = []
-for item in item_list:     
-    number= [int(x) for x in item_list[:3] if x.isdigit()] # get first three numbers
-    letter.append(chr(number[0])) # convert to letter
-    item_list = [x for x in item_list if not x.isdigit()] # remove first three numbers
-    item_list.insert(0, letter[0]) # insert letter in the first position
-    letter = []
-    number = []
-    item = "".join(item_list)
-    print(item, end=" ")
+secret_message = [x for x in secret_message_list]
+
+
+
+
+
+
+
+
+# for item in item_list:     
+#     number= [int(x) for x in item_list[:3] if x.isdigit()] # get first three numbers
+#     letter.append(chr(number[0])) # convert to letter
+#     item_list = [x for x in item_list if not x.isdigit()] # remove first three numbers
+#     item_list.insert(0, letter[0]) # insert letter in the first position
+#     letter = []
+#     number = []
+#     item = "".join(item_list)
+#     print(item, end=" ")
 
 
 

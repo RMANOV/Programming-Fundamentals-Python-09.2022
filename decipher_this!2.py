@@ -18,6 +18,19 @@ for item in secret_message:
     item_list.insert(0, letter[0]) # insert letter in the first position
     letter = []
     number = []
+    item = "".join(item_list)
+    print(item, end=" ")
+
+
+
+
+
+
+
+
+
+
+
     # for i in item:
     #     item_list = list(item)
     #     for i in range(3):
@@ -48,7 +61,7 @@ for item in secret_message:
         #     item[i] = letter
         #     number = []
         #     letter = []
-print(secret_message)
+
 
 # switch the second and last characters of each wordv
 # get the item of above list and switch the second and last characters

@@ -20,19 +20,27 @@ for item in secret_message_list:
     number = int("".join(number))
     number = chr(number)
     letter.insert(0, number)
+    
+     # swap the second and the last letter of each item
+    letter[1], letter[-1] = letter[-1], letter[1]
     letter = "".join(letter)
     secret_message_list[secret_message_list.index(item)] = letter
+   
+    
+
+
+
     letter = []
     number = []
     digit_counter = 0
  
 
-# swap the second and the last letter of each item
-for item in secret_message_list:
-    item = [char for char in item]  # convert string to list
-    item[1], item[-1] = item[-1], item[1]  # swap the second and the last letter
-    item = "".join(item)  # convert list to string
-    secret_message_list[secret_message_list.index(item)] = item  # replace the item in the list
+# # swap the second and the last letter of each item
+# for item in secret_message_list:
+#     item = [char for char in item]  # convert string to list
+#     item[1], item[-1] = item[-1], item[1]  # swap the second and the last letter
+#     item = "".join(item)  # convert list to string
+#     secret_message_list[secret_message_list.index(item)] = item  # replace the item in the list
  
 
 print(*secret_message_list)

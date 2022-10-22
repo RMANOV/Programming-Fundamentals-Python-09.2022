@@ -11,19 +11,34 @@ secret_message = [x for x in secret_message_list]
 number = []
 letter = []
 for item in secret_message:
-    for i in item:
-        item_list = list(item)
-        for i in range(3):
-            if item_list[i].isdigit():
-                number.append(item_list[i])
+    item_list =[x for x in item]
+    number= [int(x) for x in item_list[:3] if x.isdigit()] # get first three numbers
+    letter.append(chr(number[0])) # convert to letter
+    item_list = [x for x in item_list if not x.isdigit()] # remove first three numbers
+    item_list.insert(0, letter[0]) # insert letter in the first position
+    letter = []
+    number = []
+    # for i in item:
+    #     item_list = list(item)
+    #     for i in range(3):
+    #         if item_list[i].isdigit():
+    #             number.append(item_list[i])
+    #             number = int("".join(number))
+    #             letter.append(chr(number))
+    #             del item_list[0:3]
+    #             item = "".join(item_list)
+    #             number = []
+    #             letter = []
+    #         else:
+    #             break
 
-            number = int("".join(number))
-            letter.append(chr(number))
-            del item_list[0:3]
-            item = "".join(item_list)
-            number = []
-            letter = []
-            break
+            # number = int("".join(number))
+            # letter.append(chr(number))
+            # del item_list[0:3]
+            # item = "".join(item_list)
+            # number = []
+            # letter = []
+            # break
 
         # if i.isdigit():
         #     number.append(i)

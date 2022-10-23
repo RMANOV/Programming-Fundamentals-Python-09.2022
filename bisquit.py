@@ -17,7 +17,7 @@ my_factory_vs_competitor = (bisquits_per_month / number_of_bisquits_of_the_compe
 
 print(f"You have produced {bisquits_per_month:.0f} biscuits for the past month.")
 
-if my_factory_vs_competitor > 100:
+if my_factory_vs_competitor > 1:
     print(f"You produce {my_factory_vs_competitor:.2f} percent more biscuits.")
 else:
-    print(f"You produce {my_factory_vs_competitor:.2f} percent less biscuits.")
+    print(f"You produce {abs(my_factory_vs_competitor):.2f} percent less biscuits.")

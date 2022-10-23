@@ -9,7 +9,8 @@ while True:
     elif command[0] == "Add":
         initial_list.append(int(command[1]))
     elif command[0] == "Remove":
-        initial_list.remove(int(command[1]))
+        if int(command[1]) in initial_list:
+            initial_list.remove(int(command[1]))        
     elif command[0] == "Replace":
         if int(command[1]) in initial_list:
             initial_list[initial_list.index(int(command[1]))] = int(command[2])

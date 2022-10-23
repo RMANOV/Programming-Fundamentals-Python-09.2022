@@ -20,4 +20,3 @@ while True:
                 initial_list.remove(i)
 
 print(*initial_list)
-  

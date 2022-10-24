@@ -1,7 +1,7 @@
 
 
-status_of_pirates_ship = [input().join(">") for _ in range(10)]
-status_of_warship = [input().join(">") for _ in range(10)]
+status_of_pirates_ship = [int(x) for x in input().split(">")]
+status_of_warship = [int(x) for x in input().split(">")]
 max_health = int(input())
 
 while True:
@@ -39,3 +39,5 @@ while True:
             if i < max_health * 0.2:
                 count += 1
         print(f"{count} sections need repair.")
+        print(f"Pirate ship status: {sum(status_of_pirates_ship)}")
+        print(f"Warship status: {sum(status_of_warship)}")

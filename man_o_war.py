@@ -25,6 +25,8 @@ while True:
                 status_of_pirates_ship[i] -= damage
                 if status_of_pirates_ship[i] <= 0:
                     print("You lost! The pirate ship has sunken.")
+                    # print(f"Pirate ship status: {sum(status_of_pirates_ship)}")
+                    # print(f"Warship status: {sum(status_of_warship)}")
                     exit()
     elif command[0] == "Repair":
         index = int(command[1])
@@ -39,5 +41,5 @@ while True:
             if i < max_health * 0.2:
                 count += 1
         print(f"{count} sections need repair.")
-        print(f"Pirate ship status: {sum(status_of_pirates_ship)}")
-        print(f"Warship status: {sum(status_of_warship)}")
+print(f"Pirate ship status: {sum(status_of_pirates_ship)}")
+print(f"Warship status: {sum(status_of_warship)}")

@@ -1,6 +1,6 @@
 
 
-initial_loot_of_the_treasure_chest = [int(x) for x in input().split("|")]
+initial_loot_of_the_treasure_chest = [x for x in input().split("|")]
 command = input()
 while not command == "Yohoho!":
     command = command.split()

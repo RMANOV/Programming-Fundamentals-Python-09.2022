@@ -1,7 +1,5 @@
 
 
-from inspect import FullArgSpec
-
 
 initial_list = [("||").join() for i in range(3)]
 
@@ -11,22 +9,41 @@ ammunition = 0
 
 while True:
     command = input()
+    command = command.split("||")
+    distance_in_light_years += int(command[1])
+    fuel += int(command[2])
+    ammunition += int(command[3])
+
     if command == "Titan":
         print("You have reached Titan!, all passengers are safe.")
         break
-    command = command.split("||")
+    
     if command[0] == "Travel":
-        distance_in_light_years += int(command[1])
-        fuel += int(command[2])
-        ammunition += int(command[3])
         if fuel < distance_in_light_years
             print("Mission failed.")
             break
-            
         else:
+            fuel -= distance_in_light_years
+            distance_in_light_years = 0
             print(f'The spaceship traveled {distance_in_light_years} light years.')
             break
-    elif command[0] == "Fuel":
+    elif command[0] == "Enemy":
+        command = command.split("||")
+        enemys_ammunition = int(command[1])
+        if ammunition==0 or fuel==0 or fuel < enemys_ammunition*2:
+            print("Mission failed.")
+            break
+        if ammunition < enemys_ammunition:
+            # try to run away
+            fuel -= enemys_ammunition*2
+            print("An enemys whit {enemys_ammunition} is outmaneuvered")
+        else:
+            ammunition -= enemys_ammunition
+            print("An enemys whit {enemys_ammunition} armour is defeated.")
+            break
+
+
+
   
 
 

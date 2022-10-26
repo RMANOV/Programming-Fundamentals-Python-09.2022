@@ -3,23 +3,26 @@ import pandas as pd
 # open specific excel file from a folder
 df = pd.read_excel(r'C:\Users\r.manov\Desktop\Test_Pandas.xlsx', sheet_name='Sheet1')
 
-# get the column names
-col_names = df.columns
+# make cell "A17" active
+df.loc[16, 1] = 'Active'
 
-# get the column values
-col_values = df.values
+# In active cell "A17" write "Active"
+df.loc[16, 1] = 'Active'
 
-# get the column values of a specific column
-col_values = df['col1'].values
+# move to cell "A18" and write "Active"
+df.loc[17, 1] = 'Active'
 
-# get the numbers of rows and create a list of numbers
-row_nums = list(range(1, len(df) + 1))
+# move to cell "A19" and write 19
+df.loc[18, 1] = 19
 
-# create a new column
-df['col2'] = row_nums
+# move to cell "A20" and write 20
+df.loc[19, 1] = 20
 
-# create a new column with a specific value
-df['col3'] = 'test'
+# move to cell "A21" and write 21
+df.loc[20, 1] = 21
 
-# create a row with a specific value from a list
-df.loc[len(df)] = ['test', 'test', 'test']
+# make color of active cell yellow
+df.style.applymap(lambda x: 'background-color: yellow' if x == 'Active' else '')
+
+# save the result in the same excel file
+df.to_excel(r'C:\Users\r.manov\Desktop\Test_Pandas.xlsx', sheet_name='Sheet1', index=False)

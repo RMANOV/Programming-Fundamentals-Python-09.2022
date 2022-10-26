@@ -4,18 +4,18 @@ distance_in_light_years = initial_list[0]
 fuel = initial_list[1]
 ammunition = initial_list[2]
 
-
 while True:
     command = input()
-    command = command.split("‖")
-    distance_in_light_years += int(command[1])
-    fuel += int(command[2])
-    ammunition += int(command[3])
 
     if command == "Titan":
         print("You have reached Titan!, all passengers are safe.")
         break
-    
+
+    command = command.split("‖")
+    distance_in_light_years += int(command[0])
+    fuel += int(command[1])
+    ammunition += int(command[2])
+
     if command[0] == "Travel":
         if fuel < distance_in_light_years:
             print("Mission failed.")

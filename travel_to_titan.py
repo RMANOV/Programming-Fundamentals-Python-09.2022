@@ -1,15 +1,13 @@
+initial_list = [i for i in input().split("‖")]
 
+distance_in_light_years = initial_list[0]
+fuel = initial_list[1]
+ammunition = initial_list[2]
 
-
-initial_list = [("||").join() for i in range(3)]
-
-distance_in_light_years = 0
-fuel = 0
-ammunition = 0
 
 while True:
     command = input()
-    command = command.split("||")
+    command = command.split("‖")
     distance_in_light_years += int(command[1])
     fuel += int(command[2])
     ammunition += int(command[3])
@@ -19,7 +17,7 @@ while True:
         break
     
     if command[0] == "Travel":
-        if fuel < distance_in_light_years
+        if fuel < distance_in_light_years:
             print("Mission failed.")
             break
         else:
@@ -28,7 +26,7 @@ while True:
             print(f'The spaceship traveled {distance_in_light_years} light years.')
             break
     elif command[0] == "Enemy":
-        command = command.split("||")
+        command = command.split("‖")
         enemys_ammunition = int(command[1])
         if ammunition==0 or fuel==0 or fuel < enemys_ammunition*2:
             print("Mission failed.")
@@ -41,6 +39,33 @@ while True:
             ammunition -= enemys_ammunition
             print("An enemys whit {enemys_ammunition} armour is defeated.")
             break
+    elif command[0] == "Repair":
+        command = command.split("‖")
+        fuel += int(command[1])
+        ammunition += int(command[2])
+        print("Fuel added: {command[1]}")
+        print("Ammunition added: {command[2]}")
+        break
+    # elif command[0] == "Refuel":
+    #     command = command.split("‖")
+    #     fuel += int(command[1])
+    #     print("Fuel added: {command[1]}")
+    #     break
+    # elif command[0] == "Ammo":
+    #     command = command.split("||")
+    #     ammunition += int(command[1])
+    #     print("Ammunition added: {command[1]}")
+    #     break
+    # elif command[0] == "Status":
+    #     print(f"Distance left: {fuel}")
+    #     print(f"Fuel left: {fuel}")
+    #     print(f"Ammunition left: {ammunition}")
+    #     break
+    else:
+        print("Invalid command.")
+        break
+
+
 
 
 

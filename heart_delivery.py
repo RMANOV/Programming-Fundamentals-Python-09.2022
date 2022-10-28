@@ -19,3 +19,12 @@ while True:
         initial_list_of_houses[current_house] -= 2
         if initial_list_of_houses[current_house] == 0:
             print(f"Place {current_house} has Valentine's day.")
+
+print(f"Cupid's last position was {current_house}.")
+if sum(initial_list_of_houses) == 0:
+    print("Mission was successful.")
+else:
+    print(f"Cupid has failed {sum(initial_list_of_houses) // 2} places.")
+
+
+

@@ -27,6 +27,8 @@ if sum(initial_list_of_houses) == 0:
 else:
     print(f"Cupid has failed {len([i for i in initial_list_of_houses if i > 0])} places.")
 
+    
+
 
 
 

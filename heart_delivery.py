@@ -12,7 +12,7 @@ while True:
     
     for i in range(1):
         current_house += jump_length
-        if current_house == len(initial_list_of_houses):
+        if current_house >= len(initial_list_of_houses):
             current_house = 0
         if initial_list_of_houses[current_house] == 0:
             print(f"Place {current_house} already had Valentine's day.")    

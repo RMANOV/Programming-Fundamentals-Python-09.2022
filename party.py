@@ -1,7 +1,6 @@
 
 
 class Party:
-    Party = Party()
 
     def __init__(self):
         self.people = []
@@ -16,7 +15,7 @@ class Party:
         print(f"Going: {', '.join(self.people)}")
         print(f"Total: {len(self.people)}")
 
-
+Party = Party()
 
 #     def __init__(self):
 #         self.people = []

@@ -7,19 +7,18 @@ class Party:
     def __init__(self, *people):
         self.people = people
 
-        def add_person(self, person):
+    def add_person(self, person):
+        line = input()
+        while line != 'End':
+            self.people.append(line)
             line = input()
-            while line != 'End':
-                self.people.append(line)
-                line = input()
 
-                def printers(self):
-                    print(f'Going: {", ".join(self.people)}')
-                    print(f'Total: {len(sorted(self.people))}')
+    def printers(self):
+        print(f'Going: {", ".join(self.people)}')
+        print(f'Total: {len(sorted(self.people))}')
 
-                    party = Party()
-                    party.add_person()
-                    party.printers()
+party = Party()
+
 
                     # Path: main.py
 

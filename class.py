@@ -16,12 +16,12 @@ class Class:
         return sum(self.grades) / len(self.grades)
 
     def __repr__(self):
-        result = f'Class name: {self.name}\n'
+        result = f'Class name: {self.name}'
 
         for i in range(len(self.students)):
-            result += f'{self.students[i]} - {self.grades[i]}\n'
+            result += f'{self.students[i]} - {self.grades[i]}'
 
-        result += f'The students in {self.name}: {self.__students_count}. Average grade: {self.get_average_grade():.2f}'
+        result += f'The students in {self.name}: {self.students}. Average grade: {self.get_average_grade():.2f}'
         return result
 
 

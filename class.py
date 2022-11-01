@@ -16,7 +16,7 @@ class Class:
         return sum(self.grades) / len(self.grades)
 
     def __repr__(self):
-        result = f'Class name: {self.name}'
+        # result = f'Class name: {self.name}'
 
         for i in range(len(self.students)):
             result += f'{self.students[i]} - {self.grades[i]}'

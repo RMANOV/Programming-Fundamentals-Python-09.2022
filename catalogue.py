@@ -11,8 +11,7 @@ class Catalogue:
         self.products.append(product)
 
     def get_by_letter(self, first_letter):
-        result = [p for p in self.products if p[0] == first_letter]
-        result.sort(Ascending=True)
+        result = [p for p in self.products if p[0] == first_letter]    
         return result
 
     def __repr__(self):

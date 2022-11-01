@@ -15,17 +15,14 @@ class Zoo:
     def add_animal(self, species, name):
 
         if species == 'mammal':
-
             self.mamals.append(name)
             Zoo.__animals += 1
 
         elif species == 'fish':
-
             self.fishes.append(name)
             Zoo.__animals += 1
 
         elif species == 'bird':
-
             self.birds.append(name)
             Zoo.__animals += 1
 

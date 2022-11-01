@@ -1,117 +1,37 @@
 
 
+class Person:
+
+        def __init__(self, name):
+            self.name = name
+
 class Party:
 
-    people = []
+        def __init__(self):
+            self.people = []
 
-    def __init__(self, *people):
-        self.people = people
+        def invite(self, person):
+            self.people.append(person)
 
-    def add_person(self, person):
-        line = input()
-        while line != 'End':
-            self.people.append(line)
-            line = input()
+        def name_of_invited(self):
+            return [person.name for person in self.people]
 
-    def printers(self):
-        print(f'Going: {", ".join(self.people)}')
-        print(f'Total: {len(sorted(self.people))}')
+        def number_of_guests(self):
+            return len(self.people)
 
-party = Party()
+Party = Party()
+ 
+while True:
 
+    command = input()
 
-                    # Path: main.py
+    if command == 'End':
+        break
 
-                    
-
-
-        
-
-
+    name = command
+    person = Person(name)
+    Party.invite(person)
 
 
-
-
-
-
-
-#     def __init__(self):
-#         self.people = []
-
-#     def people_in_party(self):
-#         while True:
-#             person = input()
-#             if person == "End":
-#                 break
-#             self.people.append(person)
-
-#     def print_party(self):
-#         print(f"Going: {', '.join(self.people)}")
-#         print(f"Total: {len(self.people)}")
-
-
-# party = Party("Peter", "George")
-# print(party.people_add("End"))
-# print(party.print_people())
-# print(party)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def __init__(self):
-    #     self.people = []
-
-    # def people_add(self,person):
-    #     while person == "End":
-    #         break
-    #     else:
-    #         self.people.append(person)
-    #         return self.people
-
-    # def print_people(self):
-    #     return f"Going: {', '.join(self.people)}"
-
-    # def __repr__(self):
-    #     return f"Total people: {len(sorted(self.people))}"
-
-# party = Party("Peter", "George")
-# print(party.people_add("End"))
-# print(party.print_people())
-# print(party)
-
-
-# Output:
-# ['Peter', 'George']
-# Going: Peter, George
-# Total people: 2
-#  [Program finished]
-
-# Path: party.py
+print(f'Going: {", ".join(Party.name_of_invited())}')
+print(f'Total: {Party.number_of_guests()}')

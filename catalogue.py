@@ -11,10 +11,14 @@ class Catalogue:
         self.products.append(product)
 
     def get_by_letter(self, first_letter):
-        result = [p for p in self.products if p[0] == first_letter]    
+        result = [p for p in self.products if p.startswith(first_letter)]
         return result
 
     def __repr__(self):
-        result = f'Items in the {self.name} catalog:\n'
+        result = ""
+        result += f"Items in the {self.name} catalogue:\n"
         result += '\n'.join(sorted(self.products))
         return result
+        # result = f'Items in the {self.name} catalog:\n'
+        # result += '\n'.join(sorted(self.products))
+        # return result

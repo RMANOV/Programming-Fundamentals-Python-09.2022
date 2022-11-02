@@ -12,7 +12,7 @@ class Class:
         if self.__students_count > len(self.students):
             self.students.append(name)
             self.grades.append(grade)
-        return f'Class {self.name} is full' 
+        return self.students, self.grades
 
     def get_average_grade(self):
         return sum(self.grades) / len(self.grades)
@@ -23,7 +23,7 @@ class Class:
         for i in range(len(self.students)):
             result += f'{self.students[i]} - {self.grades[i]}'
 
-        result += f'The students in {self.name}: {self.students}. Average grade: {self.get_average_grade():.2f}'
+        result += f'The students in {self.name}: {self.students.join(", ")}. Average grade: {self.get_average_grade():.2f}'
         return result
 
 

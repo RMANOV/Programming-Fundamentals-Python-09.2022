@@ -9,8 +9,10 @@ class Class:
         self.name = name
 
     def add_student(self, name: str, grade: float):
-        self.students.append(name)
-        self.grades.append(grade)
+        if self.__students_count > len(self.students):
+            self.students.append(name)
+            self.grades.append(grade)
+        return f'Class {self.name} is full' 
 
     def get_average_grade(self):
         return sum(self.grades) / len(self.grades)

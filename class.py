@@ -23,7 +23,7 @@ class Class:
         for i in range(len(self.students)):
             result += f'{self.students[i]} - {self.grades[i]}'
 
-        result += f'The students in {self.name}: {self.students.join(", ")}. Average grade: {self.get_average_grade():.2f}'
+        result += f'The students in {self.name}: {(", ").join(self.students)}. Average grade: {self.get_average_grade():.2f}'
         return result
 
 

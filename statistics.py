@@ -13,8 +13,11 @@ while command[0] != "statistics":
         command = input().split(": ")
         
 print("Products in stock:")
-print(*[f"- {key}: {value}" for key, value in bakery.items()])
-      
+for key, value in bakery.items():
+    print(f"- {key}: {value}")
+    
+
+
 print(f"Total Products: {len(bakery)}")
 print(f"Total Quantity: {sum(bakery.values())}")
 

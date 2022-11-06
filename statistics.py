@@ -1,8 +1,8 @@
 
 
-bakery = {input().split()[0]: int(input()) for _ in range(int(input()))}
+bakery = {input().split(" ")[0]: int(input()) for _ in range(int(input()))}
 
-while command!= "statistics"
+while command!= "statistics":
 
     command = input().split(": ")
     if command[0] not in bakery:
@@ -17,11 +17,4 @@ for key, value in bakery.items():
     print(f"- {key}: {value}")
 
 print(f"Total Products: {len(bakery)}")
-    
-    
-    
-        
-    
-        
-        
-    
+print(f"Total Quantity: {sum(bakery.values())}")

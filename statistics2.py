@@ -19,7 +19,6 @@ class Bakery_statistics:
         print("Products in stock:")
         for key, value in self.bakery.items():
             print(f"- {key}: {value}")
-        
             
         print(f"Total Products: {len(self.bakery)}")
         print(f"Total Quantity: {sum(self.bakery.values())}")

@@ -8,6 +8,7 @@ class Bakery_statistics:
         self.command = command
         
         while self.command[0] != "statistics":
+            
             if self.command[0] in self.bakery:
                 self.bakery[self.command[0]] += int(self.command[1])
             else:
@@ -18,6 +19,7 @@ class Bakery_statistics:
         print("Products in stock:")
         for key, value in self.bakery.items():
             print(f"- {key}: {value}")
+        
             
         print(f"Total Products: {len(self.bakery)}")
         print(f"Total Quantity: {sum(self.bakery.values())}")

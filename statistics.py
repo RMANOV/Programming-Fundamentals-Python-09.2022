@@ -11,21 +11,20 @@ while command[0] != "statistics":
         bakery[command[0]] = int(command[1])
         
         command = input().split(": ")
-
+        
 print("Products in stock:")
 for key, value in bakery.items():
     print(f"- {key}: {value}")
 
+# print("Products in stock:")
+# for key, value in bakery.items():
+#     print(f"- {key}: {value}")
+
 print(f"Total Products: {len(bakery)}")
 print(f"Total Quantity: {sum(bakery.values())}")
 
-      
-        
-        
+# Path: statistics.py
 
-    
-    
-        
 #     if command[0] not in bakery:
 #         keys = command[0]
 #         values = int(command[1])

@@ -1,9 +1,9 @@
 
 
-initial_list = [input().split(",")]
-ascii_dict = {}
+initial_list = input().split(", ")
 
-ascii_dict = {i: ord(i) for i in initial_list[0]}
+
+ascii_dict = {key : ord(key) for key in initial_list}
 
 print(ascii_dict)
 

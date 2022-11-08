@@ -9,7 +9,7 @@ for i in range(number_of_words):
     if word not in dictionary:
         dictionary[word] = []
     dictionary[word].append(synonyms)
-    
-    for key, value in dictionary.items():
-        print(f"{key} - {', '.join(value)}")
+[print(f"{word} - {', '.join(dictionary[word])}") for word in dictionary]
 
+
+# [print(f"{word} - {', '.join(synonyms[word])}") for word in synonyms]

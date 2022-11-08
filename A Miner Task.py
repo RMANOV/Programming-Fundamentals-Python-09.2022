@@ -6,16 +6,29 @@ command = input()
 
 while not command == "stop":
     current_resource = command
-    if command.isdigit():
-        quantity = int(command)
-        resources[current_resource] += quantity
-    else:
-        if current_resource not in resources:
-            resources[current_resource] = 0
-    command = input()
     
+    if current_resource not in resources:
+        resources[current_resource] = 0
+    if current_resource in resources:
+        command = int(input())
+        resources[current_resource] += command
+        
+    command = input()
 for resource, quantity in resources.items():
     print(f"{resource} -> {quantity}")
+    
+    
+    
+#     if command.isdigit():
+#         quantity = int(command)
+#         resources[current_resource] += quantity
+#     else:
+#         if current_resource not in resources:
+#             resources[current_resource] = 0
+#     command = input()
+    
+# for resource, quantity in resources.items():
+#     print(f"{resource} -> {quantity}")
     
     
     

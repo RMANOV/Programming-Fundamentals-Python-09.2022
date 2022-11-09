@@ -3,11 +3,17 @@
 phonebook = {}
 command = input().split('-')
 
-while not command.isdigit():
+while not len(command) == 1:
     command = input().split('-')
+    
     phonebook[command[0]] = command[1]
     
-for _ in range(int(command[0])):
+    command = input().split('-')
+
+number_searched_names = int(command[0])
+command = input()
+
+for _ in range(number_searched_names):
     name = input()
     if name in phonebook:
         print(f'{name} -> {phonebook[name]}')

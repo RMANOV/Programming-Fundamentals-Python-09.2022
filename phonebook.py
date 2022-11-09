@@ -4,9 +4,11 @@ phonebook = {}
 command = input().split('-')
 
 while not len(command) == 1:
-    command = input().split('-')
-    
     phonebook[command[0]] = command[1]
+    command = input().split('-')
+
+    if len(command) ==1:
+        break
     
     command = input().split('-')
 

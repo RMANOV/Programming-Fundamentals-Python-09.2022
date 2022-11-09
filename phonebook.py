@@ -17,7 +17,8 @@ def search_contact():
         print(f'{command} -> {phonebook[command]}')
     else:
         print(f'Contact {command} does not exist.')
-        
+
+# Call add_contact() 
 
 
 # phonebook[command[0]] = command[1]

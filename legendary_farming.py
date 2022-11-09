@@ -6,22 +6,55 @@
 items_dict = {}
 initial_list =input().split()
 
-for i in range(0, len(initial_list), 2):
-    quantity = int(initial_list[i])
-    item = initial_list[i + 1]
-    if item in items_dict:
-        items_dict[item] += quantity
-        if items_dict[item] >= 250:
-            if item == "shards":
+while True:
+    for i in range(0, len(initial_list), 2):
+        key = initial_list[i + 1].lower()
+        value = int(initial_list[i])
+        if key in items_dict:
+            items_dict[key] += value
+        else:
+            items_dict[key] = value
+
+        if items_dict[key] >= 250:
+            if key == "shards":
                 print("Shadowmourne obtained!")
-            elif item == "fragments":
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0]))], sep='')
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])) if k != "shards" and k != "fragments" and k != "motes"], sep='')
+                break
+            elif key == "fragments":
                 print("Valanyr obtained!")
-            elif item == "motes":
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0]))], sep='')
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])) if k != "shards" and k != "fragments" and k != "motes"], sep='')
+                break
+            elif key == "motes":
                 print("Dragonwrath obtained!")
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0]))], sep='')
+                print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])) if k != "shards" and k != "fragments" and k != "motes"], sep='')
+                break
+            # items_dict[key] -= 250
             break
     else:
-        items_dict[item] = quantity
+        initial_list = input().split()
+        continue
+    break
+
+
+# for i in range(0, len(initial_list), 2):
+#     quantity = int(initial_list[i])
+#     item = initial_list[i + 1]
+#     if item in items_dict:
+#         items_dict[item] += quantity
+#         if items_dict[item] >= 250:
+#             if item == "shards":
+#                 print("Shadowmourne obtained!")
+#             elif item == "fragments":
+#                 print("Valanyr obtained!")
+#             elif item == "motes":
+#                 print("Dragonwrath obtained!")
+#             break
+#     else:
+#         items_dict[item] = quantity
        
-junk_dict = {k: v for k, v in items_dict.items() if v < 250}
-items_dict = {k: v for k, v in items_dict.items() if v >= 250}
-print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0]))], sep="'n")
+# junk_dict = {k: v for k, v in items_dict.items() if v < 250}
+# items_dict = {k: v for k, v in items_dict.items() if v >= 250}
+# print(*[f"{k}: {v}" for k, v in sorted(items_dict.items(), key=lambda x: (-x[1], x[0]))], sep="'n")

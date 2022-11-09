@@ -6,14 +6,15 @@ command = []
 command = input().split('-')
 phonebook[command[0]] = command[1]
 
-if len(command) == 1:
-    count_of_searched_names = int(command[0])
-    for i in range(count_of_searched_names):
-        name = input()
-        if name in phonebook:
-            print(f'{name} -> {phonebook[name]}')
-        else:
-            print('Contact {name} does not exist.')
+while len(command) == 1:
+    if len(command) == 1:
+        count_of_searched_names = int(command[0])
+        for i in range(count_of_searched_names):
+            name = input()
+            if name in phonebook:
+                print(f'{name} -> {phonebook[name]}')
+            else:
+                print('Contact {name} does not exist.')
             
 
 

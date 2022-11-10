@@ -7,6 +7,7 @@ initial_list =input().split()
 items_dict = {"shards": 0, "fragments": 0, "motes": 0}
 junk_dict = {}
 
+
 while True:
     for i in range(0, len(initial_list), 2):
         if initial_list[i + 1].lower() in items_dict:

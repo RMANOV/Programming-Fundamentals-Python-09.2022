@@ -3,9 +3,9 @@
 # Valanyr" - requires 250 Fragments
 # Dragonwrath" - requires 250 Motes
 
+initial_list =input().split()
 items_dict = {"shards": 0, "fragments": 0, "motes": 0}
 junk_dict = {}
-initial_list =input().split()
 
 while True:
     for i in range(0, len(initial_list), 2):
@@ -13,19 +13,29 @@ while True:
             items_dict[initial_list[i + 1].lower()] += int(initial_list[i])
         else:
             junk_dict[initial_list[i + 1].lower()] = junk_dict.get(initial_list[i + 1].lower(), 0) + int(initial_list[i])
+            continue
             
         if items_dict["shards"] >= 250:
             print("Shadowmourne obtained!")
+            items_dict["shards"] -= 250
+            for key, value in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])):
+                print(f"{key}: {value}")
             for key, value in sorted(junk_dict.items(), key=lambda x: (-x[1], x[0])):
                 print(f"{key}: {value}")
             break
         elif items_dict["fragments"] >= 250:
             print("Valanyr obtained!")
+            items_dict["fragments"] -= 250
+            for key, value in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])):
+                print(f"{key}: {value}")
             for key, value in sorted(junk_dict.items(), key=lambda x: (-x[1], x[0])):
                 print(f"{key}: {value}")
             break              
         elif items_dict["motes"] >= 250:
             print("Dragonwrath obtained!")
+            items_dict["motes"] -= 250
+            for key, value in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])):
+                print(f"{key}: {value}")
             for key, value in sorted(junk_dict.items(), key=lambda x: (-x[1], x[0])):
                 print(f"{key}: {value}")
             break

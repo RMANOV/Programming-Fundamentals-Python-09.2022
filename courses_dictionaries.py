@@ -11,8 +11,7 @@ while not command[0] == "end":
     courses[course].append(student)
     command = input().split(" : ")
     
-for course, students in sorted(courses.items(), key=lambda x: -len(x[1])):
+for course, students in courses.items():
     print(f"{course}: {len(students)}")
-    for student in sorted(students):
+    for student in (students):
         print(f"-- {student}")
-

@@ -23,7 +23,8 @@ while True:
                 print(f"{key}: {value}")
             for key, value in (junk_dict.items()):
                 print(f"{key}: {value}")
-            break
+            exit()
+            
         elif items_dict["fragments"] >= 250:
             print("Valanyr obtained!")
             items_dict["fragments"] -= 250
@@ -31,7 +32,8 @@ while True:
                 print(f"{key}: {value}")
             for key, value in (junk_dict.items()):
                 print(f"{key}: {value}")
-            break              
+            exit()
+                         
         elif items_dict["motes"] >= 250:
             print("Dragonwrath obtained!")
             items_dict["motes"] -= 250
@@ -39,12 +41,13 @@ while True:
                 print(f"{key}: {value}")
             for key, value in (junk_dict.items()):
                 print(f"{key}: {value}")
-            break
-            
+            exit()
+
     if items_dict["shards"] >= 250 or items_dict["fragments"] >= 250 or items_dict["motes"] >= 250:
-        break
+        exit()
     
     initial_list = input().split()
+
     
 # for key, value in sorted(items_dict.items(), key=lambda x: (-x[1], x[0])):
     

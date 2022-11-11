@@ -1,6 +1,7 @@
 
 
-initial_list = input().split()
+initial_string = input()
+initial_list = list(initial_string)
 digits = []
 letters = []
 special_characters = []
@@ -16,4 +17,3 @@ for i in initial_list:
 print(''.join(digits))
 print(''.join(letters))
 print(''.join(special_characters))
-

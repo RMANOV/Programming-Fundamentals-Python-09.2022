@@ -6,13 +6,13 @@ digits = []
 letters = []
 special_characters = []
 
-for i in initial_list:
-    if i.isdigit():
-        digits.append(i)
-    elif i.isalpha():
-        letters.append(i)
+for char in initial_list:
+    if char.isdigit():
+        digits.append(char)
+    elif char.isalpha():
+        letters.append(char)
     else:
-        special_characters.append(i)
+        special_characters.append(char)
 
 print(''.join(digits))
 print(''.join(letters))

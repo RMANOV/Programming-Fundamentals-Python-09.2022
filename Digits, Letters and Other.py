@@ -2,18 +2,18 @@
 
 initial_string = input()
 initial_list = list(initial_string)
-digits = []
-letters = []
-special_characters = []
+digits = ''
+letters = ''
+special_characters = ''
 
 for char in initial_list:
     if char.isdigit():
-        digits.append(char)
+        digits += char
     elif char.isalpha():
-        letters.append(char)
+        letters += char
     else:
-        special_characters.append(char)
+        special_characters += char
 
-print(''.join(digits))
-print(''.join(letters))
-print(''.join(special_characters))
+print((digits))
+print((letters))
+print((special_characters))

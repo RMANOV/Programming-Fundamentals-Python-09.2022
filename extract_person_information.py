@@ -7,9 +7,11 @@ age = ''
 for i in range(number_of_persons):
     person_data = input().split()
     for j in range(len(person_data)):
+        if name != '' and age != '':
+            break
         if person_data[j].startswith('@'):
             # get all characters after @ and delete all characters after the |
-            name = person_data[j][1:].split('|')[0]            
+            name = person_data[j][1:].split('|')[0]
             # name = person_data[j].replace('@', '').replace('|', '')
         elif person_data[j].startswith('#'):
             # get all characters after # and delete all characters after the *

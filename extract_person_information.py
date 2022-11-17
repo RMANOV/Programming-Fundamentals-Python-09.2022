@@ -7,9 +7,9 @@ age = ''
 for i in range(number_of_persons):
     person_data = input().split()
     for j in range(len(person_data)):
-        if person_data[j].startswith('@') and person_data[j].endswith('|'):
+        if person_data[j].startswith('@'):
             name = person_data[j].replace('@', '').replace('|', '')
-        elif person_data[j].startswith('#') and person_data[j].endswith('*'):
+        elif person_data[j].startswith('#'):
             age = person_data[j].replace('#', '').replace('*', '')
     print(f'{name} is {age} years old.')
     name = ''

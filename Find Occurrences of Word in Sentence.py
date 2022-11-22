@@ -11,7 +11,7 @@ repeat_count = 0
 
 
 search_pattern = r'\b' + target_word + r'\b'
-result = re.finditer(search_pattern, strings)
+result = re.findall(search_pattern, strings, re.IGNORECASE)
 
 for word in result:
     repeat_count += 1

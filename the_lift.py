@@ -28,6 +28,7 @@ for i in range(len(wagons)):
             break
         if wagons[i] == 4:
             break
+
     
 if numbers_of_people == 0:
     print("The lift has empty spots!")

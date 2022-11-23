@@ -22,13 +22,12 @@ wagons = [int(x) for x in input().split()]
 
 for i in range(len(wagons)):
     while wagons[i] < 4:
-        wagons[i] += 1
-        numbers_of_people -= 1
         if numbers_of_people == 0:
             break
         if wagons[i] == 4:
             break
-
+        wagons[i] += 1
+        numbers_of_people -= 1
     
 if numbers_of_people == 0:
     print("The lift has empty spots!")

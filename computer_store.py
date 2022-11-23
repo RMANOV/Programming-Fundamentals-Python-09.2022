@@ -27,6 +27,7 @@ def receipt():
         else:
             total_price += price
         command = input()
+        total_net_price = total_price
     taxes = total_price * 0.2
     total_price += taxes
     if total_price == 0:
@@ -35,7 +36,7 @@ def receipt():
         if command == "special":
             total_price *= 0.9
         print("Congratulations you've just bought a new computer!")
-        print(f"Price without taxes: {total_price - taxes:.2f}$")
+        print(f"Price without taxes: {total_net_price:.2f}$")
         print(f"Taxes: {taxes:.2f}$")
         print("-----------")
         print(f"Total price: {total_price:.2f}$")

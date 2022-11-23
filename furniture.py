@@ -10,7 +10,15 @@ total_cost = 0
 # Valid information should be in the format: ">>{furniture_name}<<{price}!{quantity}". 
 # The price could be a floating-point or integer number. You should store the names of the furniture and the total price. 
 # In the end, print the name of each bought furniture and the total cost, formatted to the second decimal point.
+# Print the result in the following format: "Bought furniture:
+# "Bought furniture:
+# {1st name}
+# {2nd name}
+# …
+# {N name}
+# Total money spend: {total_cost}"
 
+print('Bought furniture:')
 while not purchase == 'Purchase':
     search_pattern = r'>>(?P<name>[a-zA-Z]+)<<(?P<price>\d+(\.\d+)?)!(?P<quantity>\d+)'
     result = re.finditer(search_pattern, purchase)
@@ -20,4 +28,3 @@ while not purchase == 'Purchase':
     purchase = input()
 
 print(f'Total money spend: {total_cost:.2f}')
-

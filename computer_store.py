@@ -19,26 +19,27 @@
 
 def receipt():
     total_price = 0
-    while True:
-        price = float(input())
+    command = input()
+    while command != "special" and command != "regular":
+        price = float(command)
         if price < 0:
             print("Invalid price!")
-            continue
-        elif price == 0:
-            break
-        total_price += price
-    customer_type = input()
+        else:
+            total_price += price
+        command = input()
     taxes = total_price * 0.2
     total_price += taxes
-    if customer_type == "special":
-        total_price *= 0.9
     if total_price == 0:
         print("Invalid order!")
     else:
+        if command == "special":
+            total_price *= 0.9
         print("Congratulations you've just bought a new computer!")
-        print(f"Price without taxes: {total_price - taxes:.2f}$")
+        print(f"Price without taxes: {total_price:.2f}$")
         print(f"Taxes: {taxes:.2f}$")
         print("-----------")
         print(f"Total price: {total_price:.2f}$")
 
 result = receipt()
+
+

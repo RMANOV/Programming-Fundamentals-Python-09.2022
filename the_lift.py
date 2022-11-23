@@ -24,15 +24,15 @@ for i in range(len(wagons)):
     while wagons[i] < 4:
         if numbers_of_people <= 0:
             break
-        if wagons[i] >= 4:
+        if wagons[i] == 4:
             break
         wagons[i] += 1
         numbers_of_people -= 1
 
-if numbers_of_people == 0:
+if numbers_of_people <= 0 and sum(wagons) < 4*len(wagons):
     print("The lift has empty spots!")
     print(*wagons)
-elif numbers_of_people > 0:
+elif numbers_of_people > 0 and sum(wagons) >= 4*len(wagons):
     print(f"There isn't enough space! {numbers_of_people} people in a queue!")
     print(*wagons)
 else:

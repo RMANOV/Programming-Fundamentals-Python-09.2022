@@ -41,5 +41,5 @@ while command[0] != "end":
         break
     command = input().split()
 if len(initial_sequence) > 0:
-    print(f"Sorry you lose :({initial_sequence})")
-
+    print(f"Sorry you lose :(")
+    print(" ".join(initial_sequence))

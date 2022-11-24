@@ -34,8 +34,13 @@ while not command[0] == "end":
         print("Invalid input! Adding additional elements to the board")
     elif initial_sequence[int(command[0])] == initial_sequence[int(command[1])]:
         print(f"Congrats! You have found matching elements - {initial_sequence[int(command[0])]}!")
-        initial_sequence.pop(int(command[1]))
-        initial_sequence.pop(int(command[0]))
+        match = initial_sequence[int(command[0])]
+        initial_sequence.remove(match)
+        initial_sequence.remove(match)
+        match = ""
+        
+     
+
     else:
         print("Try again!")
     if len(initial_sequence) == 0:

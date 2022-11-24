@@ -21,12 +21,14 @@ targets_list = input().join()
 command = input()
 current_state = 0
 shots_number = 0
+
 while command != 'End':
     current_state = targets_list[command]
     targets_list[command] = -1
     shots_number += 1
     for targets in targets_list:
-        if targets < current_state:
-            targets -= current_state
-        else:
-            
+        if targets != targets_list[command] and targets < current_state:
+           targets -= current_state
+    current_state = 0
+    command = input()
+    

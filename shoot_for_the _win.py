@@ -17,8 +17,16 @@
 # Shot targets 3 -> -1 -1 130 -1
 # Shot targets: 4 -> -1 120 -1 66 -1 -1
 
-targets_list = input().join()
-command = input()
+
+targets_list1 = input().split()
+targets_list = []
+for target in targets_list1:
+    integers = int(target)
+    targets_list.append(integers)
+    integers = 0
+    
+
+command = int(input())
 current_state = 0
 shots_number = 0
 
@@ -27,8 +35,7 @@ while command != 'End':
     targets_list[command] = -1
     shots_number += 1
     for targets in targets_list:
-        if targets != targets_list[command] and targets < current_state:
-           targets -= current_state
+        if targets != targets_list[command] and targets > current_state:
+           targets_list[targets] -= current_state
     current_state = 0
     command = input()
-    

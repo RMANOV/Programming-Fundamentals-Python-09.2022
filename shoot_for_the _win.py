@@ -34,8 +34,8 @@ while command != 'End':
     current_state = targets_list[command]
     targets_list[command] = -1
     shots_number += 1
-    for targets in targets_list:
-        if targets != targets_list[command] and targets > current_state:
-           targets_list[targets] -= current_state
+    for i in range(len(targets_list)):
+        if targets_list[i] !=targets_list[command] and targets_list[i] > current_state:
+           
     current_state = 0
     command = input()

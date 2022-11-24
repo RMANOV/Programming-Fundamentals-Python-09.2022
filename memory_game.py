@@ -25,27 +25,68 @@
 initial_sequence = input().split()
 command = input().split()
 moves = 0
-while command[0] != "end":
-    if int(command[0]) == int(command[1]) or int(command[0]) not in range(len(initial_sequence)) or int(command[1]) not in range(len(initial_sequence)):
-        moves += 1
+
+while not command[0] == "end":
+    moves += 1
+    if command[0] == command[1] or int(command[0]) >= len(initial_sequence) or int(command[1]) >= len(initial_sequence) or int(command[0]) < 0 or int(command[1]) < 0:
         initial_sequence.insert(len(initial_sequence) // 2, f"-{moves}a")
         initial_sequence.insert(len(initial_sequence) // 2, f"-{moves}a")
         print("Invalid input! Adding additional elements to the board")
+    elif initial_sequence[int(command[0])] == initial_sequence[int(command[1])]:
+        print(f"Congrats! You have found matching elements - {initial_sequence[int(command[0])]}!")
+        initial_sequence.pop(int(command[1]))
+        initial_sequence.pop(int(command[0]))
     else:
-        if initial_sequence[int(command[0])] == initial_sequence[int(command[1])]:
-            print(f"Congrats! You have found matching elements - {initial_sequence[int(command[0])]}!")
-            initial_sequence.pop(int(command[1]))
-            initial_sequence.pop(int(command[0]))
-            if len(initial_sequence) == 0:
-                print(f"You have won in {moves} turns!")
-                break
-        else:
-            print("Try again!")
-    moves += 1
+        print("Try again!")
+    if len(initial_sequence) == 0:
+        print(f"You have won in {moves} turns!")
+        break
     command = input().split()
 if len(initial_sequence) > 0:
     print(f"Sorry you lose :(")
     print(" ".join(initial_sequence))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# while command[0] != "end":
+#     if int(command[0]) == int(command[1]) or int(command[0]) not in range(len(initial_sequence)) or int(command[1]) not in range(len(initial_sequence)):
+#         moves += 1
+#         initial_sequence.insert(len(initial_sequence) // 2, f"-{moves}a")
+#         initial_sequence.insert(len(initial_sequence) // 2, f"-{moves}a")
+#         print("Invalid input! Adding additional elements to the board")
+#     else:
+#         if initial_sequence[int(command[0])] == initial_sequence[int(command[1])]:
+#             print(f"Congrats! You have found matching elements - {initial_sequence[int(command[0])]}!")
+#             initial_sequence.pop(int(command[1]))
+#             initial_sequence.pop(int(command[0]))
+#             if len(initial_sequence) == 0:
+#                 print(f"You have won in {moves} turns!")
+#                 break
+#         else:
+#             print("Try again!")
+#     moves += 1
+#     command = input().split()
+# if len(initial_sequence) > 0:
+#     print(f"Sorry you lose :(")
+#     print(" ".join(initial_sequence))
     
 #     if int(command[0]) == int(command[1]) or int(command[0]) > len(initial_sequence) or int(command[1]) > len(initial_sequence):
 #         initial_sequence.insert(len(initial_sequence) // 2, f"-{len(initial_sequence)}a")

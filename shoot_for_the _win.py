@@ -20,37 +20,73 @@
 
 
 
-# target_list = [x for x in 
+# target_list = [x for x in input().split() if int(x) != -1]
+target_list = [int(x) for x in input().split() if int(x) != '']
 
-
-targets_list1 = input().split()
-targets_list = []
-for target in targets_list1:
-    integers = int(target)
-    targets_list.append(integers)
-    integers = 0
+# for target in target_list:
+#     target_list.append(int(target))
+#     target_list.remove(target)
+    
+    
     
 
-command = int(input())
+command = input()
 current_state = 0
 shots_number = 0
 
 while command != 'End':
-    if command > len(targets_list):
+    command = int(command)
+    if command >= len(target_list):
+        command = input()
         continue
-    current_state = targets_list[command]
-    targets_list[command] = -1
+    current_state = target_list[command]
+    target_list[command] = -1
     shots_number += 1
-    for i in range(len(targets_list)):
-        if targets_list[i] == targets_list[command]:
+    
+    for i in range(len(target_list)):
+        if target_list[i] == target_list[command]:
             continue
-        if targets_list[i] > current_state:
-            targets_list[i] -= current_state
-            current_state = 0
-        else:
-            targets_list[i] += current_state
-            current_state = 0
+        if target_list[i] > current_state:
+            target_list[i] -= current_state
             
-           
+        else:
+            target_list[i] += current_state
     current_state = 0
-    command = int(input())
+    command = input()
+
+print(f'Shot targets: {shots_number} -> {" ".join(target_list)}')
+
+
+
+# targets_list1 = input().split()
+# targets_list = []
+# for target in targets_list1:
+#     integers = int(target)
+#     targets_list.append(integers)
+#     integers = 0
+    
+
+# command = int(input())
+# current_state = 0
+# shots_number = 0
+
+# while command != 'End':
+#     if command > len(targets_list):
+#         continue
+#     current_state = targets_list[command]
+#     targets_list[command] = -1
+#     shots_number += 1
+#     for i in range(len(targets_list)):
+#         if targets_list[i] == targets_list[command]:
+#             continue
+#         if targets_list[i] > current_state:
+#             targets_list[i] -= current_state
+#             current_state = 0
+#         else:
+#             targets_list[i] += current_state
+#             current_state = 0
+            
+#     current_state = 0
+#     command = int(input())
+#     print()
+    

@@ -16,7 +16,7 @@
 # Shot targets 3 -> -1 -1 130 -1
 # Shot targets: 4 -> -1 120 -1 66 -1 -1
 
-
+target_list = input().split()
 target_list = [int(x) for x in input().split() if int(x) != ""]
 shots_number = 0
 current_state = 0
@@ -26,6 +26,24 @@ target_index = input()
 while target_index != 'End':
     if target_index != 'End':
         target_index = int(target_index)
-    
-    
-    
+    if target_index >= len(target_list):
+        target_index = input()
+        continue
+    current_state = target_list[target_index]
+    target_list[target_index] = -1
+    shots_number += 1
+
+    for i in range(len(target_list)):
+        if target_list[i] == target_list[target_index]:
+            continue
+        if target_list[i] > current_state:
+            target_list[i] -= current_state
+        else:
+            target_list[i] += current_state
+    current_state = 0
+    target_index = input()
+
+
+# print(f'Shot targets: {shots_number} -> {"".join(target_list)}')
+print(shots_number)
+print(*target_list)

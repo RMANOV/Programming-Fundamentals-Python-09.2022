@@ -25,4 +25,7 @@ target_index = input()
 
 while target_index != 'End':
     if target_index != 'End':
-        
+        target_index = int(target_index)
+    
+    
+    

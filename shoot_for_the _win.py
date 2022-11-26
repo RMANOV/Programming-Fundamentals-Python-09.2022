@@ -54,7 +54,7 @@ while command != 'End':
     current_state = 0
     command = input()
 
-print(f'Shot targets: {shots_number} -> {" ".join(target_list)}')
+print(f'Shot targets: {shots_number} -> {" ".join(map(str, target_list))}')
 
 
 

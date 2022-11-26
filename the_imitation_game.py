@@ -31,8 +31,13 @@ while command[0] != 'Decode':
         value = command[2]
         # encrypted_message.insert(index, value)
         # encrypted_message = encrypted_message[:index] + [value] + encrypted_message[index:]
-        value = list(value)
-        encrypted_message = encrypted_message[:index] + value + encrypted_message[index:]
+        # value = list(value)
+        # encrypted_message = encrypted_message[:index] + value + encrypted_message[index:]
+        # for index, value in enumerate(encrypted_message):
+        #     encrypted_message[index] = value
+        lenght = len(value)
+        for i in range(lenght):
+            encrypted_message.insert(index + i, value[i])
     elif command[0] == 'ChangeAll':
         substring = command[1]
         replacement = command[2]

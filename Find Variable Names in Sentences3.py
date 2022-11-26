@@ -9,7 +9,8 @@
 import re
 
 def extract_variable_names_whitout_underscores(text):
-    return re.findall(r'(?<=\b_)[a-zA-Z0-9]+', text)
+    # return re.findall(r'(?<=\b_)[a-zA-Z0-9]+', text)
+    return re.findall(r'(?<=\b_)\w+', text)
 
 # def delete_underscore(text):
 #     return text[1:]

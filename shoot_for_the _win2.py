@@ -46,10 +46,12 @@ while target_index != 'End':
             target_list[i] += current_state
     current_state = 0
     target_index = input()
+    
+print(f'Shot targets: {shots_number} -> {" ".join(map(str, target_list))}')
 
 # # print(f'Shot targets: {shots_number} -> 
-print(f'Shot targets: {shots_number} -> { '-'.join(target_list)}')
-# # print(f'Shot targets: {shots_number} -> ')
+# print(f'Shot targets: {shots_number} -> \n')
+# print(f'Shot targets: {shots_number} -> {*target_list, sep='-'}')
 # # print(shots_number)
-print(*target_list, sep='-')
+# print(*target_list, sep='-')
 # print('-'.join[target_list])

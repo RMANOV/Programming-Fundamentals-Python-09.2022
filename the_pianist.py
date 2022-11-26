@@ -41,34 +41,64 @@
 pieces = {}
 command = input()
 
-while command != 'Stop':
-    command = command.split('|')
-    if command[0] == 'Add':
-        if command[1] not in pieces:
-            pieces[command[1]] = [command[2], command[3]]
-            print(f'{command[1]} by {command[2]} in {command[3]} added to the collection!')
-        else:
-            print(f'{command[1]} is already in the collection!')
-    elif command[0] == 'Remove':
-        if command[1] in pieces:
-            pieces.pop(command[1])
-            print(f'Successfully removed {command[1]}!')
-        else:
-            print(f'Invalid operation! {command[1]} does not exist in the collection.')
-    elif command[0] == 'ChangeKey':
-        if command[1] in pieces:
-            pieces[command[1]][1] = command[2]
-            print(f'Changed the key of {command[1]} to {command[2]}!')
-        else:
-            print(f'Invalid operation! {command[1]} does not exist in the collection.')
-    command = input()
+for i in range(int(command)):
+    piece, composer, key = input().split("|")
+    pieces[piece] = {"composer": composer, "key": key}
 
-# print('All pieces are in the collection!')
+commands = input().split("|")
+
+while len(commands) > 1:
+    if commands[0] == "Add":
+        if commands[1] in pieces:
+            print(f"{commands[1]} is already in the collection!")
+        else:
+            pieces[commands[1]] = {"composer": commands[2], "key": commands[3]}
+            print(f"{commands[1]} by {commands[2]} in {commands[3]} added to the collection!")
+    elif commands[0] == "Remove":
+        if commands[1] in pieces:
+            pieces.pop(commands[1])
+            print(f"Successfully removed {commands[1]}!")
+        else:
+            print(f"Invalid operation! {commands[1]} does not exist in the collection.")
+    elif commands[0] == "ChangeKey":
+        if commands[1] in pieces:
+            pieces[commands[1]]["key"] = commands[2]
+            print(f"Changed the key of {commands[1]} to {commands[2]}!")
+        else:
+            print(f"Invalid operation! {commands[1]} does not exist in the collection.")
+    commands = input().split("|")
 
 for piece in pieces:
-    print(f'{piece} -> Composer: {pieces[piece][0]}, Key: {pieces[piece][1]}')
+    print(f"{piece} -> Composer: {pieces[piece]['composer']}, Key: {pieces[piece]['key']}")
 
-# print('All pieces are in the collection!')
+# while command != 'Stop':
+#     command = command.split('|')
+#     if command[0] == 'Add':
+#         if command[1] not in pieces:
+#             pieces[command[1]] = [command[2], command[3]]
+#             print(f'{command[1]} by {command[2]} in {command[3]} added to the collection!')
+#         else:
+#             print(f'{command[1]} is already in the collection!')
+#     elif command[0] == 'Remove':
+#         if command[1] in pieces:
+#             pieces.pop(command[1])
+#             print(f'Successfully removed {command[1]}!')
+#         else:
+#             print(f'Invalid operation! {command[1]} does not exist in the collection.')
+#     elif command[0] == 'ChangeKey':
+#         if command[1] in pieces:
+#             pieces[command[1]][1] = command[2]
+#             print(f'Changed the key of {command[1]} to {command[2]}!')
+#         else:
+#             print(f'Invalid operation! {command[1]} does not exist in the collection.')
+#     command = input()
+
+# # print('All pieces are in the collection!')
+
+# for piece in pieces:
+#     print(f'{piece} -> Composer: {pieces[piece][0]}, Key: {pieces[piece][1]}')
+
+# # print('All pieces are in the collection!')
 
 
 

@@ -36,6 +36,8 @@
 # Sonata No.2 -> Composer: Chopin, Key: B Minor
 # Hungarian Rhapsody No.2 -> Composer: Liszt, Key: C# Minor
 
+pieces = {}
+
 def add_piece(piece, composer, key, pieces):
     if piece in pieces:
         print(f'{piece} is already in the collection!')
@@ -45,7 +47,7 @@ def add_piece(piece, composer, key, pieces):
 
 def remove_piece(piece, pieces):
     if piece not in pieces:
-        print(f('Invalid operation! {piece} does not exist in the collection.'))
+        print(f'Invalid operation! {piece} does not exist in the collection.')
     else:
         del pieces[piece]
         print(f'{piece} by {pieces["composer"]} in {pieces["key"]} removed from the collection!')
@@ -68,7 +70,6 @@ def print_pieces(pieces):
     for piece in pieces:
         print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
 
-pieces = {}
 
 def main():
     print_pieces(pieces)

@@ -36,59 +36,116 @@
 # Sonata No.2 -> Composer: Chopin, Key: B Minor
 # Hungarian Rhapsody No.2 -> Composer: Liszt, Key: C# Minor
 
-pieces = {}
 
-def add_piece(piece, composer, key, pieces):
-    if piece in pieces:
-        print(f'{piece} is already in the collection!')
-    else:
+
+def main(args):
+    n = int(input())
+    for i in range(n):
+        piece, composer, key = input().split('|')
         pieces[piece] = {'composer': composer, 'key': key}
-        print(f'{piece} by {composer} in {key} added to the collection!')
-
-def remove_piece(piece, pieces):
-    if piece not in pieces:
-        print(f'Invalid operation! {piece} does not exist in the collection.')
-    else:
-        del pieces[piece]
-        print(f'{piece} by {pieces["composer"]} in {pieces["key"]} removed from the collection!')
-
-def change_key(piece, new_key, pieces):
-    if piece not in pieces:
-        print(f'Invalid operation! {piece} does not exist in the collection.')
-    else:
-        pieces[piece]['key'] = new_key
-        print(f'Changed the key of {piece} to {new_key}!')
-
-def change_composer(piece, new_composer, pieces):
-    if piece not in pieces:
-        print(f'Invalid operation! {piece} does not exist in the collection.')
-    else:
-        pieces[piece]['composer'] = new_composer
-        print(f'Changed the composer of {piece} to {new_composer}!')
-
-def print_pieces(pieces):
-    for piece in pieces:
-        print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
-
-
-def main():
-    print_pieces(pieces)
     while True:
         command = input()
         if command == 'Stop':
             break
         command = command.split('|')
         if command[0] == 'Add':
-            add_piece(command[1], command[2], command[3], pieces)
+            add_piece(command[1], command[2], command[3])
         elif command[0] == 'Remove':
-            remove_piece(command[1], pieces)
+            remove_piece(command[1])
         elif command[0] == 'ChangeKey':
-            change_key(command[1], command[2], pieces)
-        elif command[0] == 'ChangeComposer':
-            change_composer(command[1], command[2], pieces)
-        else:
-            print(f'Invalid command! {command}')
+            change_key(command[1], command[2])
+    for piece in pieces:
+        print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
+    return 0
+pieces = {}
+def change_key(self, piece, new_key):
+    if piece in pieces:
+        pieces[piece]['key'] = new_key
+        print(f'Changed the key of {piece} to {new_key}!')
+    else:
+        print(f'Invalid operation! {piece} does not exist in the collection.')
+
+def remove_piece(self, piece):
+    if piece in pieces:
+        del pieces[piece]
+        print(f'Successfully removed {piece}!')
+    else:
+        print(f'Invalid operation! {piece} does not exist in the collection.')
+        
+
+def add_piece(self, piece, composer, key):
+    if piece in pieces:
+        print(f'{piece} is already in the collection!')
+    else:
+        pieces[piece] = {'composer': composer, 'key': key}
+        print(f'{piece} by {composer} in {key} added to the collection!')
+
 
 if __name__ == '__main__':
-    main()
     print()
+
+
+
+
+
+
+
+
+
+
+
+
+# def add_piece(piece, composer, key, pieces):
+#     if piece in pieces:
+#         print(f'{piece} is already in the collection!')
+#     else:
+#         pieces[piece] = {'composer': composer, 'key': key}
+#         print(f'{piece} by {composer} in {key} added to the collection!')
+
+# def remove_piece(piece, pieces):
+#     if piece not in pieces:
+#         print(f'Invalid operation! {piece} does not exist in the collection.')
+#     else:
+#         del pieces[piece]
+#         print(f'{piece} by {pieces["composer"]} in {pieces["key"]} removed from the collection!')
+
+# def change_key(piece, new_key, pieces):
+#     if piece not in pieces:
+#         print(f'Invalid operation! {piece} does not exist in the collection.')
+#     else:
+#         pieces[piece]['key'] = new_key
+#         print(f'Changed the key of {piece} to {new_key}!')
+
+# def change_composer(piece, new_composer, pieces):
+#     if piece not in pieces:
+#         print(f'Invalid operation! {piece} does not exist in the collection.')
+#     else:
+#         pieces[piece]['composer'] = new_composer
+#         print(f'Changed the composer of {piece} to {new_composer}!')
+
+# def print_pieces(pieces):
+#     for piece in pieces:
+#         print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
+
+
+# def main():
+#     print_pieces(pieces)
+#     while True:
+#         command = input()
+#         if command == 'Stop':
+#             break
+#         command = command.split('|')
+#         if command[0] == 'Add':
+#             add_piece(command[1], command[2], command[3], pieces)
+#         elif command[0] == 'Remove':
+#             remove_piece(command[1], pieces)
+#         elif command[0] == 'ChangeKey':
+#             change_key(command[1], command[2], pieces)
+#         elif command[0] == 'ChangeComposer':
+#             change_composer(command[1], command[2], pieces)
+#         else:
+#             print(f'Invalid command! {command}')
+
+# if __name__ == '__main__':
+#     main()
+#     print()

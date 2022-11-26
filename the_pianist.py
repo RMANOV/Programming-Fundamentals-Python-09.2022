@@ -38,51 +38,86 @@
 
 
 
-def main(args):
-    n = int(input())
-    for i in range(n):
-        piece, composer, key = input().split('|')
-        pieces[piece] = {'composer': composer, 'key': key}
-    while True:
-        command = input()
-        if command == 'Stop':
-            break
-        command = command.split('|')
-        if command[0] == 'Add':
-            add_piece(command[1], command[2], command[3])
-        elif command[0] == 'Remove':
-            remove_piece(command[1])
-        elif command[0] == 'ChangeKey':
-            change_key(command[1], command[2])
-    for piece in pieces:
-        print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
-    return 0
 pieces = {}
-def change_key(self, piece, new_key):
-    if piece in pieces:
-        pieces[piece]['key'] = new_key
-        print(f'Changed the key of {piece} to {new_key}!')
-    else:
-        print(f'Invalid operation! {piece} does not exist in the collection.')
+command = input()
 
-def remove_piece(self, piece):
-    if piece in pieces:
-        del pieces[piece]
-        print(f'Successfully removed {piece}!')
-    else:
-        print(f'Invalid operation! {piece} does not exist in the collection.')
+while command != 'Stop':
+    command = command.split('|')
+    if command[0] == 'Add':
+        if command[1] not in pieces:
+            pieces[command[1]] = [command[2], command[3]]
+            print(f'{command[1]} by {command[2]} in {command[3]} added to the collection!')
+        else:
+            print(f'{command[1]} is already in the collection!')
+    elif command[0] == 'Remove':
+        if command[1] in pieces:
+            pieces.pop(command[1])
+            print(f'Successfully removed {command[1]}!')
+        else:
+            print(f'Invalid operation! {command[1]} does not exist in the collection.')
+    elif command[0] == 'ChangeKey':
+        if command[1] in pieces:
+            pieces[command[1]][1] = command[2]
+            print(f'Changed the key of {command[1]} to {command[2]}!')
+        else:
+            print(f'Invalid operation! {command[1]} does not exist in the collection.')
+    command = input()
+
+# print('All pieces are in the collection!')
+
+for piece in pieces:
+    print(f'{piece} -> Composer: {pieces[piece][0]}, Key: {pieces[piece][1]}')
+
+# print('All pieces are in the collection!')
+
+
+
+
+# def main(args):
+#     n = int(input())
+#     for i in range(n):
+#         piece, composer, key = input().split('|')
+#         pieces[piece] = {'composer': composer, 'key': key}
+#     while True:
+#         command = input()
+#         if command == 'Stop':
+#             break
+#         command = command.split('|')
+#         if command[0] == 'Add':
+#             add_piece(command[1], command[2], command[3])
+#         elif command[0] == 'Remove':
+#             remove_piece(command[1])
+#         elif command[0] == 'ChangeKey':
+#             change_key(command[1], command[2])
+#     for piece in pieces:
+#         print(f'{piece} -> Composer: {pieces[piece]["composer"]}, Key: {pieces[piece]["key"]}')
+#     return 0
+# pieces = {}
+# def change_key(self, piece, new_key):
+#     if piece in pieces:
+#         pieces[piece]['key'] = new_key
+#         print(f'Changed the key of {piece} to {new_key}!')
+#     else:
+#         print(f'Invalid operation! {piece} does not exist in the collection.')
+
+# def remove_piece(self, piece):
+#     if piece in pieces:
+#         del pieces[piece]
+#         print(f'Successfully removed {piece}!')
+#     else:
+#         print(f'Invalid operation! {piece} does not exist in the collection.')
         
 
-def add_piece(self, piece, composer, key):
-    if piece in pieces:
-        print(f'{piece} is already in the collection!')
-    else:
-        pieces[piece] = {'composer': composer, 'key': key}
-        print(f'{piece} by {composer} in {key} added to the collection!')
+# def add_piece(self, piece, composer, key):
+#     if piece in pieces:
+#         print(f'{piece} is already in the collection!')
+#     else:
+#         pieces[piece] = {'composer': composer, 'key': key}
+#         print(f'{piece} by {composer} in {key} added to the collection!')
 
 
-if __name__ == '__main__':
-    print()
+# if __name__ == '__main__':
+#     print()
 
 
 

@@ -37,19 +37,22 @@ def rating_plant(plant_dictionary, plant, rating):
     if plant in plant_dictionary:
         plant_dictionary[plant]["rating"].append(rating)
     else:
-        print("error")
+        # add plant to the dictionary
+        plant_dictionary[plant] = {"rarity": 0, "rating": [rating]}
 
 def update_plant(plant_dictionary, plant, new_rarity):
     if plant in plant_dictionary:
         plant_dictionary[plant]["rarity"] = new_rarity
     else:
-        print("error")
+        # add plant to the dictionary
+        plant_dictionary[plant] = {"rarity": new_rarity, "rating": []}
 
 def reset_plant(plant_dictionary, plant):
     if plant in plant_dictionary:
         plant_dictionary[plant]["rating"] = []
     else:
-        print("error")
+        return None
+        
 
 def average_rating(plant_dictionary):
     if len(plant_dictionary["rating"]) == 0:

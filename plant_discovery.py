@@ -53,8 +53,9 @@ def reset_plant(plant_dictionary, plant):
 
 def print_plants(plant_dictionary):
     print("Plants for the exhibition:")
-    for plant, value in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
-        print(f"- {plant}; Rarity: {value['rarity']}; Rating: {sum(value['rating']) / len(value['rating']):.2f}")
+    if len(plant_dictionary) > 0:
+        for plant, value in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
+            print(f"- {plant}; Rarity: {value['rarity']}; Rating: {sum(value['rating']) / len(value['rating']):.2f}")
 
 def plant_discovery():
     n = int(input())

@@ -19,7 +19,9 @@
 # Output
 # •	Print the proper output messages in the proper cases as described in the problem description
 
-initial_string = input()
+def initial_string():
+    initial_string = input()
+    return initial_string
 
 def add_stop(initial_string, index, string):
     if index in range(len(initial_string)):
@@ -47,6 +49,7 @@ def world_tour(initial_string):
     return command
 
 def main():
+    initial_string = initial_string()
     command = world_tour(initial_string)
     while command[0] != 'Travel':
         if command[0] == 'Add Stop':

@@ -53,9 +53,14 @@ def reset_plant(plant_dictionary, plant):
 
 def print_plants(plant_dictionary):
     print("Plants for the exhibition:")
-    if len(plant_dictionary) > 0:
-        for plant, value in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
-            print(f"- {plant}; Rarity: {value['rarity']}; Rating: {sum(value['rating']) / len(value['rating']):.2f}")
+    if plant_dictionary:
+        for plant, plant_info in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
+            print(f"- {plant}; Rarity: {plant_info['rarity']}; Rating: {sum(plant_info['rating']) / len(plant_info['rating']):.2f}")
+    # if len(plant_dictionary) > 0:
+    #     for plant, value in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
+    #         print(f"- {plant}; Rarity: {value['rarity']}; Rating: {sum(value['rating']) / len(value['rating']):.2f}")
+    # else:
+    #     print("error")
 
 def plant_discovery():
     n = int(input())
@@ -65,7 +70,8 @@ def plant_discovery():
         if command == "Exhibition":
             break
         command, plant = command.split(": ")
-        value = plant.split(" - ")
+        value_list = plant.split(" - ")
+        value = int(value_list[1]) if len(value_list) > 1 else value_list[0]
         if command == "Rate":
             rating_plant(plant_dictionary, plant, int(value))
         elif command == "Update":

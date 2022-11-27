@@ -51,11 +51,19 @@ def reset_plant(plant_dictionary, plant):
     else:
         print("error")
 
+def average_rating(plant_dictionary):
+    if len(plant_dictionary["rating"]) == 0:
+        return 0
+    return sum(plant_dictionary["rating"]) / len(plant_dictionary["rating"])
+
 def print_plants(plant_dictionary):
     print("Plants for the exhibition:")
-    # print the plants sorted by rarity in descending order, then by rating in descending order - if the rarity is the same - withouth divise by zero error
-    for plant, plant_info in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]) if len(x[1]["rating"]) > 0 else 0)):
-        print(f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {sum(plant_dictionary[plant]['rating']) / len(plant_dictionary[plant]['rating']):.2f}")
+    print(*[f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {average_rating(plant_dictionary[plant]):.2f}" for plant in plant_dictionary], sep="\n")
+    # print the plants sorted by rarity in descending order, then by rating in descending order - if the rarity is the same - 
+    # withouth divise by zero error
+    # print(*[f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {sum(plant_dictionary[plant]['rating']) / len(plant_dictionary[plant]['rating']):.2f}" for plant in sorted(plant_dictionary, key=lambda x: (-plant_dictionary[x]["rarity"], -sum(plant_dictionary[x]["rating"]) / len(plant_dictionary[x]["rating"]) if len(plant_dictionary[x]["rating"]) > 0 else 0))], sep="\n")
+    # for plant, plant_info in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]) if len(x[1]["rating"]) > 0 else 0)):
+    #     print(f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {sum(plant_dictionary[plant]['rating']) / len(plant_dictionary[plant]['rating']):.2f}")
     # if len(plant_dictionary) > 0:
     #     for plant, value in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
     #         print(f"- {plant}; Rarity: {value['rarity']}; Rating: {sum(value['rating']) / len(value['rating']):.2f}")

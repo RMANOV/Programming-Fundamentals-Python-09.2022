@@ -53,7 +53,8 @@ def reset_plant(plant_dictionary, plant):
 
 def print_plants(plant_dictionary):
     print("Plants for the exhibition:")
-    if plant_dictionary:
+    # print the plants sorted by rarity in descending order, then by rating in descending order - if the rarity is the same - withouth divise by zero error
+    if len(plant_dictionary) > 0:
         for plant, plant_info in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -sum(x[1]["rating"]) / len(x[1]["rating"]))):
             print(f"- {plant}; Rarity: {plant_info['rarity']}; Rating: {sum(plant_info['rating']) / len(plant_info['rating']):.2f}")
     # if len(plant_dictionary) > 0:

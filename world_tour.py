@@ -20,34 +20,99 @@
 # •	Print the proper output messages in the proper cases as described in the problem description
 
 initial_string = input()
-command = input().split(':')
 
-while command != 'Travel':
-    commands = command[0]
-    second_string = command[1]
-    
-    if commands == 'Add Stop':
-        index = int(second_string)
-        if index in range(len(initial_string)):
-            string = command[2]
-            initial_string = initial_string[:index] + string + initial_string[index:]
-            print(initial_string)
-    elif commands == 'Remove Stop':
-        start_index = int(second_string)
-        end_index = int(command[2])
-        if start_index in range(len(initial_string)) and end_index in range(len(initial_string)):
-            initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
-            print(initial_string)
-    elif commands == 'Switch':
-        old_string = second_string
-        new_string = command[2]
-        if old_string in initial_string:
-            initial_string = initial_string.replace(old_string, new_string)
-            print(initial_string)
+def add_stop(initial_string, index, string):
+    if index in range(len(initial_string)):
+        initial_string = initial_string[:index] + string + initial_string[index:]
+    return initial_string
 
+def remove_stop(initial_string, start_index, end_index):
+    if start_index in range(len(initial_string)) and end_index in range(len(initial_string)) and start_index < end_index:
+        initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
+    return initial_string
+
+def switch(initial_string, old_string, new_string):
+    if old_string in initial_string:
+        initial_string = initial_string.replace(old_string, new_string)
+    return initial_string
+
+def print_string(initial_string):
+    print(f'Ready for a world tour! Planned stops: {initial_string}')
+
+def print_current_state(initial_string):
+    print(initial_string)
+
+def world_tour(initial_string):
     command = input().split(':')
+    return command
 
-print(f"Ready for a world tour! Planned stops: {initial_string}")
+def main():
+    command = world_tour(initial_string)
+    while command[0] != 'Travel':
+        if command[0] == 'Add Stop':
+            initial_string = add_stop(initial_string, int(command[1]), command[2])
+            print_current_state(initial_string)
+        elif command[0] == 'Remove Stop':
+            initial_string = remove_stop(initial_string, int(command[1]), int(command[2]))
+            print_current_state(initial_string)
+        elif command[0] == 'Switch':
+            initial_string = switch(initial_string, command[1], command[2])
+            print_current_state(initial_string)
+        command = world_tour(initial_string)
+    print_string(initial_string)
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # commands = command[0]
+    # second_string = command[1]
+    
+    # if commands == 'Add Stop':
+    #     index = int(second_string)
+    #     if index in range(len(initial_string)):
+    #         string = command[2]
+    #         initial_string = initial_string[:index] + string + initial_string[index:]
+    #         print(initial_string)
+    # elif commands == 'Remove Stop':
+    #     start_index = int(second_string)
+    #     end_index = int(command[2])
+    #     if start_index in range(len(initial_string)) and end_index in range(len(initial_string)):
+    #         initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
+    #         print(initial_string)
+    # elif commands == 'Switch':
+    #     old_string = second_string
+    #     new_string = command[2]
+    #     if old_string in initial_string:
+    #         initial_string = initial_string.replace(old_string, new_string)
+    #         print(initial_string)
+
+    # command = input().split(':')
+    
+# print(f'Ready for a world tour! Planned stops: {initial_string}')
+
+
     
     
     

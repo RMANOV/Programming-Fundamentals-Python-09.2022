@@ -28,17 +28,23 @@ while command != 'Travel':
     
     if commands == 'Add Stop':
         index = int(second_string)
-        initial_string = initial_string[:index] + command[2] + initial_string[index:]
-        print(initial_string)
+        if index in range(len(initial_string)):
+            string = command[2]
+            initial_string = initial_string[:index] + string + initial_string[index:]
+            print(initial_string)
     elif commands == 'Remove Stop':
-        initial_string = initial_string[:int(second_string)] + initial_string[int(command[2]) + 1:]
-        print(initial_string)
+        start_index = int(second_string)
+        end_index = int(command[2])
+        if start_index in range(len(initial_string)) and end_index in range(len(initial_string)):
+            initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
+            print(initial_string)
     elif commands == 'Switch':
-        old_string = command[2]
-        initial_string = initial_string.replace(old_string, second_string)
-        print(initial_string)
+        old_string = second_string
+        new_string = command[2]
+        if old_string in initial_string:
+            initial_string = initial_string.replace(old_string, new_string)
+            print(initial_string)
 
-    
     command = input().split(':')
 
 print(f"Ready for a world tour! Planned stops: {initial_string}")

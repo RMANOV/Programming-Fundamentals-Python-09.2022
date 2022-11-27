@@ -19,50 +19,104 @@
 # Output
 # •	Print the proper output messages in the proper cases as described in the problem description
 
-def initial_string():
+
+# Get the initial string
+def get_initial_string():
     initial_string = input()
     return initial_string
 
-def add_stop(initial_string, index, string):
+def get_command():
+    command = input()
+    return command
+
+def add_stop(initial_string, command):
+    command = command.split(":")
+    index = int(command[1])
+    string = command[2]
     if index in range(len(initial_string)):
         initial_string = initial_string[:index] + string + initial_string[index:]
     return initial_string
 
-def remove_stop(initial_string, start_index, end_index):
-    if start_index in range(len(initial_string)) and end_index in range(len(initial_string)) and start_index < end_index:
+def remove_stop(initial_string, command):
+    command = command.split(":")
+    start_index = int(command[1])
+    end_index = int(command[2])
+    if start_index in range(len(initial_string)) and end_index in range(len(initial_string)):
         initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
     return initial_string
 
-def switch(initial_string, old_string, new_string):
+def switch(initial_string, command):
+    command = command.split(":")
+    old_string = command[1]
+    new_string = command[2]
     if old_string in initial_string:
         initial_string = initial_string.replace(old_string, new_string)
     return initial_string
 
-def print_string(initial_string):
-    print(f'Ready for a world tour! Planned stops: {initial_string}')
-
-def print_current_state(initial_string):
-    print(initial_string)
-
-def world_tour(initial_string):
-    command = input().split(':')
-    return command
+def print_result(initial_string):
+    print(f"Ready for a world tour! Planned stops: {initial_string}")
 
 def main():
-    initial_string = initial_string()
-    command = world_tour(initial_string)
-    while command[0] != 'Travel':
-        if command[0] == 'Add Stop':
-            initial_string = add_stop(initial_string, int(command[1]), command[2])
-            print_current_state(initial_string)
-        elif command[0] == 'Remove Stop':
-            initial_string = remove_stop(initial_string, int(command[1]), int(command[2]))
-            print_current_state(initial_string)
-        elif command[0] == 'Switch':
-            initial_string = switch(initial_string, command[1], command[2])
-            print_current_state(initial_string)
-        command = world_tour(initial_string)
-    print_string(initial_string)
+    initial_string = get_initial_string()
+    command = get_command()
+    while not command == "Travel":
+        if "Add Stop" in command:
+            initial_string = add_stop(initial_string, command)
+            print(initial_string)
+        elif "Remove Stop" in command:
+            initial_string = remove_stop(initial_string, command)
+            print(initial_string)
+        elif "Switch" in command:
+            initial_string = switch(initial_string, command)
+            print(initial_string)
+        command = get_command()
+    print_result(initial_string)
+
+
+# def initial_string():
+#     initial_string = input()
+#     return initial_string
+
+# def add_stop(initial_string, index, string):
+#     if index in range(len(initial_string)):
+#         initial_string = initial_string[:index] + string + initial_string[index:]
+#     return initial_string
+
+# def remove_stop(initial_string, start_index, end_index):
+#     if start_index in range(len(initial_string)) and end_index in range(len(initial_string)) and start_index < end_index:
+#         initial_string = initial_string[:start_index] + initial_string[end_index + 1:]
+#     return initial_string
+
+# def switch(initial_string, old_string, new_string):
+#     if old_string in initial_string:
+#         initial_string = initial_string.replace(old_string, new_string)
+#     return initial_string
+
+# def print_string(initial_string):
+#     print(f'Ready for a world tour! Planned stops: {initial_string}')
+
+# def print_current_state(initial_string):
+#     print(initial_string)
+
+# def world_tour(initial_string):
+#     command = input().split(':')
+#     return command
+
+# def main():
+#     initial_string = initial_string()
+#     command = world_tour(initial_string)
+#     while command[0] != 'Travel':
+#         if command[0] == 'Add Stop':
+#             initial_string = add_stop(initial_string, int(command[1]), command[2])
+#             print_current_state(initial_string)
+#         elif command[0] == 'Remove Stop':
+#             initial_string = remove_stop(initial_string, int(command[1]), int(command[2]))
+#             print_current_state(initial_string)
+#         elif command[0] == 'Switch':
+#             initial_string = switch(initial_string, command[1], command[2])
+#             print_current_state(initial_string)
+#         command = world_tour(initial_string)
+#     print_string(initial_string)
 
 
     

@@ -23,14 +23,47 @@ initial_string = input()
 command = input().split(':')
 
 while command != 'Travel':
-    command = command[0]
+    commands = command[0]
     second_string = command[1]
-    if command == 'Add stop':
-        index = command.split(':')[1]
-        pass
-    if command == 'Remove stop':
-        pass
-    if command == 'Switch stop':
-        trird_string = command.split(':')[2]
-        pass
-    command = command.split(':')
+    
+    if commands == 'Add Stop':
+        index = int(second_string)
+        initial_string = initial_string[:index] + command[2] + initial_string[index:]
+        print(initial_string)
+    elif commands == 'Remove Stop':
+        initial_string = initial_string[:int(second_string)] + initial_string[int(command[2]) + 1:]
+        print(initial_string)
+    elif commands == 'Switch':
+        old_string = command[2]
+        initial_string = initial_string.replace(old_string, second_string)
+        print(initial_string)
+
+    
+    command = input().split(':')
+
+print(f"Ready for a world tour! Planned stops: {initial_string}")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # command = command[0]
+    # second_string = command[1]
+    # if command == 'Add stop':
+    #     index = command.split(':')[1]
+    #     pass
+    # if command == 'Remove stop':
+    #     pass
+    # if command == 'Switch stop':
+    #     trird_string = command.split(':')[2]
+    #     pass
+    # command = command.split(':')

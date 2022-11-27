@@ -26,10 +26,11 @@ while command != 'Travel':
     command = command[0]
     second_string = command[1]
     if command == 'Add stop':
+        index = command.split(':')[1]
         pass
     if command == 'Remove stop':
         pass
     if command == 'Switch stop':
-        trird_string = command[2]
+        trird_string = command.split(':')[2]
         pass
-    
+    command = command.split(':')

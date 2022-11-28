@@ -65,10 +65,13 @@ while not command == "Stop":
         #     print(f"{command[1]} refueled with {command[2]} liters")
     elif command[0] == "Revert":
         revert = int(command[2])
-        car_dict[command[2]][0] = str(max(10000, int(car_dict[command[2]][0]) - revert))
-        # car_dict[command[2]][0] = str(max(10000, int(car_dict[command[2]][0]) - int(command[2])))
-        if int(car_dict[command[2]][0]) > 10000:
-            print(f"{command[1]} mileage decreased by {command[2]} kilometers")
+        old_mileage = int(car_dict[command[2]][0])
+        new_mileage = old_mileage - revert
+        if new_mileage < 10000:
+            car_dict[command[2]][0] = str(10000)
+        else:
+            car_dict[command[2]][0] = str(new_mileage)
+            print(f"{command[2]} mileage decreased by {revert} kilometers")
 
         # if int(car_dict[command[1]][0]) - int(command[2]) < 10000:
         #     car_dict[command[1]][0] = str(10000)

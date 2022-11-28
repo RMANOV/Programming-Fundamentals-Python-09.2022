@@ -52,19 +52,31 @@ while not command == "Stop":
         else:
             print("Not enough fuel to make that ride")
     elif command[0] == "Refuel":
-        if int(car_dict[command[1]][1]) + int(command[2]) > 75:
-            print(f"{command[1]} refueled with {75 - int(car_dict[command[1]][1])} liters")
-            car_dict[command[1]][1] = str(75)
-        else:
-            car_dict[command[1]][1] = str(int(car_dict[command[1]][1]) + int(command[2]))
+        car_dict[command[1]][1] = str(min(75, int(car_dict[command[1]][1]) + int(command[2])))
+        if int(car_dict[command[1]][1]) == 75:
             print(f"{command[1]} refueled with {command[2]} liters")
-    elif command[0] == "Revert":
-        if int(car_dict[command[1]][0]) - int(command[2]) < 10000:
-            car_dict[command[1]][0] = str(10000)
         else:
-            car_dict[command[1]][0] = str(int(car_dict[command[1]][0]) - int(command[2]))
+            print(f"{command[1]} refueled with {75 - int(car_dict[command[1]][1])} liters")
+        # if int(car_dict[command[2]][1]) + int(command[2]) > 75:
+        #     print(f"{command[1]} refueled with {75 - int(car_dict[command[1]][1])} liters")
+        #     car_dict[command[1]][1] = str(75)
+        # else:
+        #     car_dict[command[1]][1] = str(int(car_dict[command[1]][1]) + int(command[2]))
+        #     print(f"{command[1]} refueled with {command[2]} liters")
+    elif command[0] == "Revert":
+        revert = int(command[2])
+        car_dict[command[2]][0] = str(max(10000, int(car_dict[command[2]][0]) - revert))
+        # car_dict[command[2]][0] = str(max(10000, int(car_dict[command[2]][0]) - int(command[2])))
+        if int(car_dict[command[2]][0]) > 10000:
             print(f"{command[1]} mileage decreased by {command[2]} kilometers")
+
+        # if int(car_dict[command[1]][0]) - int(command[2]) < 10000:
+        #     car_dict[command[1]][0] = str(10000)
+        # else:
+        #     car_dict[command[1]][0] = str(int(car_dict[command[1]][0]) - int(command[2]))
+        #     print(f"{command[1]} mileage decreased by {command[2]} kilometers")
     command = input()
 
-print(*[f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt." for car, [mileage, fuel] in car_dict.items()], sep="\n")
-
+# print(*[f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt." for car, [mileage, fuel] in car_dict.items()], sep="\n")
+for car, [mileage, fuel] in car_dict.items():
+    print(f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt.")

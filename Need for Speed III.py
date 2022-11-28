@@ -64,6 +64,8 @@ while not command == "Stop":
         # car_dict[car][0] = str(max(int(car_dict[car][0]) - kilometers, 10000))
         # car_dict[car][1]= int(car_dict[car][1]) - kilometers
         # car[1] = int(car[1]) - kilometers
+        car_dict[car][0] = int(car_dict[car][1])
+        car_dict[car][0] = max(car_dict[car][0] - kilometers, 10000)
     
         if int(car_dict[car][0]) < 10000:
             car_dict[car][0] = "10000"

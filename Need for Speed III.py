@@ -64,4 +64,6 @@ while not command == "Stop":
             print(f"{car} mileage decreased by {kilometers} kilometers")
     command = input()
 
-print(*[f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt." for car, mileage, fuel in car_dict.items()], sep = "\n")
+# print(*[f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt." for car, mileage, fuel in car_dict.items()], sep = "\n")
+for car, mileage, fuel in car_dict.items():
+    print(f"{car} -> Mileage: {mileage} kms, Fuel in the tank: {fuel} lt.")

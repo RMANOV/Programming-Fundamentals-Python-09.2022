@@ -61,7 +61,9 @@ def average_rating(plant_dictionary):
 
 def print_plants(plant_dictionary):
     print("Plants for the exhibition:")
-    print(*[f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {average_rating(plant_dictionary[plant]):.2f}" for plant in plant_dictionary], sep="\n")
+    for plant, plant_info in sorted(plant_dictionary.items(), key=lambda x: (-x[1]["rarity"], -average_rating(x[1]))):
+        print(f"- {plant}; Rarity: {plant_info['rarity']}; Rating: {average_rating(plant_info):.2f}")
+    # print(*[f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {average_rating(plant_dictionary[plant]):.2f}" for plant in plant_dictionary], sep="\n")
     # print the plants sorted by rarity in descending order, then by rating in descending order - if the rarity is the same - 
     # withouth divise by zero error
     # print(*[f"- {plant}; Rarity: {plant_dictionary[plant]['rarity']}; Rating: {sum(plant_dictionary[plant]['rating']) / len(plant_dictionary[plant]['rating']):.2f}" for plant in sorted(plant_dictionary, key=lambda x: (-plant_dictionary[x]["rarity"], -sum(plant_dictionary[x]["rating"]) / len(plant_dictionary[x]["rating"]) if len(plant_dictionary[x]["rating"]) > 0 else 0))], sep="\n")

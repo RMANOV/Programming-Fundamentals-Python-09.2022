@@ -29,6 +29,8 @@ def get_index(number_list, messaging):
 def get_message(digit_list, messaging):
     message = ""
     for i in digit_list:
+        if len(messaging) <= 0:
+            i=0
         if i >= len(messaging):
             i = i % len(messaging)
         message += messaging[i]

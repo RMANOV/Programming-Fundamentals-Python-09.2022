@@ -9,21 +9,43 @@
 # When you find a char, you should add it to the message and remove it from the string. 
 # It means that for the following index, the text will be with one character less.
 
-initial_sequence = [int(i) for i in input().split()]
-initial_text = input()
+number_list = [int(i) for i in input().split()]
+encrypted_message = input()
 
-for i in initial_sequence:
+for i in number_list:
     current_sum = 0
-
     while i > 0:
+        if current_sum > len(encrypted_message):
+            current_sum = current_sum % len(encrypted_message)
+            
         current_sum += i % 10
         i = i // 10
         
-        if current_sum > len(initial_text):
-            current_sum -= len(initial_text)
+        if current_sum > len(encrypted_message):
+            current_sum -= len(encrypted_message)
             
-    print(initial_text[current_sum], end="")
-    initial_text = initial_text[:current_sum] + initial_text[current_sum + 1:]
+    print(encrypted_message[current_sum], end="")
+    encrypted_message = encrypted_message[:current_sum] + encrypted_message[current_sum + 1:]
+
+
+
+
+
+# initial_sequence = [int(i) for i in input().split()]
+# initial_text = input()
+
+# for i in initial_sequence:
+#     current_sum = 0
+
+#     while i > 0:
+#         current_sum += i % 10
+#         i = i // 10
+        
+#         if current_sum > len(initial_text):
+#             current_sum -= len(initial_text)
+            
+#     print(initial_text[current_sum], end="")
+#     initial_text = initial_text[:current_sum] + initial_text[current_sum + 1:]
 
 
 

@@ -11,21 +11,32 @@
 
 number_list = [int(i) for i in input().split()]
 encrypted_message = input()
+decrypted_message = ""
 
-for i in number_list:
+for number in number_list:
     current_sum = 0
-    while i > 0:
-        if current_sum > len(encrypted_message):
-            current_sum = current_sum % len(encrypted_message)
+    while number > 0:
+        current_sum += number % 10
+        number = number // 10
+    decrypted_message += encrypted_message[current_sum % len(encrypted_message)]
+    encrypted_message = encrypted_message[:current_sum % len(encrypted_message)] + encrypted_message[current_sum % len(encrypted_message) + 1:]
+
+print(decrypted_message)
+
+# for i in number_list:
+#     current_sum = 0
+#     while i > 0:
+#         if current_sum > len(encrypted_message):
+#             current_sum = current_sum % len(encrypted_message)
             
-        current_sum += i % 10
-        i = i // 10
+#         current_sum += i % 10
+#         i = i // 10
         
-        if current_sum > len(encrypted_message):
-            current_sum -= len(encrypted_message)
+#         if current_sum > len(encrypted_message):
+#             current_sum -= len(encrypted_message)
             
-    print(encrypted_message[current_sum], end="")
-    encrypted_message = encrypted_message[:current_sum] + encrypted_message[current_sum + 1:]
+#     print(encrypted_message[current_sum], end="")
+#     encrypted_message = encrypted_message[:current_sum] + encrypted_message[current_sum + 1:]
 
 
 

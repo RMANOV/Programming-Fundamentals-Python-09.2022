@@ -50,8 +50,7 @@ for emoji in re.finditer(pattern, initial_text):
         cool_emojis.append(emoji.group())
 
 print(f"Cool threshold: {cool_threshold}")
+print(f"{count_of_emojis} emojis found in the text. The cool ones are:")
 
 for emoji in cool_emojis:
-    print(f' cool emoji {emoji}')
-
-
+    print(f' {emoji}')

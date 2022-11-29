@@ -14,6 +14,7 @@ initial_text = input()
 
 for i in initial_sequence:
     current_sum = 0
+
     while i > 0:
         current_sum += i % 10
         i = i // 10

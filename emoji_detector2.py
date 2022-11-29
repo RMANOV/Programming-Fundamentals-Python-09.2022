@@ -1,0 +1,89 @@
+# Your task is to write a program that extracts emojis from a text and find the threshold based on the input.
+# You have to get your cool threshold. It is obtained by multiplying all the digits found in the input.
+# The cool threshold could be a huge number, so be mindful.
+# An emoji is valid when:
+# •	It is surrounded by 2 characters, either "::" or "**"
+# •	It is at least 3 characters long (without the surrounding symbols)
+# •	It starts with a capital letter
+# •	Continues with lowercase letters only
+# Examples of valid emojis: ::Joy::, **Banana**, ::Wink::
+# Examples of invalid emojis: ::Joy**, ::fox:es:, **Monk3ys**, :Snak::Es::
+# You need to count all valid emojis in the text and calculate their coolness.
+# The coolness of the emoji is determined by summing all the ASCII values of all letters in the emoji.
+# Examples: ::Joy:: - 306, **Banana** - 577, ::Wink:: - 409
+# You need to print the result of the cool threshold and, after that to take all emojis out of the text,
+# count them and print only the cool ones on the console.
+# Input
+# •	On the single input, you will receive a piece of string.
+# Output
+# •	On the first line of the output, print the obtained Cool threshold in the format:
+# "Cool threshold: {coolThresholdSum}"
+# •	On the following line, print the count of all emojis found in the text in format:
+# "{countOfAllEmojis} emojis found in the text. The cool ones are:
+# {cool emoji 1}
+# {cool emoji 2}
+# …
+# {cool emoji N}"
+# Constraints
+# There will always be at least one digit in the text!
+
+import re
+
+def cool_threshold(text):
+    cool_threshold = 1
+    numbers = re.findall(r'\d', text)
+    for number in numbers:
+        cool_threshold *= int(number)
+    return cool_threshold
+
+def count_of_emojis(text):
+    pattern = r'(?P<delimiter>[:]{2}|[*]{2})(?P<word>[A-Z][a-z]{2,})(?P=delimiter)'
+    emojis = re.finditer(pattern, text)
+    count_of_emojis = len([emoji.group() for emoji in emojis])
+    return count_of_emojis
+
+def cool_emojis(text):
+    cool_emojis = []
+    pattern = r'(?P<delimiter>[:]{2}|[*]{2})(?P<word>[A-Z][a-z]{2,})(?P=delimiter)'
+    for emoji in re.finditer(pattern, text):
+        coolness = sum([ord(char) for char in emoji.group('word')])
+        if coolness > cool_threshold(text):
+            cool_emojis.append(emoji.group())
+    return cool_emojis
+
+def print_result(text):
+    print(f"Cool threshold: {cool_threshold(text)}")
+    print(f"{count_of_emojis(text)} emojis found in the text. The cool ones are:")
+    print('\n'.join(cool_emojis(text)))
+
+def main():
+    text = input()
+    print_result(text)
+
+main()
+
+
+
+# initial_text = input()
+# pattern = r"(?P<delimiter>[:]{2}|[*]{2})(?P<word>[A-Z][a-z]{2,})(?P=delimiter)"
+# cool_threshold = 1
+# numbers = re.findall(r"\d", initial_text)
+# count_of_emojis = 0
+# cool_emojis = []
+
+# for number in numbers:
+#     cool_threshold *= int(number)
+
+# emojis = re.finditer(pattern, initial_text)
+# count_of_emojis = len([emoji.group() for emoji in emojis])
+
+# for emoji in re.finditer(pattern, initial_text):
+#     coolness = sum([ord(char) for char in emoji.group("word")])
+#     if coolness > cool_threshold:
+#         cool_emojis.append(emoji.group())
+
+# print(f"Cool threshold: {cool_threshold}")
+# print(f"{count_of_emojis} emojis found in the text. The cool ones are:")
+
+# for emoji in cool_emojis:
+#     print(f" {emoji}")

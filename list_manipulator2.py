@@ -38,12 +38,21 @@ def exchange_list(lst, index):
     if index < 0 or index >= len(lst):
         print("Invalid index")
         return lst
+    if index == 0:
+        return lst
     return lst[index + 1:] + lst[:index + 1] # slice the list and concatenate the two parts
+    #exchange first part with second part and then concatenate them
+    # lst[index + 1:], lst[:index + 1] = lst[:index + 1], lst[index + 1:]
+    # return lst
+
 
 def get_max_min(lst, even_odd):
     max_min = None
     max_min_index = None
     for i in range(len(lst)):
+        # if i == 0:
+        #     max_min = 0
+        #     max_min_index = i
         if (even_odd == "even" and lst[i] % 2 == 0) or (even_odd == "odd" and lst[i] % 2 != 0):
             if max_min is None or lst[i] >= max_min:
                 max_min = lst[i]

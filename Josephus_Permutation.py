@@ -14,8 +14,8 @@ initial_list = input().split()
 number_of_skips = int(input())
 result = []
 
-for i in range(len(initial_list)):
-    index = (number_of_skips - 1) % len(initial_list)
+for i in range(0,len(initial_list),number_of_skips):
+    index = (number_of_skips-1)%len(initial_list)
     result.append(initial_list.pop(index))
 
 print(f"[{','.join(result)}]")

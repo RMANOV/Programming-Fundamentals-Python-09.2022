@@ -33,10 +33,6 @@
 initial_list = [int(x) for x in input().split()]
 even_list = []
 odd_list = []
-max_even = 0
-min_even = 0
-max_odd = 0
-min_odd = 0
 
 command = input()
 while command != "end":
@@ -127,6 +123,8 @@ while command != "end":
                     print("[]")
                 else:
                     print(odd_list[-count:])
+    odd_list.clear()
+    even_list.clear()
     command = input()
 
 print('[' + ', '.join([str(x) for x in initial_list]) + ']')

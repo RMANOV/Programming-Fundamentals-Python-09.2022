@@ -11,12 +11,17 @@
 # Print the people by order of executions in the format: "[{executed1},{executed2}, … {executedN}]"
 
 initial_list = input().split()
+
 number_of_skips = int(input())
 result = []
 
 for i in range(0,len(initial_list),number_of_skips):
-    index = (number_of_skips-1)%len(initial_list)
-    result.append(initial_list.pop(index))
+    # index = (number_of_skips-1)%len(initial_list)
+    # result.append(initial_list.pop(number_of_skips-1))
+    # result.append(initial_list.pop(index))
+    if i > len(initial_list):
+        i=0
+    result.append(initial_list.pop(i))
 
 print(f"[{','.join(result)}]")
 

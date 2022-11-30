@@ -54,6 +54,7 @@ def max_even_odd(lst, even_odd):
 def min_even_odd(lst, even_odd):
     min_num = 1001
     min_index = -1
+    num = 0
     for index, num in map(lambda x: (x[0], x[1]), enumerate(lst)):
         if even_odd == "even" and num % 2 == 0:
             if num <= min_num:

@@ -11,16 +11,34 @@
 # Print the people by order of executions in the format: "[{executed1},{executed2}, … {executedN}]"
 
 initial_list = input().split()
-
 number_of_skips = int(input())
 result = []
-index = 0
-while initial_list:
-    index += number_of_skips-1
-    # result.append(initial_list.pop(index))
-    result.append(initial_list.pop(index % len(initial_list)))
-    if index >= len(initial_list):
-        index = 0
+
+
+def josephus_permutation(initial_list, number_of_skips):
+    index = 0
+    while initial_list:
+        index = (index + number_of_skips - 1) % len(initial_list)
+        result.append(initial_list.pop(index))
+    return result
+
+def print_result(result):
+    print(f'[{",".join(result)}]')
+
+def main():
+    josephus_permutation(initial_list, number_of_skips)
+    print_result(result)
+
+main()
+
+# while initial_list:
+#     index += number_of_skips-1
+#     # result.append(initial_list.pop(index))
+#     result.append(initial_list.pop(index % len(initial_list)))
+#     if index >= len(initial_list):
+#         index = 0
+
+# print(f"[{','.join(result)}]")
 
     # # index = (number_of_skips - 1) % len(initial_list)
     # # index = number_of_skips % len(initial_list)
@@ -29,10 +47,6 @@ while initial_list:
     # index += number_of_skips
     # if index >= len(initial_list):
     #     index = index % len(initial_list)
-
-
-print(f"[{','.join(result)}]")
-
 
 # for i in range(0,len(initial_list),number_of_skips):
 #     # index = (number_of_skips-1)%len(initial_list)

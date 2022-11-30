@@ -14,15 +14,20 @@ initial_list = input().split()
 
 number_of_skips = int(input())
 result = []
-
+index = 0
 while initial_list:
-    # index = (number_of_skips - 1) % len(initial_list)
-    # index = number_of_skips % len(initial_list)
-    index = number_of_skips
-    result.append(initial_list.pop(index))
     index += number_of_skips
+    result.append(initial_list.pop(index))
     if index >= len(initial_list):
-        index = index % len(initial_list)
+        index = 0
+
+    # # index = (number_of_skips - 1) % len(initial_list)
+    # # index = number_of_skips % len(initial_list)
+    # index = number_of_skips
+    # result.append(initial_list.pop(index))
+    # index += number_of_skips
+    # if index >= len(initial_list):
+    #     index = index % len(initial_list)
 
 
 print(f"[{','.join(result)}]")

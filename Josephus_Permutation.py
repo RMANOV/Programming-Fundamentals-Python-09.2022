@@ -15,9 +15,18 @@ initial_list = input().split()
 number_of_skips = int(input())
 result = []
 
-for i in range(len(initial_list)):
-    initial_list = [initial_list[(number_of_skips + i) % len(initial_list)] for i in range(len(initial_list))]
-    result.append(initial_list.pop(0))
+while initial_list:
+    # index = (number_of_skips - 1) % len(initial_list)
+    # index = number_of_skips % len(initial_list)
+    index = number_of_skips
+    result.append(initial_list.pop(index))
+    index += number_of_skips
+    if index >= len(initial_list):
+        index = index % len(initial_list)
+
+
+print(f"[{','.join(result)}]")
+
 
 # for i in range(0,len(initial_list),number_of_skips):
 #     # index = (number_of_skips-1)%len(initial_list)
@@ -26,8 +35,6 @@ for i in range(len(initial_list)):
 #     if i > len(initial_list):
 #         i=0
 #     result.append(initial_list.pop(i))
-
-print(f"[{','.join(result)}]")
 
 
 # def josephus_permutation(items, k):

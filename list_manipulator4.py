@@ -1,0 +1,359 @@
+# The list may be manipulated by one of the following commands:
+# •	"exchange {index}" – splits the list after the given index and exchanges the places of the two resulting sub-lists. E.g., [1, 2, 3, 4, 5] -> "exchange 2" -> result: [4, 5, 1, 2, 3]
+# o	If the index is outside the boundaries of the list, print "Invalid index"
+# o	A negative index is considered invalid
+# •	"max even/odd"– returns the INDEX of the max even/odd element. E.g., [1, 4, 8, 2, 3] -> "max odd" -> print: 8
+# •	"min even/odd" – returns the INDEX of the min even/odd element. E.g. [1, 4, 8, 2, 3] -> "min even" -> print: 2
+# o	If there are two or more equal min/max elements, return the index of the rightmost one
+# o	If a min/max even/odd element cannot be found, print "No matches"
+# •	"first {count} even/odd" – returns the first count even/odd elements. E.g. [1, 8, 2, 3] -> "first 2 even" -> print [8, 2]
+# •	"last {count} even/odd" – returns the last count even/odd elements. E.g. [1, 8, 2, 3] -> "last 2 odd" -> print [1, 3]
+# o	If the count is greater than the list length, print "Invalid count"
+# o	If there are not enough elements to satisfy the count, print as many as you can.
+# If there are zero even/odd elements, print an empty list "[]"
+# •	"end" - stop taking input and print the final state of the list
+# Input
+# •	The input data should be read from the console.
+# •	On the first line, the initial list is received as a line of integers, separated by a single space.
+# •	On the following lines, until the command "end" is received, you will receive the list manipulation commands.
+# •	The input data will always be valid and in the format described. There is no need to check it explicitly.
+# Output
+# •	The output should be printed on the console.
+# •	On a separate line, print the output of the corresponding command.
+# •	On the last line, print the final list in square brackets with its elements separated by a comma and a space.
+# •	See the examples below to get a better understanding of your task.
+# Constraints
+# •	The number of input lines will be in the range [2 … 50].
+# •	The list elements will be integers in the range [0 … 1000].
+# •	The number of elements will be in the range [1 .. 50].
+# •	The split index will be an integer in the range [-231 … 231 – 1].
+# •	The first/last count will be an integer in the range [1 … 231 – 1].
+# •	There will not be redundant whitespace anywhere in the input.
+
+
+def exchange_list(list_of_numbers, index):
+    if index < 0 or index >= len(list_of_numbers):
+        print("Invalid index")
+        return list_of_numbers
+    else:
+        return list_of_numbers[index + 1:] + list_of_numbers[:index + 1]
+
+def max_even_odd(list_of_numbers, even_or_odd):
+    max_even_odd = -1
+    max_even_odd_index = -1
+    for index, number in enumerate(list_of_numbers):
+        if even_or_odd == "even" and number % 2 == 0 and number >= max_even_odd:
+            max_even_odd = number
+            max_even_odd_index = index
+        elif even_or_odd == "odd" and number % 2 != 0 and number >= max_even_odd:
+            max_even_odd = number
+            max_even_odd_index = index
+    if max_even_odd_index == -1:
+        print("No matches")
+    else:
+        print(max_even_odd_index)
+
+def min_even_odd(list_of_numbers, even_or_odd):
+    min_even_odd = 1001
+    min_even_odd_index = -1
+    for index, number in enumerate(list_of_numbers):
+        if even_or_odd == "even" and number % 2 == 0 and number <= min_even_odd:
+            min_even_odd = number
+            min_even_odd_index = index
+        elif even_or_odd == "odd" and number % 2 != 0 and number <= min_even_odd:
+            min_even_odd = number
+            min_even_odd_index = index
+    if min_even_odd_index == -1:
+        print("No matches")
+    else:
+        print(min_even_odd_index)
+
+def first_even_odd(list_of_numbers, count, even_or_odd):
+    first_even_odd = []
+    for number in list_of_numbers:
+        if len(first_even_odd) == count:
+            break
+        if even_or_odd == "even" and number % 2 == 0:
+            first_even_odd.append(number)
+        elif even_or_odd == "odd" and number % 2 != 0:
+            first_even_odd.append(number)
+    print(first_even_odd)
+
+def last_even_odd(list_of_numbers, count, even_or_odd):
+    last_even_odd = []
+    for number in list_of_numbers[::-1]:
+        if len(last_even_odd) == count:
+            break
+        if even_or_odd == "even" and number % 2 == 0:
+            last_even_odd.append(number)
+        elif even_or_odd == "odd" and number % 2 != 0:
+            last_even_odd.append(number)
+    print(last_even_odd[::-1])
+
+def main():
+    list_of_numbers = [int(x) for x in input().split()]
+    command = input()
+    while command != "end":
+        command = command.split()
+        if command[0] == "exchange":
+            list_of_numbers = exchange_list(list_of_numbers, int(command[1]))
+        elif command[0] == "max":
+            max_even_odd(list_of_numbers, command[1])
+        elif command[0] == "min":
+            min_even_odd(list_of_numbers, command[1])
+        elif command[0] == "first":
+            first_even_odd(list_of_numbers, int(command[1]), command[2])
+        elif command[0] == "last":
+            last_even_odd(list_of_numbers, int(command[1]), command[2])
+        command = input()
+    print(list_of_numbers)
+
+
+main()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+# def aqccept_input():
+#     return [int(x) for x in input().split()]
+
+
+# def exchange_index(field, index):
+#     if index < 0 or index > len(field) - 1:
+#         print("Invalid index")
+#         return
+#     return field[index + 1 :] + field[: index + 1]
+
+
+# def get_max(field, even_or_odd):
+#     max_element = -1
+#     max_index = -1
+#     for index, element in enumerate(field):
+#         if even_or_odd == "even" and element % 2 == 0 and element >= max_element:
+#             max_element = element
+#             max_index = index
+#         elif even_or_odd == "odd" and element % 2 == 1 and element >= max_element:
+#             max_element = element
+#             max_index = index
+#     return max_index
+
+
+# def get_min(field, even_or_odd):
+#     min_element = 1001
+#     min_index = -1
+#     for index, element in enumerate(field):
+#         if even_or_odd == "even" and element % 2 == 0 and element <= min_element:
+#             min_element = element
+#             min_index = index
+#         elif even_or_odd == "odd" and element % 2 == 1 and element <= min_element:
+#             min_element = element
+#             min_index = index
+#     return min_index
+
+
+# def even_or_odd(field, count, even_or_odd):
+#     result = []
+#     for element in field:
+#         if even_or_odd == "even" and element % 2 == 0:
+#             result.append(element)
+#         elif even_or_odd == "odd" and element % 2 == 1:
+#             result.append(element)
+#     if count > len(result):
+#         return result
+#     return result[:count]
+
+
+# def last_even_or_odd(field, count, even_or_odd):
+#     result = []
+#     for element in field:
+#         if even_or_odd == "even" and element % 2 == 0:
+#             result.append(element)
+#         elif even_or_odd == "odd" and element % 2 == 1:
+#             result.append(element)
+#     if count > len(result):
+#         return result
+#     return result[-count:]
+
+
+# def print_result(field):
+#     print(f"[{', '.join(str(x) for x in field)}]")
+#     return
+
+
+# def main():
+#     field = aqccept_input()
+#     command = input()
+#     while command != "end":
+#         command = command.split()
+#         if command[0] == "exchange":
+#             field = exchange_index(field, int(command[1]))
+#         elif command[0] == "max":
+#             index = get_max(field, command[1])
+#             if index == -1:
+#                 print("No matches")
+#             else:
+#                 print(index)
+#         elif command[0] == "min":
+#             index = get_min(field, command[1])
+#             if index == -1:
+#                 print("No matches")
+#             else:
+#                 print(index)
+#         elif command[0] == "first":
+#             result = even_or_odd(field, int(command[1]), command[2])
+#             print_result(result)
+#         elif command[0] == "last":
+#             result = last_even_or_odd(field, int(command[1]), command[2])
+#             print_result(result)
+#         command = input()
+#     print_result(field)
+
+
+# main()
+
+
+# def aquire_input():
+#     return [int(x) for x in input().split()]
+
+
+# def exchange_list(lst, index):
+#     if index < 0 or index >= len(lst):
+#         print("Invalid index")
+#         return lst
+#     return (
+#         lst[index + 1 :] + lst[: index + 1]
+#     )  # slice the list and concatenate the two parts
+
+
+# def get_max_min(lst, even_odd):
+#     max_min = None
+#     max_min_index = None
+#     for i in range(len(lst)):
+#         if (even_odd == "even" and lst[i] % 2 == 0) or (
+#             even_odd == "odd" and lst[i] % 2 != 0
+#         ):
+#             if max_min is None or lst[i] >= max_min:
+#                 max_min = lst[i]
+#                 max_min_index = i
+#     return max_min_index
+
+
+# def get_first_last(lst, count, even_odd):
+#     result = []
+#     for i in range(len(lst)):
+#         if (even_odd == "even" and lst[i] % 2 == 0) or (
+#             even_odd == "odd" and lst[i] % 2 != 0
+#         ):
+#             result.append(lst[i])
+#             if len(result) == count:
+#                 break
+#     return result
+
+
+# def print_list(lst):
+#     print("[" + ", ".join([str(x) for x in lst]) + "]")
+
+
+# def main():
+#     lst = aquire_input()
+#     while True:
+#         command = input()
+#         if command == "end":
+#             break
+#         command = command.split()
+#         if command[0] == "exchange":
+#             lst = exchange_list(lst, int(command[1]))
+#         elif command[0] == "max" or command[0] == "min":
+#             max_min_index = get_max_min(lst, command[1])
+#             if max_min_index is None:
+#                 print("No matches")
+#             else:
+#                 print(max_min_index)
+#         elif command[0] == "first" or command[0] == "last":
+#             if int(command[1]) > len(lst):
+#                 print("Invalid count")
+#             else:
+#                 print_list(get_first_last(lst, int(command[1]), command[2]))
+#     print_list(lst)
+
+
+# main()
+
+
+# initial_list = [int(x) for x in input().split()]
+# while True:
+#     command = input().split()
+#     if command[0] == "end":
+#         break
+#     elif command[0] == "exchange":
+#         if int(command[1]) not in range(len(initial_list)):
+#             print("Invalid index")
+#         else:
+#             initial_list = (
+#                 initial_list[int(command[1]) + 1 :]
+#                 + initial_list[: int(command[1]) + 1]
+#             )
+#     elif command[0] == "max":
+#         if command[1] == "even":
+#             max_even = max(
+#                 [x for x in initial_list if x % 2 == 0], default="No matches"
+#             )
+#             if max_even == "No matches":
+#                 print("No matches")
+#             else:
+#                 print(initial_list.index(max_even))
+#         elif command[1] == "odd":
+#             max_odd = max([x for x in initial_list if x % 2 != 0], default="No matches")
+#             if max_odd == "No matches":
+#                 print("No matches")
+#             else:
+#                 print(initial_list.index(max_odd))
+#     elif command[0] == "min":
+#         if command[1] == "even":
+#             min_even = min(
+#                 [x for x in initial_list if x % 2 == 0], default="No matches"
+#             )
+#             if min_even == "No matches":
+#                 print("No matches")
+#             else:
+#                 print(initial_list.index(min_even))
+#         elif command[1] == "odd":
+#             min_odd = min([x for x in initial_list if x % 2 != 0], default="No matches")
+#             if min_odd == "No matches":
+#                 print("No matches")
+#             else:
+#                 print(initial_list.index(min_odd))
+#     elif command[0] == "first":
+#         if int(command[1]) > len(initial_list):
+#             print("Invalid count")
+#         elif command[2] == "even":
+#             first_even = [x for x in initial_list if x % 2 == 0][: int(command[1])]
+#             print(first_even)
+#         elif command[2] == "odd":
+#             first_odd = [x for x in initial_list if x % 2 != 0][: int(command[1])]
+#             print(first_odd)
+#     elif command[0] == "last":
+#         if int(command[1]) > len(initial_list):
+#             print("Invalid count")
+#         elif command[2] == "even":
+#             last_even = [x for x in initial_list if x % 2 == 0][-int(command[1]) :]
+#             print(last_even)
+#         elif command[2] == "odd":
+#             last_odd = [x for x in initial_list if x % 2 != 0][-int(command[1]) :]
+#             print(last_odd)
+
+# print(initial_list)

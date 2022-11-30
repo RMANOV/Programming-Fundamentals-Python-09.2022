@@ -10,31 +10,42 @@
 # and skipping the same number of people until no one remains.
 # Print the people by order of executions in the format: "[{executed1},{executed2}, … {executedN}]"
 
-def josephus_permutation(items, k):
-    #your code here
-    if len(items) == 0:
-        return []
-    else:
-        k = k - 1
-        idx = k % len(items)
-        return [items[idx]] + josephus_permutation(items[:idx] + items[idx+1:], k+1)
+initial_list = input().split()
+number_of_skips = int(input())
+result = []
 
-def print_josephus_permutation(items, k):
-    print(josephus_permutation(items, k))
+for i in range(len(initial_list)):
+    index = (number_of_skips - 1) % len(initial_list)
+    result.append(initial_list.pop(index))
 
-def main():
-    print_josephus_permutation([1,2,3,4,5,6,7],3)
-    print_josephus_permutation([1,2,3,4,5,6,7],4)
-    print_josephus_permutation([],3)
-    print_josephus_permutation([1,2,3,4,5,6,7],-1)
-    print_josephus_permutation([1,2,3,4,5,6,7],0)
-    print_josephus_permutation([1,2,3,4,5,6,7],1)
-    print_josephus_permutation([1,2,3,4,5,6,7],2)
-    print_josephus_permutation([1,2,3,4,5,6,7],8)
-    print_josephus_permutation([1,2,3,4,5,6,7],9)
-    print_josephus_permutation([1,2,3,4,5,6,7],10)
+print(f"[{','.join(result)}]")
 
-main()
+
+# def josephus_permutation(items, k):
+#     #your code here
+#     if len(items) == 0:
+#         return []
+#     else:
+#         k = k - 1
+#         idx = k % len(items)
+#         return [items[idx]] + josephus_permutation(items[:idx] + items[idx+1:], k+1)
+
+# def print_josephus_permutation(items, k):
+#     print(josephus_permutation(items, k))
+
+# def main():
+#     print_josephus_permutation([1,2,3,4,5,6,7],3)
+#     print_josephus_permutation([1,2,3,4,5,6,7],4)
+#     print_josephus_permutation([],3)
+#     print_josephus_permutation([1,2,3,4,5,6,7],-1)
+#     print_josephus_permutation([1,2,3,4,5,6,7],0)
+#     print_josephus_permutation([1,2,3,4,5,6,7],1)
+#     print_josephus_permutation([1,2,3,4,5,6,7],2)
+#     print_josephus_permutation([1,2,3,4,5,6,7],8)
+#     print_josephus_permutation([1,2,3,4,5,6,7],9)
+#     print_josephus_permutation([1,2,3,4,5,6,7],10)
+
+# main()
 
 # initial_list = input().split()
 # step = int(input())

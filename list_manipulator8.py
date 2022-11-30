@@ -30,81 +30,176 @@
 # •	The first/last count will be an integer in the range [1 … 231 – 1].
 # •	There will not be redundant whitespace anywhere in the input.
 
-initial_list = [int(x) for x in input().split()]
+def exchange(lst, index):
+    if index < 0 or index >= len(lst):
+        return "Invalid index"
+    return lst[index + 1:] + lst[:index + 1]
 
-while True:
+def max_even_odd(lst, even_odd):
+    max_num = -1
+    max_index = -1
+    for index, num in map(lambda x: (x[0], x[1]), enumerate(lst)):
+        if even_odd == "even" and num % 2 == 0:
+            if num >= max_num:
+                max_num = num
+                max_index = index
+        elif even_odd == "odd" and num % 2 != 0:
+            if num >= max_num:
+                max_num = num
+                max_index = index
+    if max_index == -1:
+        return "No matches"
+    return max_index
+
+def min_even_odd(lst, even_odd):
+    min_num = 1001
+    min_index = -1
+    for index, num in map(lambda x: (x[0], x[1]), enumerate(lst)):
+        if even_odd == "even" and num % 2 == 0:
+            if num <= min_num:
+                min_num = num
+                min_index = index
+        elif even_odd == "odd" and num % 2 != 0:
+            if num <= min_num:
+                min_num = num
+                min_index = index
+    if min_index == -1:
+        return "No matches"
+    return min_index
+
+def first_even_odd(lst, count, even_odd):
+    if count > len(lst):
+        return "Invalid count"
+    result = []
+    for num in lst:
+        if even_odd == "even" and num % 2 == 0:
+            result.append(num)
+        elif even_odd == "odd" and num % 2 != 0:
+            result.append(num)
+    if len(result) == 0:
+        return []
+    return result[:count]
+
+def last_even_odd(lst, count, even_odd):
+    if count > len(lst):
+        return "Invalid count"
+    result = []
+    for num in lst:
+        if even_odd == "even" and num % 2 == 0:
+            result.append(num)
+        elif even_odd == "odd" and num % 2 != 0:
+            result.append(num)
+    if len(result) == 0:
+        return []
+    return result[-count:]
+
+def main():
+    lst = [int(x) for x in input().split()]
     command = input()
-    if command == "end":
-        break
-    command = command.split()
-    if command[0] == "exchange":
-        index = int(command[1])
-        if 0 <= index < len(initial_list):
-            initial_list = initial_list[index + 1:] + initial_list[:index + 1]
-        else:
-            print("Invalid index")
-    elif command[0] == "max":
-        if command[1] == "even":
-            even_list = [x for x in initial_list if x % 2 == 0]
-            if even_list:
-                print(initial_list.index(max(even_list)))
-            else:
-                print("No matches")
-        elif command[1] == "odd":
-            odd_list = [x for x in initial_list if x % 2 != 0]
-            if odd_list:
-                print(initial_list.index(max(odd_list)))
-            else:
-                print("No matches")
-    elif command[0] == "min":
-        if command[1] == "even":
-            even_list = [x for x in initial_list if x % 2 == 0]
-            if even_list:
-                print(initial_list.index(min(even_list)))
-            else:
-                print("No matches")
-        elif command[1] == "odd":
-            odd_list = [x for x in initial_list if x % 2 != 0]
-            if odd_list:
-                print(initial_list.index(min(odd_list)))
-            else:
-                print("No matches")
-    elif command[0] == "first":
-        count = int(command[1])
-        if count > len(initial_list):
-            print("Invalid count")
-        else:
-            if command[2] == "even":
-                even_list = [x for x in initial_list if x % 2 == 0]
-                if even_list:
-                    print(even_list[:count])
-                else:
-                    print("[]")
-            elif command[2] == "odd":
-                odd_list = [x for x in initial_list if x % 2 != 0]
-                if odd_list:
-                    print(odd_list[:count])
-                else:
-                    print("[]")
-    elif command[0] == "last":
-        count = int(command[1])
-        if count > len(initial_list):
-            print("Invalid count")
-        else:
-            if command[2] == "even":
-                even_list = [x for x in initial_list if x % 2 == 0]
-                if even_list:
-                    print(even_list[-count:])
-                else:
-                    print("[]")
-            elif command[2] == "odd":
-                odd_list = [x for x in initial_list if x % 2 != 0]
-                if odd_list:
-                    print(odd_list[-count:])
-                else:
-                    print("[]")
+    while command != "end":
+        command = command.split()
+        if command[0] == "exchange":
+            lst = exchange(lst, int(command[1]))
+            if lst == "Invalid index":
+                print(lst)
+        elif command[0] == "max":
+            print(max_even_odd(lst, command[1]))
+        elif command[0] == "min":
+            print(min_even_odd(lst, command[1]))
+        elif command[0] == "first":
+            print(first_even_odd(lst, int(command[1]), command[2]))
+        elif command[0] == "last":
+            print(last_even_odd(lst, int(command[1]), command[2]))
+        command = input()
+    print(lst)
 
-print('[' + ', '.join([str(x) for x in initial_list]) + ']')
+main()
+
+
+
+
+
+
+
+
+
+
+
+# initial_list = [int(x) for x in input().split()]
+
+# while True:
+#     command = input()
+#     if command == "end":
+#         break
+#     command = command.split()
+#     if command[0] == "exchange":
+#         index = int(command[1])
+#         if 0 <= index < len(initial_list):
+#             initial_list = initial_list[index + 1:] + initial_list[:index + 1]
+#         else:
+#             print("Invalid index")
+#     elif command[0] == "max":
+#         if command[1] == "even":
+#             even_list = [x for x in initial_list if x % 2 == 0]
+#             if even_list:
+#                 print(initial_list.index(max(even_list)))
+#             else:
+#                 print("No matches")
+#         elif command[1] == "odd":
+#             odd_list = [x for x in initial_list if x % 2 != 0]
+#             if odd_list:
+#                 print(initial_list.index(max(odd_list)))
+#             else:
+#                 print("No matches")
+#     elif command[0] == "min":
+#         if command[1] == "even":
+#             even_list = [x for x in initial_list if x % 2 == 0]
+#             if even_list:
+#                 print(initial_list.index(min(even_list)))
+#             else:
+#                 print("No matches")
+#         elif command[1] == "odd":
+#             odd_list = [x for x in initial_list if x % 2 != 0]
+#             if odd_list:
+#                 print(initial_list.index(min(odd_list)))
+#             else:
+#                 print("No matches")
+#     elif command[0] == "first":
+#         count = int(command[1])
+#         if count > len(initial_list):
+#             print("Invalid count")
+#         else:
+#             if command[2] == "even":
+#                 even_list = [x for x in initial_list if x % 2 == 0]
+#                 if even_list:
+#                     print(even_list[:count])
+#                 else:
+#                     print("[]")
+#             elif command[2] == "odd":
+#                 odd_list = [x for x in initial_list if x % 2 != 0]
+#                 if odd_list:
+#                     print(odd_list[:count])
+#                 else:
+#                     print("[]")
+#     elif command[0] == "last":
+#         count = int(command[1])
+#         if count > len(initial_list):
+#             print("Invalid count")
+#         else:
+#             if command[2] == "even":
+#                 even_list = [x for x in initial_list if x % 2 == 0]
+#                 if even_list:
+#                     print(even_list[-count:])
+#                 else:
+#                     print("[]")
+#             elif command[2] == "odd":
+#                 odd_list = [x for x in initial_list if x % 2 != 0]
+#                 if odd_list:
+#                     print(odd_list[-count:])
+#                 else:
+#                     print("[]")
+
+# print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 
 
 

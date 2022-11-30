@@ -16,8 +16,9 @@ number_of_skips = int(input())
 result = []
 index = 0
 while initial_list:
-    index += number_of_skips
-    result.append(initial_list.pop(index))
+    index += number_of_skips-1
+    # result.append(initial_list.pop(index))
+    result.append(initial_list.pop(index % len(initial_list)))
     if index >= len(initial_list):
         index = 0
 

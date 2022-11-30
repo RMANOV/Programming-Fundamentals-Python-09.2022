@@ -10,18 +10,44 @@
 # and skipping the same number of people until no one remains.
 # Print the people by order of executions in the format: "[{executed1},{executed2}, … {executedN}]"
 
-initial_list = input().split()
-step = int(input())
-result = []
-deleted_indexs = []
+def josephus_permutation(items, k):
+    #your code here
+    if len(items) == 0:
+        return []
+    else:
+        k = k - 1
+        idx = k % len(items)
+        return [items[idx]] + josephus_permutation(items[:idx] + items[idx+1:], k+1)
 
-for i in range(len(initial_list)):
-    initial_list[i] = int(initial_list[i])
+def print_josephus_permutation(items, k):
+    print(josephus_permutation(items, k))
 
-for i in range(len(initial_list)):
-    deleted_indexs.append((i + step - 1) % len(initial_list))
+def main():
+    print_josephus_permutation([1,2,3,4,5,6,7],3)
+    print_josephus_permutation([1,2,3,4,5,6,7],4)
+    print_josephus_permutation([],3)
+    print_josephus_permutation([1,2,3,4,5,6,7],-1)
+    print_josephus_permutation([1,2,3,4,5,6,7],0)
+    print_josephus_permutation([1,2,3,4,5,6,7],1)
+    print_josephus_permutation([1,2,3,4,5,6,7],2)
+    print_josephus_permutation([1,2,3,4,5,6,7],8)
+    print_josephus_permutation([1,2,3,4,5,6,7],9)
+    print_josephus_permutation([1,2,3,4,5,6,7],10)
 
-for i in range(len(initial_list)):
-    result.append(initial_list[deleted_indexs[i]])
+main()
 
-print(deleted_indexs)
+# initial_list = input().split()
+# step = int(input())
+# result = []
+# deleted_indexs = []
+
+# for i in range(len(initial_list)):
+#     initial_list[i] = int(initial_list[i])
+
+# for i in range(len(initial_list)):
+#     deleted_indexs.append((i + step - 1) % len(initial_list))
+
+# for i in range(len(initial_list)):
+#     result.append(initial_list[deleted_indexs[i]])
+
+# print(deleted_indexs)

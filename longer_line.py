@@ -41,10 +41,17 @@ def main():
     line_1 = get_line_length(x1, y1, x2, y2)
     line_2 = get_line_length(x3, y3, x4, y4)
     if line_1 >= line_2:
-        print_point(x, y)
-        print_point(x5, y5)
+        # Print points from the longest and closest line        
+        print_point(x2, y2)
+        print_point(x1, y1)
     else:
-        print_point(x5, y5)
-        print_point(x, y)
+        print_point(x4, y4)
+        print_point(x3, y3)
+        
+    #     print_point(x, y)
+    #     print_point(x5, y5)
+    # else:
+    #     print_point(x5, y5)
+    #     print_point(x, y)
 
 main()

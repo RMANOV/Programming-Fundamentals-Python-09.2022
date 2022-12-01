@@ -34,59 +34,52 @@
 initial_list = [int(x) for x in input().split()]
 command = input()
 
-while not command != 'End':
+while command != "end":
     command = command.split()
-    if command[0] == 'exchange':
-        index = int(command[1])
-        if index < 0 or index > len(initial_list):
-            print('Invalid index')
+    if command[0] == "exchange":
+        if int(command[1]) < 0 or int(command[1]) >= len(initial_list):
+            print("Invalid index")
         else:
-            initial_list = initial_list[index + 1:] + initial_list[:index + 1]
-    elif command[0] == 'max':
-        if command[1] == 'even':
-            max_even = max([x for x in initial_list if x % 2 == 0])
-            if max_even:
-                print(initial_list.index(max_even))
+            initial_list = initial_list[int(command[1]) + 1:] + initial_list[:int(command[1]) + 1]
+    elif command[0] == "max" or command[0] == "min":
+        if command[1] == "even":
+            even_numbers = [x for x in initial_list if x % 2 == 0]
+            if len(even_numbers) == 0:
+                print("No matches")
             else:
-                print('No matches')
+                if command[0] == "max":
+                    print(initial_list.index(max(even_numbers)))
+                else:
+                    print(initial_list.index(min(even_numbers)))
         else:
-            max_odd = max([x for x in initial_list if x % 2 != 0])
-            if max_odd:
-                print(initial_list.index(max_odd))
+            odd_numbers = [x for x in initial_list if x % 2 != 0]
+            if len(odd_numbers) == 0:
+                print("No matches")
             else:
-                print('No matches')
-    elif command[0] == 'min':
-        if command[1] == 'even':
-            min_even = min([x for x in initial_list if x % 2 == 0])
-            if min_even:
-                print(initial_list.index(min_even))
+                if command[0] == "max":
+                    print(initial_list.index(max(odd_numbers)))
+                else:
+                    print(initial_list.index(min(odd_numbers)))
+    elif command[0] == "first" or command[0] == "last":
+        if int(command[1]) > len(initial_list):
+            print("Invalid count")
+        else:
+            if command[2] == "even":
+                even_numbers = [x for x in initial_list if x % 2 == 0]
+                if command[0] == "first":
+                    print(even_numbers[:int(command[1])])
+                else:
+                    print(even_numbers[-int(command[1]):])
             else:
-                print('No matches')
-        else:
-            min_odd = min([x for x in initial_list if x % 2 != 0])
-            if min_odd:
-                print(initial_list.index(min_odd))
-            else:
-                print('No matches')
-    elif command[0] == 'first':
-        count = int(command[1])
-        if count > len(initial_list):
-            print('Invalid count')
-        elif command[2] == 'even':
-            print([x for x in initial_list if x % 2 == 0][:count])
-        else:
-            print([x for x in initial_list if x % 2 != 0][:count])
-    elif command[0] == 'last':
-        count = int(command[1])
-        if count > len(initial_list):
-            print('Invalid count')
-        elif command[2] == 'even':
-            print([x for x in initial_list if x % 2 == 0][-count:])
-        else:
-            print([x for x in initial_list if x % 2 != 0][-count:])
+                odd_numbers = [x for x in initial_list if x % 2 != 0]
+                if command[0] == "first":
+                    print(odd_numbers[:int(command[1])])
+                else:
+                    print(odd_numbers[-int(command[1]):])
     command = input()
 
 print('[' + ', '.join([str(x) for x in initial_list]) + ']')
+
 
 
 

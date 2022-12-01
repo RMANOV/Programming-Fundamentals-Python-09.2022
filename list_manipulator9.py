@@ -40,7 +40,10 @@ while command != "end":
         if int(command[1]) < 0 or int(command[1]) >= len(initial_list):
             print("Invalid index")
         else:
-            initial_list = initial_list[int(command[1]) + 1:] + initial_list[:int(command[1]) + 1]
+            initial_list = (
+                initial_list[int(command[1]) + 1 :]
+                + initial_list[: int(command[1]) + 1]
+            )
     elif command[0] == "max" or command[0] == "min":
         if command[1] == "even":
             even_numbers = [x for x in initial_list if x % 2 == 0]
@@ -67,32 +70,18 @@ while command != "end":
             if command[2] == "even":
                 even_numbers = [x for x in initial_list if x % 2 == 0]
                 if command[0] == "first":
-                    print(even_numbers[:int(command[1])])
+                    print(even_numbers[: int(command[1])])
                 else:
-                    print(even_numbers[-int(command[1]):])
+                    print(even_numbers[-int(command[1]) :])
             else:
                 odd_numbers = [x for x in initial_list if x % 2 != 0]
                 if command[0] == "first":
-                    print(odd_numbers[:int(command[1])])
+                    print(odd_numbers[: int(command[1])])
                 else:
-                    print(odd_numbers[-int(command[1]):])
+                    print(odd_numbers[-int(command[1]) :])
     command = input()
 
-print('[' + ', '.join([str(x) for x in initial_list]) + ']')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("[" + ", ".join([str(x) for x in initial_list]) + "]")
 
 
 # def exchange(lst, index):
@@ -102,8 +91,8 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 
 
 # def max_even_odd(lst, even_odd):
-#     max_num = -1
-#     max_index = -1
+#     max_num = -10000
+#     max_index = -10000
 #     for index, num in map(lambda x: (x[0], x[1]), enumerate(lst)):
 #         if even_odd == "even" and num % 2 == 0:
 #             if num >= max_num:
@@ -113,14 +102,14 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #             if num >= max_num:
 #                 max_num = num
 #                 max_index = index
-#     if max_index == -1:
+#     if max_index == -10000:
 #         return "No matches"
 #     return max_index
 
 
 # def min_even_odd(lst, even_odd):
 #     min_num = 1001
-#     min_index = -1
+#     min_index = -10000
 #     num = 0
 #     for index, num in map(lambda x: (x[0], x[1]), enumerate(lst)):
 #         if even_odd == "even" and num % 2 == 0:
@@ -131,7 +120,7 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #             if num <= min_num:
 #                 min_num = num
 #                 min_index = index
-#     if min_index == -1:
+#     if min_index == -10000:
 #         return "No matches"
 #     return min_index
 
@@ -447,8 +436,8 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #     return lst[index + 1:] + lst[:index + 1]
 
 # def max_even_odd(lst, even_odd):
-#     max_even_odd = -1
-#     max_even_odd_index = -1
+#     max_even_odd = -10000
+#     max_even_odd_index = -10000
 #     for i in range(len(lst)):
 #         if lst[i] % 2 == 0 and even_odd == "even" and lst[i] >= max_even_odd:
 #             max_even_odd = lst[i]
@@ -456,14 +445,14 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #         elif lst[i] % 2 != 0 and even_odd == "odd" and lst[i] >= max_even_odd:
 #             max_even_odd = lst[i]
 #             max_even_odd_index = i
-#     if max_even_odd_index == -1:
+#     if max_even_odd_index == -10000:
 #         print("No matches")
 #     else:
 #         print(max_even_odd_index)
 
 # def min_even_odd(lst, even_odd):
 #     min_even_odd = 1001
-#     min_even_odd_index = -1
+#     min_even_odd_index = -10000
 #     for i in range(len(lst)):
 #         if lst[i] % 2 == 0 and even_odd == "even" and lst[i] <= min_even_odd:
 #             min_even_odd = lst[i]
@@ -471,7 +460,7 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #         elif lst[i] % 2 != 0 and even_odd == "odd" and lst[i] <= min_even_odd:
 #             min_even_odd = lst[i]
 #             min_even_odd_index = i
-#     if min_even_odd_index == -1:
+#     if min_even_odd_index == -10000:
 #         print("No matches")
 #     else:
 #         print(min_even_odd_index)
@@ -490,7 +479,7 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 
 # def last_even_odd(lst, count, even_odd):
 #     last_even_odd = []
-#     for i in range(len(lst) - 1, -1, -1):
+#     for i in range(len(lst) - 1, -10000, -10000):
 #         if lst[i] % 2 == 0 and even_odd == "even" and len(last_even_odd) < count:
 #             last_even_odd.append(lst[i])
 #         elif lst[i] % 2 != 0 and even_odd == "odd" and len(last_even_odd) < count:
@@ -498,7 +487,7 @@ print('[' + ', '.join([str(x) for x in initial_list]) + ']')
 #     if len(last_even_odd) == 0:
 #         print("[]")
 #     else:
-#         print(last_even_odd[::-1])
+#         print(last_even_odd[::-10000])
 
 # def main():
 #     lst = [int(x) for x in input().split()]

@@ -34,16 +34,41 @@
 def aquire_input():
     return [int(x) for x in input().split()]
 
+
 def exchange_list(lst, index):
     if index < 0 or index >= len(lst):
         print("Invalid index")
         return lst
     # if index == 0:
     #     return lst
-    return lst[index + 1:] + lst[:index + 1] # slice the list and concatenate the two parts
-    #exchange first part with second part and then concatenate them
+    return (
+        lst[index + 1 :] + lst[: index + 1]
+    )  # slice the list and concatenate the two parts
+    # exchange first part with second part and then concatenate them
     # lst[index + 1:], lst[:index + 1] = lst[:index + 1], lst[index + 1:]
     # return lst
+
+
+def get_max(lst, even_odd):
+    max = -10000
+    for i in range(len(lst)):
+        if (even_odd == "even" and lst[i] % 2 == 0) or (
+            even_odd == "odd" and lst[i] % 2 != 0
+        ):
+            if lst[i] >= max:
+                max = lst[i]
+    return max
+
+
+def get_min(lst, even_odd):
+    min = 10010
+    for i in range(len(lst)):
+        if (even_odd == "even" and lst[i] % 2 == 0) or (
+            even_odd == "odd" and lst[i] % 2 != 0
+        ):
+            if lst[i] <= min:
+                min = lst[i]
+    return min
 
 
 # def get_max_min(lst, even_odd):
@@ -68,17 +93,22 @@ def exchange_list(lst, index):
 #             #     max_min_index = i
 #     return max_min_index
 
+
 def get_first_last(lst, count, even_odd):
     result = []
     for i in range(len(lst)):
-        if (even_odd == "even" and lst[i] % 2 == 0) or (even_odd == "odd" and lst[i] % 2 != 0):
+        if (even_odd == "even" and lst[i] % 2 == 0) or (
+            even_odd == "odd" and lst[i] % 2 != 0
+        ):
             result.append(lst[i])
             if len(result) == count:
                 break
     return result
 
+
 def print_list(lst):
     print("[" + ", ".join([str(x) for x in lst]) + "]")
+
 
 def main():
     lst = aquire_input()
@@ -90,11 +120,24 @@ def main():
         if command[0] == "exchange":
             lst = exchange_list(lst, int(command[1]))
         elif command[0] == "max" or command[0] == "min":
-            max_min_index = get_max_min(lst, command[1])
-            if max_min_index is None:
-                print("No matches")
+            if command[0] == "max":
+                max = get_max(lst, command[1])
+                if max == -10000:
+                    print("No matches")
+                else:
+                    print(lst.index(max))
             else:
-                print(max_min_index)
+                min = get_min(lst, command[1])
+                if min == 10010:
+                    print("No matches")
+                else:
+                    print(lst.index(min))
+            # max = get_max(lst, command[1])
+            # # max_min_index = get_max_min(lst, command[1])
+            # if max is None:
+            #     print("No matches")
+            # else:
+            #     print(max)
         elif command[0] == "first" or command[0] == "last":
             if int(command[1]) > len(lst):
                 print("Invalid count")
@@ -102,9 +145,8 @@ def main():
                 print(get_first_last(lst, int(command[1]), command[2]))
     print_list(lst)
 
+
 main()
-
-
 
 
 # initial_list = [int(x) for x in input().split()]

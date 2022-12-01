@@ -39,8 +39,6 @@ def exchange_list(lst, index):
     if index < 0 or index >= len(lst):
         print("Invalid index")
         return lst
-    # if index == 0:
-    #     return lst
     return (
         lst[index + 1 :] + lst[: index + 1]
     )  # slice the list and concatenate the two parts

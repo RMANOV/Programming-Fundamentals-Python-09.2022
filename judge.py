@@ -66,6 +66,11 @@ while command != "no more time":
 # Print results
 for contest, data in users.items():
     print(f"{contest}: {len(data)} participants")
-    print(*[f"{i + 1}. {name} <::> {points}" for i, (name, points) in enumerate(sorted(data.items(), key=lambda x: (-x[1], x[0])))], sep=" " * 2)
+    # print(*[f"{i + 1}. {name} <::> {points}" for i, (name, points) in enumerate(sorted(data.items(), key=lambda x: (-x[1], x[0])))], sep=" " * 2)
+    for i, (name, points) in enumerate(sorted(data.items(), key=lambda x: (-x[1], x[0]))):
+        print(f"{i + 1}. {name} <::> {points}")
+
 print("Individual standings:")
 # print(*[f"{i + 1}. {k} -> {v}" for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True))], sep="")
+for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True)):
+    print(f"{i + 1}. {k} -> {v}")

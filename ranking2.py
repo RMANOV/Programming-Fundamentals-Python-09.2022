@@ -48,10 +48,14 @@ while command2 != "end of submissions":
                 users[username][contest] = int(points)
     command2 = input()
 
-# calculate the best user and the total points
-
+# calculate maximum points and the best user
 best_user = ""
 max_points = 0
+
+for user, contests in users.items():
+    
+    user_points = 0
+
 
 # for user in users:
 #     current_points = 0

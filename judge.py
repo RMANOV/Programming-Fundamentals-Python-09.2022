@@ -83,4 +83,8 @@ for contest, data in users.items():
         print(f"{i + 1}. {name} <::> {points}")
 
 print("Individual standings:")
-print(*[f"{i + 1}. {k} -> {v}" for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True))], sep="")
+# print(*[f"{i + 1}. {k} -> {v}" for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True))], sep="")
+# first - sort by values, then by keys, then reverse the list, then print it
+users = dict(sorted(users.items(), key=lambda x: (x[1], x[0]), reverse=True))
+for i, (k, v) in enumerate(users.items()):
+    print(f"{i + 1}. {k} -> {v}")

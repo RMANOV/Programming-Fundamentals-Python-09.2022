@@ -26,8 +26,9 @@
 # •	The numbers will be in the range [0 - 10000].
 # •	Second input is always valid.
 
-
-contests_passwords = {contest : password for contest, password in [input().split(":") for _ in range(int(input()))] if input() != "end of contests"}
+# Fill the dictionary without missing literals
+# contests_passwords = {contest : password for contest, password in [input().split(":") for _ in range(int(input()))] if input() != "end of contests"}
+contests_passwords = {contest : password for contest, password in [input().split(":") for _ in range(100)] if input() != "end of contests"}
 user_contests_points = {user : {contest : int(points) for contest, password, user, points in [input().split("=>") for _ in range(int(input()))] if contest in contests_passwords and password == contests_passwords[contest]} for user in [input().split("=>")[2] for _ in range(int(input()))] if input() != "end of submissions"}
 
 # calculate total points for each user and find the best user

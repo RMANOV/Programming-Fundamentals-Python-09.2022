@@ -83,6 +83,28 @@ for contest, data in users.items():
         print(f"{i + 1}. {name} <::> {points}")
 
 print("Individual standings:")
+# Sort only users by total points and then by name and store them in a dictionary - {username: total_points}, then print them
+sorted_users = {}
+for contest, data in users.items():
+    for username, points in data.items():
+        if username not in sorted_users:
+            sorted_users[username] = points
+        else:
+            sorted_users[username] += points
+
+# Print sorted users
+for i, (k, v) in enumerate(sorted(sorted_users.items(), key=lambda x: (-x[1], x[0]))):
+    print(f"{i + 1}. {k} -> {v}")
+
+
+
+
+
+
+
+
+
+
 # print(*[f"{i + 1}. {k} -> {v}" for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True))], sep="")
 # first - sort by values, then by keys, then reverse the list, then print it
 ############################################################################################################
@@ -92,8 +114,19 @@ print("Individual standings:")
 # TypeError: '<' not supported between instances of 'dict' and 'dict'
 ############################################################################################################
 # users = dict(sorted(users.items(), key=lambda x: (x[1], x[0]), reverse=True))
-while users:
-    counter = 1
-    user, points = users.popitem()
-    print(f"{counter}. {user} -> {points}")
-    counter += 1
+# while users:
+#     counter = 1
+#     user, points = users.popitem()
+#     print(f"{counter}. {user} -> {points}")
+#     counter += 1
+# for points, user in sorted([(sum(v.values()), k) for k, v in users.items()], reverse=True):
+#     counter = 1
+#     print(f"{counter}. {user} -> {points}")
+#     counter += 1
+# for i, (points, user) in enumerate(sorted([(sum(v.values()), k) for k, v in users.items()], reverse=True)):
+#     print(f"{i + 1}. {user} -> {points}")
+# for i, (user, points) in enumerate(sorted([(k, sum(v.values())) for k, v in users.items()], key=lambda x: (-x[1], x[0]))):
+#     print(f"{i + 1}. {user} -> {points}")
+# sorted_users = sorted([(k, sum(v.values())) for k, v in users.items()], key=lambda x: (-x[1], x[0]))
+# for i, (user, points) in enumerate(sorted_users):
+#     print(f"{i + 1}. {user} -> {points}")

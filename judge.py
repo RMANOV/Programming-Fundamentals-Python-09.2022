@@ -85,6 +85,15 @@ for contest, data in users.items():
 print("Individual standings:")
 # print(*[f"{i + 1}. {k} -> {v}" for i, (k, v) in enumerate(sorted(users.items(), key=lambda x: x[1], reverse=True))], sep="")
 # first - sort by values, then by keys, then reverse the list, then print it
-users = dict(sorted(users.items(), key=lambda x: (x[1], x[0]), reverse=True))
-for i, (k, v) in enumerate(users.items()):
-    print(f"{i + 1}. {k} -> {v}")
+############################################################################################################
+# Traceback (most recent call last):
+#   File "/tmp/ExecutionStrategies/lfebkzj2.z0i/tmpKV02RP.tmp", line 39, in <module>
+#     users = dict(sorted(users.items(), key=lambda x: (x[1], x[0]), reverse=True))
+# TypeError: '<' not supported between instances of 'dict' and 'dict'
+############################################################################################################
+# users = dict(sorted(users.items(), key=lambda x: (x[1], x[0]), reverse=True))
+while users:
+    counter = 1
+    user, points = users.popitem()
+    print(f"{counter}. {user} -> {points}")
+    counter += 1

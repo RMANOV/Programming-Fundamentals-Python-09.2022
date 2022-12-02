@@ -27,51 +27,64 @@
 # •	Second input is always valid.
 
 
-users = {name :[contest,points]
+contests_passwords = {contest : password for contest, password in [input().split(":") for _ in range(int(input()))] if input() != "end of contests"}
+user_contests_points = {user : {contest : int(points) for contest, password, user, points in [input().split("=>") for _ in range(int(input()))] if contest in contests_passwords and password == contests_passwords[contest]} for user in [input().split("=>")[2] for _ in range(int(input()))] if input() != "end of submissions"}
 
-command1 = input()
-while command1 != "end of contests":
-    contest, password = command1.split(":")
-    users[contest] = password
-    command1 = input()
-
-command2 = input()
-while command2 != "end of submissions":
-    contest, password, username, points = command2.split("=>")
-    if contest in users and password == users[contest]:
-        if username not in users:
-            users[username] = {}
-        if contest not in users[username]:
-            users[username][contest] = int(points)
-        else:
-            if int(points) > users[username][contest]:
-                users[username][contest] = int(points)
-    command2 = input()
-
-# calculate maximum points and the best user
-best_user = ""
-max_points = 0
-
-for user, contests in users.items():
-    user_points = 0
-
-
-# for user in users:
-#     current_points = 0
-#     for contest in users[user]:
-#         current_points += int(users[user][points])
-#     if current_points > total_points:
-#         total_points = current_points
-#         best_user = user
+# calculate total points for each user and find the best user
+best_user = max(user_contests_points, key=lambda user: sum(user_contests_points[user].values()))
 
 # print the best user
+print(f"Best candidate is {best_user} with total {sum(user_contests_points[best_user].values())} points.")
 
-print(f"Best candidate is {best_user} with total {total_points} points.")
-for user in sorted(users):
-    if user != best_user:
-        print(f"{user}")
-        for contest in sorted(users[user], key=lambda x: -users[user][x]):
-            print(f"#  {contest} -> {users[user][contest]}")
+# print all users
+print("\n".join([f"{user}\n#  {'' if len(user_contests_points[user]) == 0 else ''}\n#  ".join([f"{contest} -> {points}" for contest, points in sorted(user_contests_points[user].items(), key=lambda contest_points: -contest_points[1])]) for user in sorted(user_contests_points)]))
+
+
+# users = {name :[contest,points]
+
+# command1 = input()
+# while command1 != "end of contests":
+#     contest, password = command1.split(":")
+#     users[contest] = password
+#     command1 = input()
+
+# command2 = input()
+# while command2 != "end of submissions":
+#     contest, password, username, points = command2.split("=>")
+#     if contest in users and password == users[contest]:
+#         if username not in users:
+#             users[username] = {}
+#         if contest not in users[username]:
+#             users[username][contest] = int(points)
+#         else:
+#             if int(points) > users[username][contest]:
+#                 users[username][contest] = int(points)
+#     command2 = input()
+
+# # calculate maximum points and the best user
+# best_user = ""
+# max_points = 0
+
+# for user, contests in users.items():
+#     user_points = 0
+
+
+# # for user in users:
+# #     current_points = 0
+# #     for contest in users[user]:
+# #         current_points += int(users[user][points])
+# #     if current_points > total_points:
+# #         total_points = current_points
+# #         best_user = user
+
+# # print the best user
+
+# print(f"Best candidate is {best_user} with total {total_points} points.")
+# for user in sorted(users):
+#     if user != best_user:
+#         print(f"{user}")
+#         for contest in sorted(users[user], key=lambda x: -users[user][x]):
+#             print(f"#  {contest} -> {users[user][contest]}")
 
 
 

@@ -26,29 +26,67 @@
 # •	There will be no invalid input lines.
 # •	If all sorting criteria fail, the order should be by order of input.
 
-dwarfs = {}
-# Get input and store dwarfs
-command = input()
-while command != "Once upon a time":
-    dwarf_name, dwarf_hat_color, dwarf_physics = command.split(" <:> ")
-    dwarf_physics = int(dwarf_physics)
-    if dwarf_name not in dwarfs:
-        dwarfs[dwarf_name] = {"color": dwarf_hat_color, "physics": dwarf_physics}
-    else:
-        if dwarfs[dwarf_name]["color"] != dwarf_hat_color and dwarfs[dwarf_name]["physics"] < dwarf_physics:
-            update_dwarf = {dwarf_name: {"color": dwarf_hat_color, "physics": dwarf_physics}}
-        else:
-            if dwarfs[dwarf_name]["physics"] < dwarf_physics and dwarfs[dwarf_name]["color"] == dwarf_hat_color:
-                update_dwarf = {dwarf_name: {"color": dwarf_hat_color, "physics": dwarf_physics}}
-    command = input()
-# Sort dwarfs
-sorted_dwarfs = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -len([d for d in dwarfs.values() if d["color"] == x[1]["color"]])))
 
-# Print dwarfs sorted by color and then by physics
+dwarfs = {}
+command = input()
+
+while command != "Once upon a time":
+    name, color, physics = command.split(" <:> ")
+    physics = int(physics)
+    if name not in dwarfs:
+        dwarfs[name] = {}
+        dwarfs[name]["color"] = color
+        dwarfs[name]["physics"] = physics
+    else:
+        if dwarfs[name]["color"] == color and dwarfs[name]["physics"] < physics:
+            if dwarfs[name]["physics"] < physics:
+                dwarfs[name]["physics"] = physics
+        else:
+            dwarfs[name] = {}
+            dwarfs[name]["color"] = color
+            dwarfs[name]["physics"] = physics
+    command = input()
+
+# sorted_dwarfs = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
 # print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_dwarfs], sep="\n")
-# for dwarf in sorted_dwarfs:
-#     print(f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}")
-# sorted_by_color = sorted(sorted_dwarfs, key=lambda x: x[1]["color"])
-# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color], sep="\n")
-sorted_by_color_and_physics = sorted(sorted_dwarfs, key=lambda x: (-x[1]["physics"], x[1]["color"]))
-print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color_and_physics], sep="\n")
+
+# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))], sep="\n")
+sorted_by_color_and_name_and_physics = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
+print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color_and_name_and_physics], sep="\n")
+
+
+
+
+
+
+
+
+
+
+
+# dwarfs = {}
+# # Get input and store dwarfs
+# command = input()
+# while command != "Once upon a time":
+#     dwarf_name, dwarf_hat_color, dwarf_physics = command.split(" <:> ")
+#     dwarf_physics = int(dwarf_physics)
+#     if dwarf_name not in dwarfs and dwarf_hat_color not in dwarfs:
+#         dwarfs[dwarf_name] = {"color": dwarf_hat_color, "physics": dwarf_physics}
+#     else:
+#         if dwarfs[dwarf_name]["color"] != dwarf_hat_color and dwarfs[dwarf_name]["physics"] != dwarf_physics:
+#             dwarfs[dwarf_name] = {"color": dwarf_hat_color, "physics": dwarf_physics}
+#         else:
+#             if dwarfs[dwarf_name]["physics"] < dwarf_physics and dwarfs[dwarf_name]["color"] == dwarf_hat_color:
+#                 dwarfs[dwarf_name] = {"color": dwarf_hat_color, "physics": dwarf_physics}
+#     command = input()
+# # Sort dwarfs
+# sorted_dwarfs = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -len([d for d in dwarfs.values() if d["color"] == x[1]["color"]])))
+
+# # Print dwarfs sorted by color and then by physics
+# # print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_dwarfs], sep="\n")
+# # for dwarf in sorted_dwarfs:
+# #     print(f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}")
+# # sorted_by_color = sorted(sorted_dwarfs, key=lambda x: x[1]["color"])
+# # print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color], sep="\n")
+# sorted_by_color_and_physics = sorted(sorted_dwarfs, key=lambda x: (-x[1]["physics"], x[1]["color"]))
+# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color_and_physics], sep="\n")

@@ -39,9 +39,12 @@ while command != "Once upon a time":
         dwarfs[name]["physics"] = physics
     else:
         if dwarfs[name]["color"] == color and dwarfs[name]["physics"] < physics:
-            if dwarfs[name]["physics"] < physics:
-                dwarfs[name]["physics"] = physics
+           dwarfs[name]["physics"] = physics
+        elif dwarfs[name]["color"] != color:
+            dwarfs[name]["color"] = color
+            dwarfs[name]["physics"] = physics
         else:
+            # add new dwarf to the existing dictionary, with the same name but different color and different physics
             dwarfs[name] = {}
             dwarfs[name]["color"] = color
             dwarfs[name]["physics"] = physics

@@ -38,24 +38,48 @@ while command != "Once upon a time":
         dwarfs[name]["color"] = color
         dwarfs[name]["physics"] = physics
     else:
-        if dwarfs[name]["color"] == color and dwarfs[name]["physics"] < physics:
-           dwarfs[name]["physics"] = physics
-        elif dwarfs[name]["color"] != color:
-            dwarfs[name]["color"] = color
-            dwarfs[name]["physics"] = physics
+        if dwarfs[name]["color"] == color:
+            if dwarfs[name]["physics"] < physics:
+                dwarfs[name]["physics"] = physics
         else:
-            # add new dwarf to the existing dictionary, with the same name but different color and different physics
             dwarfs[name] = {}
             dwarfs[name]["color"] = color
             dwarfs[name]["physics"] = physics
     command = input()
+    
+dwarfs = dict(sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -len([d for d in dwarfs.values() if d["color"] == x[1]["color"]]))))
+# print the dwarfs sorted by color, name and physics
+print(*[f"({dwarfs[dwarf]['color']}) {dwarf} <-> {dwarfs[dwarf]['physics']}" for dwarf in dwarfs], sep="\n")
 
-# sorted_dwarfs = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
-# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_dwarfs], sep="\n")
+# dwarfs = {}
+# command = input()
 
-# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))], sep="\n")
-sorted_by_color_and_name_and_physics = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
-print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color_and_name_and_physics], sep="\n")
+# while command != "Once upon a time":
+#     name, color, physics = command.split(" <:> ")
+#     physics = int(physics)
+#     if name not in dwarfs:
+#         dwarfs[name] = {}
+#         dwarfs[name]["color"] = color
+#         dwarfs[name]["physics"] = physics
+#     else:
+#         if dwarfs[name]["color"] == color and dwarfs[name]["physics"] < physics:
+#            dwarfs[name]["physics"] = physics
+#         elif dwarfs[name]["color"] != color:
+#             dwarfs[name]["color"] = color
+#             dwarfs[name]["physics"] = physics
+#         else:
+#             # add new dwarf to the existing dictionary, with the same name but different color and different physics
+#             dwarfs[name] = {}
+#             dwarfs[name]["color"] = color
+#             dwarfs[name]["physics"] = physics
+#     command = input()
+
+# # sorted_dwarfs = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
+# # print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_dwarfs], sep="\n")
+
+# # print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))], sep="\n")
+# sorted_by_color_and_name_and_physics = sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -list(dwarfs.values()).count(x[1])))
+# print(*[f"({dwarf[1]['color']}) {dwarf[0]} <-> {dwarf[1]['physics']}" for dwarf in sorted_by_color_and_name_and_physics], sep="\n")
 
 
 

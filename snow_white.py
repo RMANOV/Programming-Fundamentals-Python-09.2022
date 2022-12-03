@@ -27,29 +27,70 @@
 # •	If all sorting criteria fail, the order should be by order of input.
 
 
-dwarfs = {}
-command = input()
-
-while command != "Once upon a time":
-    name, color, physics = command.split(" <:> ")
-    physics = int(physics)
-    if name not in dwarfs:
-        dwarfs[name] = {}
-        dwarfs[name]["color"] = color
-        dwarfs[name]["physics"] = physics
-    else:
-        if dwarfs[name]["color"] == color:
-            if dwarfs[name]["physics"] < physics:
-                dwarfs[name]["physics"] = physics
+def main():
+    dwarfs = {}
+    while True:
+        line = input()
+        if line == "Once upon a time":
+            break
+        dwarf_name, dwarf_hat_color, dwarf_physics = line.split(" <:> ")
+        dwarf_physics = int(dwarf_physics)
+        if dwarf_name not in dwarfs:
+            dwarfs[dwarf_name] = {}
+        if dwarf_hat_color not in dwarfs[dwarf_name]:
+            dwarfs[dwarf_name][dwarf_hat_color] = dwarf_physics
         else:
-            dwarfs[name] = {}
-            dwarfs[name]["color"] = color
-            dwarfs[name]["physics"] = physics
-    command = input()
+            if dwarf_physics > dwarfs[dwarf_name][dwarf_hat_color]:
+                dwarfs[dwarf_name][dwarf_hat_color] = dwarf_physics
+    dwarfs = sorted(dwarfs.items(), key=lambda x: (-max(x[1].values()), -len(x[1])))
+    # You must order the dwarfs by physics in descending order and then by the total count of dwarfs with the same hat color in descending order
+    # # for dwarf_name, dwarf_hat_color in dwarfs:
+    # #     for hat_color, physics in dwarf_hat_color.items():
+    # #         print(f"({hat_color}) {dwarf_name} <-> {physics}")
+    sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending = sorted(dwarfs, key=lambda x: (-max(x[1].values()), -len(x[1])))
+    for dwarf_name, dwarf_hat_color in sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending:
+        for hat_color, physics in dwarf_hat_color.items():
+            print(f"({hat_color}) {dwarf_name} <-> {physics}")
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# dwarfs = {}
+# command = input()
+
+# while command != "Once upon a time":
+#     name, color, physics = command.split(" <:> ")
+#     physics = int(physics)
+#     if name not in dwarfs:
+#         dwarfs[name] = {}
+#         dwarfs[name]["color"] = color
+#         dwarfs[name]["physics"] = physics
+#     else:
+#         if dwarfs[name]["color"] == color:
+#             if dwarfs[name]["physics"] < physics:
+#                 dwarfs[name]["physics"] = physics
+#         else:
+#             dwarfs[name] = {}
+#             dwarfs[name]["color"] = color
+#             dwarfs[name]["physics"] = physics
+#     command = input()
     
-dwarfs = dict(sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -len([d for d in dwarfs.values() if d["color"] == x[1]["color"]]))))
-# print the dwarfs sorted by color, name and physics
-print(*[f"({dwarfs[dwarf]['color']}) {dwarf} <-> {dwarfs[dwarf]['physics']}" for dwarf in dwarfs], sep="\n")
+# dwarfs = dict(sorted(dwarfs.items(), key=lambda x: (-x[1]["physics"], -len([d for d in dwarfs.values() if d["color"] == x[1]["color"]]))))
+# # print the dwarfs sorted by color, name and physics
+# print(*[f"({dwarfs[dwarf]['color']}) {dwarf} <-> {dwarfs[dwarf]['physics']}" for dwarf in dwarfs], sep="\n")
 
 # dwarfs = {}
 # command = input()

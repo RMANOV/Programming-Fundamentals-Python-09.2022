@@ -47,10 +47,17 @@ def main():
     # # for dwarf_name, dwarf_hat_color in dwarfs:
     # #     for hat_color, physics in dwarf_hat_color.items():
     # #         print(f"({hat_color}) {dwarf_name} <-> {physics}")
-    sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending = sorted(dwarfs, key=lambda x: (-max(x[1].values()), -len(x[1])))
-    for dwarf_name, dwarf_hat_color in sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending:
+    # sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending = sorted(dwarfs, key=lambda x: (-max(x[1].values()), -len(x[1])))
+    # for dwarf_name, dwarf_hat_color in sorted_dwarfs_physics_descending_and_by_count_of_same_hat_color_descending:
+    #     for hat_color, physics in dwarf_hat_color.items():
+    #         print(f"({hat_color}) {dwarf_name} <-> {physics}")
+    sorted_by_physics_descending = sorted(dwarfs, key=lambda x: -max(x[1].values()))
+    # sorted_by_count_of_same_hat_color_descending = sorted(sorted_by_physics_descending, key=lambda x: -len(x[1]))
+    sorted_by_count_of_same_hat_color_ascending = sorted(sorted_by_physics_descending, key=lambda x: len(x[1]))
+    for dwarf_name, dwarf_hat_color in sorted_by_count_of_same_hat_color_ascending:
         for hat_color, physics in dwarf_hat_color.items():
             print(f"({hat_color}) {dwarf_name} <-> {physics}")
+
 main()
 
 

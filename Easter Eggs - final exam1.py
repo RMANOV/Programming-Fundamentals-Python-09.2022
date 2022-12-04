@@ -21,13 +21,12 @@
 
 
 
-# match - colors -only lowercase letters,minimum 3 letters
-# match and numbers - amounts - only digits, minimum 1 digit
+# match colors - they are only lowercase letters and minimum 3 letters
+# match and amounts - only digits, minimum 1 digit, but maximum 2 digits
 # between the colors and numbers - any non alfabetical symbols and non digits
 # amounts -always after colors, suroounded by one or more / symbols
-
-# @@@@green@*/10/@yel0w@*26*#red#####//8//@limon*@*23*@@@red#*/%^&/6/@gree_een@/notnumber/###purple@@@@@*$%^&*/5/
-# #@##@red@#/8/@rEd@/2/#@purple@////10/
+# colors - always before amounts, surrounded by one or more @ and # symbols
+# #@##@red@#/8/@rEd@/2/#@purple@////10/@purple@/5/
 
 
 import re
@@ -35,21 +34,39 @@ import re
 
 initial_string = input()
 
+# patern_colors = r"([a-z]{3,})+"
+# patern_amounts = r"(\d{1,})"
+
+
 patern_colors = r"([a-z]{3,})+"
 patern_amounts = r"(\d{1,})"
 colors_and_amounts = {}
 
 for match in re.finditer(patern_colors, initial_string):
     color = match.group()
-    if color not in colors_and_amounts:
-        colors_and_amounts[color] = 0
-    for match in re.finditer(patern_amounts, initial_string):
-        amount = match.group()
-        colors_and_amounts[color] += int(amount)
+    if color != "red" and color != "green" and color != "yellow" and color != "purple":
+        continue
+    colors_and_amounts[color] = 0
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#     if color not in colors_and_amounts:
+#         colors_and_amounts[color] = 0
+#     for match in re.finditer(patern_amounts, initial_string):
+#         amount = match.group()
+#         colors_and_amounts[color] += int(amount)
         
 
-for color, amount in colors_and_amounts.items():
-    print(f"You found {amount} {color} eggs!")
+# for color, amount in colors_and_amounts.items():
+#     print(f"You found {amount} {color} eggs!")
 
 
 

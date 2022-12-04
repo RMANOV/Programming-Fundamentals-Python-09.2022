@@ -40,12 +40,14 @@ while True:
             print("False")
     elif command == "Lowercase":
         initial_string = initial_string.lower()
+        print(initial_string)
     elif command == "FindIndex":
         char = line.split()[1]
         print(initial_string.rfind(char))
     elif command == "Remove":
         start_index, count = line.split()[1:]
         initial_string = initial_string[:int(start_index)] + initial_string[int(start_index) + int(count):]
+        print(initial_string)
 
 
-print(initial_string)
+# print(initial_string)

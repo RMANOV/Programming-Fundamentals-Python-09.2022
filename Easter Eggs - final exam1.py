@@ -9,6 +9,7 @@
 # o	"You found {amount} {color} eggs!"
 # Examples
 # •	You will receive a string.
+
 # Input
 # @@@@green@*/10/@yel0w@*26*#red#####//8//@limon*@*23*@@@red#*/%^&/6/@gree_een@/notnumber/###purple@@@@@*$%^&*/5/
 # Output
@@ -20,7 +21,15 @@
 import re
 
 initial_string = input()
-patern = r"(@{1,}|#{1,})([A-Za-z]{3,})\1\*([A-Za-z]{1,})\3\*"
+# match - colors -only lowercase letters,minimum 3 letters
+# match and numbers - amounts - only digits, minimum 1 digit
+# between the colors and numbers - any non alfabetical symbols and non digits
+# amounts -always after colors, suroounded by one or more / symbols
+
+# @@@@green@*/10/@yel0w@*26*#red#####//8//@limon*@*23*@@@red#*/%^&/6/@gree_een@/notnumber/###purple@@@@@*$%^&*/5/
+# #@##@red@#/8/@rEd@/2/#@purple@////10/
+
+patern = r"\b([a-z]{3,}+)\b([0-9]+)\b"
 valid_eggs_and_colors = re.finditer(patern, initial_string)
 
 for egg in valid_eggs_and_colors:

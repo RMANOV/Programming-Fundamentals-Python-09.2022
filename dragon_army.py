@@ -86,4 +86,4 @@ for dragon_type, dragon_name in dragons.items():
     for dragon_name, stats in sorted(dragon_name.items()):
         print(f"-{dragon_name} -> damage: {stats[0]}, health: {stats[1]}, armor: {stats[2]}")
 
-# Calculate and print the stats for every dragon
+

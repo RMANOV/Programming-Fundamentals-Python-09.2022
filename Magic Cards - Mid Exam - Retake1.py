@@ -11,10 +11,8 @@
 # o	"{cardName1} - {cardName2}"
 # o	"Card not found."
 # o	"Error!"
-
-initial_deck = input().split(":")
 new_deck = []
-
+initial_deck = input().split(":")
 while True:
     command = input().split()
     if command[0] == "Ready":
@@ -42,9 +40,44 @@ while True:
             second_card = new_deck.index(command[2])
             new_deck[first_card], new_deck[second_card] = new_deck[second_card], new_deck[first_card]
     elif command[0] == "Shuffle":
-        new_deck.reverse()
-
+        if new_deck:
+            new_deck.reverse()
 print(" ".join(new_deck))
+    
+
+# initial_deck = input().split(":")
+# new_deck = []
+
+# while True:
+#     command = input().split()
+#     if command[0] == "Ready":
+#         break
+#     elif command[0] == "Add":
+#         if command[1] not in initial_deck:
+#             print("Card not found.")
+#         else:
+#             new_deck.append(command[1])
+#     elif command[0] == "Insert":
+#         if command[1] not in initial_deck:
+#             print("Error!")
+#         else:
+#             new_deck.insert(int(command[2]), command[1])
+#     elif command[0] == "Remove":
+#         if command[1] not in initial_deck:
+#             print("Card not found.")
+#         else:
+#             new_deck.remove(command[1])
+#     elif command[0] == "Swap":
+#         if command[1] not in initial_deck or command[2] not in initial_deck:
+#             print("Error!")
+#         else:
+#             first_card = new_deck.index(command[1])
+#             second_card = new_deck.index(command[2])
+#             new_deck[first_card], new_deck[second_card] = new_deck[second_card], new_deck[first_card]
+#     elif command[0] == "Shuffle":
+#         new_deck.reverse()
+
+# print(" ".join(new_deck))
 
 # while True:
 #     command = input().split()

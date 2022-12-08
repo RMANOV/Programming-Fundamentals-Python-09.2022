@@ -21,6 +21,8 @@ while True:
         if command[1] not in initial_deck:
             print("Card not found.")
         else:
+            if command[1] in new_deck:
+                new_deck.remove(command[1])
             new_deck.append(command[1])
     elif command[0] == "Insert":
         if command[1] not in initial_deck:

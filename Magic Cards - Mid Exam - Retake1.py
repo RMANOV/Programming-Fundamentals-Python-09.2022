@@ -20,9 +20,9 @@ while True:
         break
     elif command[0] == "Add":
         if command[1] not in initial_deck:
-            initial_deck.append(command[1])
+            print("Card not found.")
         else:
-            print("Card is already bought")
+            initial_deck.append(command[1])
     elif command[0] == "Insert":
         if command[1] not in initial_deck:
             print("Error!")

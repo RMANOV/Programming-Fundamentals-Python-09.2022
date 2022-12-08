@@ -11,6 +11,8 @@
 # o	"{cardName1} - {cardName2}"
 # o	"Card not found."
 # o	"Error!"
+
+
 new_deck = []
 initial_deck = input().split(":")
 while True:

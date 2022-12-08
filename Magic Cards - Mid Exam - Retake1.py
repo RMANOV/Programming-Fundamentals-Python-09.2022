@@ -25,7 +25,7 @@ while True:
                 new_deck.remove(command[1])
             new_deck.append(command[1])
     elif command[0] == "Insert":
-        if command[1] not in initial_deck:
+        if command[1] not in initial_deck or int(command[2]) not in range(len(new_deck)):
             print("Error!")
         else:
             new_deck.insert(int(command[2]), command[1])

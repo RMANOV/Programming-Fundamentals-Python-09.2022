@@ -33,7 +33,6 @@ while True:
         
     elif command[0] == "Return":
         if command[1] not in report:
-            # report[command[1]] = [0, 0]
             continue
         report[command[1]][0] -= float(command[2])
         
@@ -42,6 +41,8 @@ while True:
     elif command[0] == "Sell":
         if command[1] not in report:
             report[command[1]] = [0, 0]
+        if report[command[1]][0] < 0:
+            continue
         report[command[1]][1] += float(command[2])
         total_income += float(command[2])
 

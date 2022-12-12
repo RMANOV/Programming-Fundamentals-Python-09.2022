@@ -32,7 +32,8 @@ while True:
         report[command[1]][0] += float(command[2])
     elif command[0] == "Return":
         if command[1] not in report:
-            report[command[1]] = [0, 0]
+            # report[command[1]] = [0, 0]
+            continue
         report[command[1]][0] -= float(command[2])
     elif command[0] == "Sell":
         if command[1] not in report:
@@ -40,9 +41,11 @@ while True:
         report[command[1]][1] += float(command[2])
         total_income += float(command[2])
 
+
 # print(report)
 for key, value in report.items():
     print(f"{key}: {value[1]}")
+print("-----------")
 
 # print total income
-print(f"Total Income: {total_income}")
+print(f"Total Income: {total_income:.2f}")

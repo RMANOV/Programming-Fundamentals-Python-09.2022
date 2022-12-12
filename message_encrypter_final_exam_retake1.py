@@ -19,8 +19,10 @@ for _ in range(counts_of_inputs):
         second_letter = ord(match.group(4))
         third_letter = ord(match.group(5))
         print(f"{tag}: {first_letter} {second_letter} {third_letter}")
-    else:
+    if not re.findall(search_pattern, message):
         print("Valid message not found!")
+    # else:
+    #     print("Valid message not found!")
 
 
 

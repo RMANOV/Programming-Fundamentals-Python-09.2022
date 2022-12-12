@@ -45,6 +45,7 @@ while True:
 # print(report)
 for key, value in report.items():
     print(f"{key}: {value[1]}")
+
 print("-----------")
 
 # print total income

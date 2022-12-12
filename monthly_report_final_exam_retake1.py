@@ -42,9 +42,22 @@ while True:
         total_income += float(command[2])
 
 
-# print(report)
-for key, value in report.items():
-    print(f"{key}: {value[1]}")
+# print clients
+# for key, value in report.items():
+#     print(f"{key}: {value[1]}")
+for key in report:
+    if report[key][1] == 0:
+        continue
+    print(f"{key}: {report[key][1]:.2f}")
+
+print("-----------")
+
+# print distributors
+
+for key in report:
+    if report[key][0] == 0:
+        continue
+    print(f"{key}: {report[key][0]:.2f}")
 
 print("-----------")
 
